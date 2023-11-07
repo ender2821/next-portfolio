@@ -4,8 +4,7 @@ import Link from 'next/link'
 export default function Home() {
   return (
     <main>
-        <h1>Resume</h1>
-        <section className="container mx-auto grid grid-cols-4 gap-4 gap-x-10">
+        <section className="container mx-auto grid grid-cols-4 gap-4 gap-x-10 print:max-w-none m-8 px-4 lg:px-8 print:px-8">
             <div className="col-span-4">
                 <div className="">
                     <img src="" alt="" />
@@ -20,17 +19,18 @@ development, I keep myself busy after work hours. Even though design and develop
 I do love to be adventurous. I spend hours up in the mountains going on long hikes with my husky or hitting up the mtn bike trails or the ski resorts. Also, a big fan of camping, motorcyle riding and hitting up a good brewery or cocktail lounge.</p>
 
             </div>
-            <div className="col-span-1">
+            <div className="col-span-4 lg:col-span-1">
                 <p className="font-semibold">Design Portfolio</p>
-                <Link href="https://joshjensencreative.com/" className="mb-3 block">https://joshjensencreative.com/</Link>
-                <p className="font-semibold">Personal Recipe Project</p>
-                <Link href="https://jyno-recipe.tech" className="mb-3 block">https://jyno-recipe.tech</Link>
-                <p className="font-semibold">Personal List Project</p>
-                <Link href="https://jyno-schit.tech" className="mb-3 block">https://jyno-recipe.tech</Link>
-                <p className="font-semibold">Github</p>
-                <Link href="https://github.com/ender2821" className="mb-3 block">https://github.com/ender2821</Link>
+                <Link href="https://joshjensencreative.com/" className="mb-3 block break-all">https://joshjensencreative.com/</Link>
                 <p className="font-semibold">Linkedin</p>
-                <Link href="https://www.linkedin.com/in/joshua-jensen-30747670/" className="mb-3 block">https://www.linkedin.com/in/joshua-jensen-30747670/</Link>
+                <Link href="https://www.linkedin.com/in/joshua-jensen-30747670/" className="mb-3 block break-all">https://www.linkedin.com/in/joshua-jensen-30747670/</Link>
+                <p className="font-semibold">Personal Recipe Project</p>
+                <Link href="https://jyno-recipe.tech" className="mb-3 block break-all">https://jyno-recipe.tech</Link>
+                <p className="font-semibold">Personal List Project</p>
+                <Link href="https://jyno-schit.tech" className="mb-3 block break-all">https://jyno-recipe.tech</Link>
+                <p className="font-semibold">Github</p>
+                <Link href="https://github.com/ender2821" className="mb-3 block break-all">https://github.com/ender2821</Link>
+
                 <hr className="h-px my-8 bg-blue border-0 dark:bg-gray-700"></hr>
                 <h2 className="text-lg font-bold my-2">Skills</h2>
                 <ul className="list-disc list-inside marker:text-blue">
@@ -54,7 +54,7 @@ I do love to be adventurous. I spend hours up in the mountains going on long hik
                     <li>Graphic Design</li>
                 </ul>
             </div>
-            <div className="col-span-3">
+            <div className="col-span-4 lg:col-span-3">
                 <div className="my-2">
                     <h2 className="inline-block text-lg font-bold">Rightpoint - Senior Developer</h2>
                     <span className="inline-block italic mx-2">Sep 2018 - May 2023</span>

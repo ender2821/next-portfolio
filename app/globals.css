@@ -20,3 +20,5 @@ body {
   color: rgb(var(--foreground-rgb));
   background: white;
 }
+
+@page { size: auto;  margin: 0mm; }
