@@ -65,7 +65,7 @@ export default function Home() {
             <div className="col-span-4 md:col-span-3 print:col-span-3 ">
             <div className="my-2">
                     <h2 className={`${raleway.className} inline-block text-lg font-bold print:text-sm`}>Portland Webworks - Fullstack Developer Contractor</h2>
-                    <span className="inline-block italic mx-2">May 2023 - Sep 2023</span>
+                    <span className="inline-block italic mx-2">Apr 2023 - Sep 2023</span>
                 </div>
                 <ul className="list-disc list-inside marker:text-blue">
                     <li>Developed front-end components using Next.js</li>
@@ -76,7 +76,7 @@ export default function Home() {
                 <hr className="h-px my-4 lg:my-8 bg-blue border-t-1 border-blue print:border-0" ></hr>
                 <div className="my-2">
                     <h2 className={`${raleway.className} inline-block text-lg font-bold print:text-sm`}>Rightpoint - Senior Developer</h2>
-                    <span className="inline-block italic mx-2">Sep 2018 - May 2023</span>
+                    <span className="inline-block italic mx-2">Sep 2018 - Mar 2023</span>
                 </div>
                 <ul className="list-disc list-inside marker:text-blue">
                     <li>Practiced frontend development in HTML, CSS, Sass, JS, and Typescript</li>
@@ -118,7 +118,7 @@ export default function Home() {
                 <ul className="list-disc list-inside marker:text-blue">
                     <li>Designed websites from concept to presentable prototype</li>
                     <li>Created print and social media designs for multiple marketing campaigns</li>
-                    <li>Designed logos for various web projects</li>
+                    <li>Designed logos for web and print projects</li>
                     <li>Developed illustrations implemented into website designs</li>
                     <li>Executed web coding for adding key elements for customer approval</li>
                 </ul>
