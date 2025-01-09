@@ -1,4 +1,4 @@
-import { Inter, Raleway } from 'next/font/google'
+import { Inter, Raleway, Quicksand } from 'next/font/google'
  
 export const inter = Inter({
   subsets: ['latin'],
@@ -6,6 +6,11 @@ export const inter = Inter({
 })
  
 export const raleway = Raleway({
+  subsets: ['latin'],
+  display: 'swap',
+})
+
+export const quicksand = Quicksand({
   subsets: ['latin'],
   display: 'swap',
 })
