@@ -1,6 +1,6 @@
 import { defineQuery } from "next-sanity";
 
-export const HOME_QUERY = defineQuery(`
+export const CONTACT_QUERY = defineQuery(`
 *[_type == "contact"][0]{
   contactHeroSubtitle,
   contactHeroImage->{

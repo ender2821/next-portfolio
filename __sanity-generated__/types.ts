@@ -77,6 +77,13 @@ export type WorkPage = {
   orderRank?: string;
   name?: string;
   slug?: Slug;
+  workPageMainGallery?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "imageAssets";
+  }>;
   workPageServiceCategory?: {
     _ref: string;
     _type: "reference";
@@ -424,9 +431,34 @@ export type SanityImageMetadata = {
 
 export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | WorkPage | WorkLayout | Work | Services | ServiceCategoryList | ServiceCategory | Slug | Home | Footer | Contact | ImageAssets | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata;
 export declare const internalGroqTypeReferenceTo: unique symbol;
+// Source: ./queries/contactQuerries.ts
+// Variable: CONTACT_QUERY
+// Query: *[_type == "contact"][0]{  contactHeroSubtitle,  contactHeroImage->{    "imageUrl": image.asset->url,    "imageName": name,  },  contactSectionTitle,  contactSectionSubtitle,  contactSectionImage->{    "imageUrl": image.asset->url,    "imageName": name,  },}
+export type CONTACT_QUERYResult = {
+  contactHeroSubtitle: string | null;
+  contactHeroImage: {
+    imageUrl: string | null;
+    imageName: string | null;
+  } | null;
+  contactSectionTitle: string | null;
+  contactSectionSubtitle: string | null;
+  contactSectionImage: {
+    imageUrl: string | null;
+    imageName: string | null;
+  } | null;
+} | null;
+
+// Source: ./queries/footerQueries.ts
+// Variable: FOOTER_QUERY
+// Query: *[_type == "footer"][0]{  phoneNumber,  emailLink,}
+export type FOOTER_QUERYResult = {
+  phoneNumber: string | null;
+  emailLink: string | null;
+} | null;
+
 // Source: ./queries/homeQueries.ts
 // Variable: HOME_QUERY
-// Query: *[_type == "home"][0]{  heroTitle,  heroImage->{    "imageUrl": image.asset->url,    "imageName": name,  },  heroCTAButtonTxt}
+// Query: *[_type == "home"][0]{    heroTitle,    heroImage->{      "imageUrl": image.asset->url,      "imageName": name,    },    heroCTAButtonTxt,    workGallery[]->{      name,      slug,      workPageLayout[0]{        workLayoutGallery[0]->{          "imageUrl": image.asset->url,          "imageName": name,        }      },    },    workCTAButtonTxt,    serviceCTAButtonTxt,    serviceHomeCategories[]->{      serviceCatergoryTitle,      serviceCategoryDescription    },    aboutSubtitle,    aboutContent,    aboutGithub,    aboutLinkedIn,    meetGlacierSubtitle,    meetGlacierContent,    meetGlacierButtonCTA,    glacierGallery->{      "imageUrl": image.asset->url,      "imageName": name,    },  }
 export type HOME_QUERYResult = {
   heroTitle: Array<{
     children?: Array<{
@@ -451,12 +483,195 @@ export type HOME_QUERYResult = {
     imageName: string | null;
   } | null;
   heroCTAButtonTxt: string | null;
+  workGallery: Array<{
+    name: string | null;
+    slug: Slug | null;
+    workPageLayout: {
+      workLayoutGallery: {
+        imageUrl: string | null;
+        imageName: string | null;
+      } | null;
+    } | null;
+  }> | null;
+  workCTAButtonTxt: string | null;
+  serviceCTAButtonTxt: string | null;
+  serviceHomeCategories: Array<{
+    serviceCatergoryTitle: string | null;
+    serviceCategoryDescription: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+      listItem?: "bullet" | "number";
+      markDefs?: Array<{
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+    }> | null;
+  }> | null;
+  aboutSubtitle: string | null;
+  aboutContent: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }> | null;
+  aboutGithub: string | null;
+  aboutLinkedIn: string | null;
+  meetGlacierSubtitle: string | null;
+  meetGlacierContent: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }> | null;
+  meetGlacierButtonCTA: string | null;
+  glacierGallery: null;
+} | null;
+
+// Source: ./queries/servicesQueries.ts
+// Variable: SERVICES_QUERY
+// Query: *[_type == "services"][0]{    servicesHeroSubtitle,    servicesHeroImage->{      "imageUrl": image.asset->url,      "imageName": name,    },    servicesCtaButtonTxt,    servicesServiceList[]->{      serviceCatergoryTitle,      serviceCatergoryId,      serviceCategoryImage->{        "imageUrl": image.asset->url,        "imageName": name,      },      serviceCategories[]{        serviceCatergoryListTitle,        serviceCatergoryListTags,        serviceCatergoryListDescriptions      }    }  }
+export type SERVICES_QUERYResult = {
+  servicesHeroSubtitle: string | null;
+  servicesHeroImage: {
+    imageUrl: string | null;
+    imageName: string | null;
+  } | null;
+  servicesCtaButtonTxt: string | null;
+  servicesServiceList: Array<{
+    serviceCatergoryTitle: string | null;
+    serviceCatergoryId: Slug | null;
+    serviceCategoryImage: {
+      imageUrl: string | null;
+      imageName: string | null;
+    } | null;
+    serviceCategories: Array<{
+      serviceCatergoryListTitle: string | null;
+      serviceCatergoryListTags: Array<string> | null;
+      serviceCatergoryListDescriptions: Array<string> | null;
+    }> | null;
+  }> | null;
+} | null;
+
+// Source: ./queries/workQueries.ts
+// Variable: WORK_QUERY
+// Query: *[_type == "work"][0]{    heroSubtitle,    heroImage->{      "imageUrl": image.asset->url,      "imageName": name,    },    ctaButtonTxt,    workPages[]->{      name,      slug,      workPageMainGallery[]->{        "imageUrl": image.asset->url,        "imageName": name,      },      workPageServiceCategory->{        serviceCatergoryId      },      workPageLayout[0]{        workLayoutContent,      }    }  }
+export type WORK_QUERYResult = {
+  heroSubtitle: string | null;
+  heroImage: {
+    imageUrl: string | null;
+    imageName: string | null;
+  } | null;
+  ctaButtonTxt: string | null;
+  workPages: Array<{
+    name: string | null;
+    slug: Slug | null;
+    workPageMainGallery: Array<{
+      imageUrl: string | null;
+      imageName: string | null;
+    }> | null;
+    workPageServiceCategory: {
+      serviceCatergoryId: Slug | null;
+    } | null;
+    workPageLayout: {
+      workLayoutContent: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+        listItem?: "bullet" | "number";
+        markDefs?: Array<{
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+      }> | null;
+    } | null;
+  }> | null;
+} | null;
+// Variable: WORK_PAGE_QUERY
+// Query: *[_type == "workPage" && slug.current == $slug][0]{    name,    workPageMainGallery[0]->{      "imageUrl": image.asset->url,      "imageName": name,    },    workPageLayout[]{      workLayoutTitle,      workLayoutSubtitle,      workLayoutContent,      workLayoutGallery[]->{        "imageUrl": image.asset->url,        "imageName": name,      }    }  }
+export type WORK_PAGE_QUERYResult = {
+  name: string | null;
+  workPageMainGallery: {
+    imageUrl: string | null;
+    imageName: string | null;
+  } | null;
+  workPageLayout: Array<{
+    workLayoutTitle: string | null;
+    workLayoutSubtitle: string | null;
+    workLayoutContent: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+      listItem?: "bullet" | "number";
+      markDefs?: Array<{
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+    }> | null;
+    workLayoutGallery: Array<{
+      imageUrl: string | null;
+      imageName: string | null;
+    }> | null;
+  }> | null;
 } | null;
 
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "\n*[_type == \"home\"][0]{\n  heroTitle,\n  heroImage->{\n    \"imageUrl\": image.asset->url,\n    \"imageName\": name,\n  },\n  heroCTAButtonTxt\n}\n": HOME_QUERYResult;
+    "\n*[_type == \"contact\"][0]{\n  contactHeroSubtitle,\n  contactHeroImage->{\n    \"imageUrl\": image.asset->url,\n    \"imageName\": name,\n  },\n  contactSectionTitle,\n  contactSectionSubtitle,\n  contactSectionImage->{\n    \"imageUrl\": image.asset->url,\n    \"imageName\": name,\n  },\n}\n": CONTACT_QUERYResult;
+    "\n*[_type == \"footer\"][0]{\n  phoneNumber,\n  emailLink,\n}\n": FOOTER_QUERYResult;
+    "\n  *[_type == \"home\"][0]{\n    heroTitle,\n    heroImage->{\n      \"imageUrl\": image.asset->url,\n      \"imageName\": name,\n    },\n    heroCTAButtonTxt,\n    workGallery[]->{\n      name,\n      slug,\n      workPageLayout[0]{\n        workLayoutGallery[0]->{\n          \"imageUrl\": image.asset->url,\n          \"imageName\": name,\n        }\n      },\n    },\n    workCTAButtonTxt,\n    serviceCTAButtonTxt,\n    serviceHomeCategories[]->{\n      serviceCatergoryTitle,\n      serviceCategoryDescription\n    },\n    aboutSubtitle,\n    aboutContent,\n    aboutGithub,\n    aboutLinkedIn,\n    meetGlacierSubtitle,\n    meetGlacierContent,\n    meetGlacierButtonCTA,\n    glacierGallery->{\n      \"imageUrl\": image.asset->url,\n      \"imageName\": name,\n    },\n  }\n": HOME_QUERYResult;
+    "\n  *[_type == \"services\"][0]{\n    servicesHeroSubtitle,\n    servicesHeroImage->{\n      \"imageUrl\": image.asset->url,\n      \"imageName\": name,\n    },\n    servicesCtaButtonTxt,\n    servicesServiceList[]->{\n      serviceCatergoryTitle,\n      serviceCatergoryId,\n      serviceCategoryImage->{\n        \"imageUrl\": image.asset->url,\n        \"imageName\": name,\n      },\n      serviceCategories[]{\n        serviceCatergoryListTitle,\n        serviceCatergoryListTags,\n        serviceCatergoryListDescriptions\n      }\n    }\n  }\n": SERVICES_QUERYResult;
+    "\n  *[_type == \"work\"][0]{\n    heroSubtitle,\n    heroImage->{\n      \"imageUrl\": image.asset->url,\n      \"imageName\": name,\n    },\n    ctaButtonTxt,\n    workPages[]->{\n      name,\n      slug,\n      workPageMainGallery[]->{\n        \"imageUrl\": image.asset->url,\n        \"imageName\": name,\n      },\n      workPageServiceCategory->{\n        serviceCatergoryId\n      },\n      workPageLayout[0]{\n        workLayoutContent,\n      }\n    }\n  }\n": WORK_QUERYResult;
+    "\n  *[_type == \"workPage\" && slug.current == $slug][0]{\n    name,\n    workPageMainGallery[0]->{\n      \"imageUrl\": image.asset->url,\n      \"imageName\": name,\n    },\n    workPageLayout[]{\n      workLayoutTitle,\n      workLayoutSubtitle,\n      workLayoutContent,\n      workLayoutGallery[]->{\n        \"imageUrl\": image.asset->url,\n        \"imageName\": name,\n      }\n    }\n  }\n": WORK_PAGE_QUERYResult;
   }
 }
