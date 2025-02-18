@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import Header from "@/components/Header";
+import { SanityLive } from "@/sanity/lib/live";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,6 +23,7 @@ export default function RootLayout({
         <AppRouterCacheProvider>
           <Header />
           {children}
+          <SanityLive />
         </AppRouterCacheProvider>
       </body>
     </html>
