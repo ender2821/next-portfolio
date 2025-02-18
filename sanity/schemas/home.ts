@@ -20,7 +20,7 @@ export const home = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: "workCTAButtonTxt",
+      name: "heroCTAButtonTxt",
       title: "Hero CTA Button Text",
       type: "string",
       validation: (rule) => rule.required(),
@@ -30,6 +30,12 @@ export const home = defineType({
       title: "Work Gallery",
       type: "array",
       of: [{ type: "reference", to: [{ type: "workPage" }]}],
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: "workCTAButtonTxt",
+      title: "Work CTA Button Text",
+      type: "string",
       validation: (rule) => rule.required(),
     }),
     defineField({

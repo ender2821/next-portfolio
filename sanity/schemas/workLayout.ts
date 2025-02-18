@@ -12,6 +12,11 @@ export const workLayout = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: "workLayoutSubtitle",
+      title: "Subtitle",
+      type: "text",
+    }),
+    defineField({
       name: "workLayoutContent",
       title: "Content",
       type: "array",
