@@ -1,0 +1,106 @@
+import { defineField, defineType } from "sanity";
+
+export const home = defineType({
+  name: "home",
+  title: "Home Page",
+  type: "document",
+  fields: [
+    defineField({
+      name: "heroTitle",
+      title: "Hero Title",
+      type: "array",
+      of: [{ type: "block" }],
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: "heroCTAButtonTxt",
+      title: "Hero CTA Button Text",
+      type: "string",
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: "heroImage",
+      title: "Hero Image",
+      type: "reference",
+      to: [{ type: "imageAssets" }],
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: "workCTAButtonTxt",
+      title: "Hero CTA Button Text",
+      type: "string",
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: "workGallery",
+      title: "Work Gallery",
+      type: "array",
+      of: [{ type: "reference", to: [{ type: "workPage" }]}],
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: "serviceCTAButtonTxt",
+      title: "Service CTA Button Text",
+      type: "string",
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: "serviceHomeCategories",
+      title: "Service Home Categories",
+      type: "array",
+      of: [{ type: "reference", to: [{ type: "serviceCategory" }]}],
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: "aboutSubtitle",
+      title: "About Subtitle",
+      type: "text",
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: "aboutContent",
+      title: "About Content",
+      type: "array",
+      of: [{ type: "block" }],
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: "aboutGithub",
+      title: "About Github Link",
+      type: "url",
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: "aboutLinkedIn",
+      title: "About LinkedIn Link",
+      type: "url",
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: "meetGlacierSubtitle",
+      title: "Meet Glacier Subtitle",
+      type: "text",
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: "meetGlacierContent",
+      title: "Meet Glacier Content",
+      type: "array",
+      of: [{ type: "block" }],
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: "meetGlacierButtonCTA",
+      title: "Meet Glacier Button CTA",
+      type: "string",
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: "workGallery",
+      title: "Work Gallery",
+      type: "array",
+      of: [{ type: "reference", to: [{ type: "imageAssets" }]}],
+      validation: (rule) => rule.required(),
+    }),
+  ],
+});
