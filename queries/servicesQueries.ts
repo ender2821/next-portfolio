@@ -10,6 +10,7 @@ export const SERVICES_QUERY = defineQuery(`
     servicesCtaButtonTxt,
     servicesServiceList[]->{
       serviceCatergoryTitle,
+      serviceCatergoryId,
       serviceCategoryImage->{
         "imageUrl": image.asset->url,
         "imageName": name,

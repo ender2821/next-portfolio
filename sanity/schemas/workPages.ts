@@ -26,6 +26,13 @@ export const workPage = defineType({
       },
     }),
     defineField({
+      name: "workPageMainGallery",
+      title: "Main Gallery",
+      type: "array",
+      of: [{ type: "reference", to: [{ type: "imageAssets" }] }],
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
       name: 'workPageServiceCategory',
       title: 'Service Category',
       type: 'reference',
