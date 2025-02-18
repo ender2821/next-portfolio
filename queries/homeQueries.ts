@@ -7,6 +7,30 @@ export const HOME_QUERY = defineQuery(`
     "imageUrl": image.asset->url,
     "imageName": name,
   },
-  heroCTAButtonTxt
+  heroCTAButtonTxt,
+  workGallery[]->{
+    name,
+    slug,
+    workPageLayout[0]{
+      workLayoutGallery[0]->{
+        "imageUrl": image.asset->url,
+        "imageName": name,
+      }
+    },
+  },
+  workCTAButtonTxt,
+  serviceCTAButtonTxt,
+  serviceHomeCategories,
+  aboutSubtitle,
+  aboutContent,
+  aboutGithub,
+  aboutLinkedIn,
+  meetGlacierSubtitle,
+  meetGlacierContent,
+  meetGlacierButtonCTA,
+  glacierGallery->{
+    "imageUrl": image.asset->url,
+    "imageName": name,
+  },
 }
 `);
