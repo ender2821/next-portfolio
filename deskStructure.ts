@@ -28,7 +28,7 @@ export const sanityStructure = (S: StructureBuilder, context: ConfigContext) =>
           S.document()
             .schemaType("services")
             .title("Services Page")
-            .documentId("contact")
+            .documentId("services")
       ),
       S.listItem()
         .title("Contact Page")
@@ -53,13 +53,8 @@ export const sanityStructure = (S: StructureBuilder, context: ConfigContext) =>
       // ...S.documentTypeListItems().filter(
       //   (listitem) => !["home", "work", "services", "contact"].includes(listitem.getId() || "")
       // ),
-      orderableDocumentListDeskItem({
-        type: "workPage",
-        S,
-        context,
-        title: "Work Secondary Pages",
-      }),
+      S.documentTypeListItem("workPage").title("Work Secondary Pages"),
       S.documentTypeListItem("serviceCategory").title("Service Categories"),
       S.documentTypeListItem("imageAssets").title("Image Assets"),
-      S.documentTypeListItem("fileAssets").title("File Assets"),
+      // S.documentTypeListItem("fileAssets").title("File Assets"),
     ]);

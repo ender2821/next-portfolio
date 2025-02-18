@@ -41,7 +41,7 @@ export const serviceCategory = defineType({
       name: "serviceCategories",
       title: "Service Categories",
       type: "array",
-      of: [{ type: "reference", to: [{ type: "serviceCategoryList" }]}],
+      of: [{ type: "serviceCategoryList" }],
     }),
   ]
 })

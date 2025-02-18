@@ -6,26 +6,26 @@ export const services = defineType({
   type: "document",
   fields: [
     defineField({
-      name: "heroSubtitle",
+      name: "servicesHeroSubtitle",
       title: "Hero Subtitle",
       type: "string",
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: "heroImage",
+      name: "servicesHeroImage",
       title: "Hero Image",
       type: "reference",
       to: [{ type: "imageAssets" }],
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: "ctaButtonTxt",
+      name: "servicesCtaButtonTxt",
       title: "CTA Button Text",
       type: "string",
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: "serviceList",
+      name: "servicesServiceList",
       title: "Service List",
       type: "array",
       of: [{ type: "reference", to: [{ type: "serviceCategory" }]}],

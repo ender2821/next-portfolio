@@ -6,32 +6,32 @@ export const contact = defineType({
   type: "document",
   fields: [
     defineField({
-      name: "heroSubtitle",
+      name: "contactHeroSubtitle",
       title: "Hero Subtitle",
       type: "string",
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: "heroImage",
+      name: "contactHeroImage",
       title: "Hero Image",
       type: "reference",
       to: [{ type: "imageAssets" }],
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: "sectionTitle",
+      name: "contactSectionTitle",
       title: "Section Title",
       type: "string",
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: "sectionSubtitle",
+      name: "contactSectionSubtitle",
       title: "Section Subtitle",
       type: "text",
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: "sectionImage",
+      name: "contactSectionImage",
       title: "Section Image",
       type: "reference",
       to: [{ type: "imageAssets" }],

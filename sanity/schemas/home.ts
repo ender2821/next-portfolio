@@ -13,12 +13,6 @@ export const home = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: "heroCTAButtonTxt",
-      title: "Hero CTA Button Text",
-      type: "string",
-      validation: (rule) => rule.required(),
-    }),
-    defineField({
       name: "heroImage",
       title: "Hero Image",
       type: "reference",
@@ -96,8 +90,8 @@ export const home = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: "workGallery",
-      title: "Work Gallery",
+      name: "glacierGallery",
+      title: "Glacier Gallery",
       type: "array",
       of: [{ type: "reference", to: [{ type: "imageAssets" }]}],
       validation: (rule) => rule.required(),

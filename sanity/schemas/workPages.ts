@@ -3,7 +3,7 @@ import { defineField, defineType } from "sanity";
 
 export const workPage = defineType({
   name: "workPage",
-  title: "Costume Construction",
+  title: "Work Secondary Page",
   type: "document",
   fields: [
     orderRankField({ type: "workPage", newItemPosition: "before" }),
@@ -35,7 +35,7 @@ export const workPage = defineType({
       name: "workPageLayout",
       title: "Work Layout",
       type: "array",
-      of: [{ type: "reference", to: [{ type: "workLayout" }]}],
+      of: [{type: "workLayout" }],
       validation: (rule) => rule.required(),
     }),
   ]
