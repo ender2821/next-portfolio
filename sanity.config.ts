@@ -13,10 +13,12 @@ const singletonActions = new Set(['publish', 'discardChanges', 'restore'])
 
 export default defineConfig([
   {
-    basePath: '/studio',
+    basePath: '/production',
     projectId,
-    dataset,
-    name: 'joshjensencreative',
+    dataset: 'production',
+    name: 'joshjensencreative-production',
+    title: 'Josh Jensen Creative Production',
+    subtitle: 'Production',
     plugins: [
       structureTool({
         structure: sanityStructure,
@@ -34,7 +36,32 @@ export default defineConfig([
         ? input.filter(({ action }) => action && singletonActions.has(action))
         : input
     },
-  }
+  },
+  {
+    basePath: '/development',
+    projectId,
+    dataset: 'development',
+    name: 'joshjensencreative-development',
+    title: 'Josh Jensen Creative Development',
+    subtitle: 'Development',
+    plugins: [
+      structureTool({
+        structure: sanityStructure,
+      }),
+      visionTool({ defaultApiVersion: apiVersion }),
+      // singletonTools(),
+    ],
+    schema: {
+      types: schema.types,
+      templates: (templates) =>
+        templates.filter(({schemaType}) => !singletonTypes.has(schemaType)),
+    },
+    document: {
+      actions: (input, context) => singletonTypes.has(context.schemaType)
+        ? input.filter(({ action }) => action && singletonActions.has(action))
+        : input
+    },
+  },
 ]);
 
 
