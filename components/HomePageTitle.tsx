@@ -1,19 +1,20 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
+import { useState, useCallback } from "react";
 
-import { useMediaQuery } from "@mui/system";
+import { useMediaQuery, useTheme } from "@mui/system";
 import { raleway } from "@/app/fonts";
 
 export default function HomePageTitle() {
-  const ref = useRef<HTMLDivElement>(null);
-  const lg = useMediaQuery("(min-width: 1024px)");
+  // const ref = useRef<HTMLDivElement>(null);
+  const theme = useTheme();
+  const lg = useMediaQuery(theme.breakpoints.up("lg"));
 
   const [styleObject, setStyleObject] = useState<{
     [key: string]: string | null;
   }>({});
 
-  const spanStyle = `text-white uppercase w-full block font-bold lg:text-[7.5rem] lg:leading-[5.25rem]`;
+  const spanStyle = `text-white uppercase w-full block font-bold text-[3.125rem] leading-[2.2rem] lg:text-[7.5rem] lg:leading-[5.25rem]`;
 
   const stylesToGet = [
     "color",
@@ -24,9 +25,9 @@ export default function HomePageTitle() {
     "line-height",
   ];
 
-  useEffect(() => {
-    if (ref.current && lg) {
-      const styles = getComputedStyle(ref.current);
+  const measuredRef = useCallback((node: HTMLHeadingElement | null) => {
+    if (node !== null) {
+      const styles = getComputedStyle(node);
       const tempStyleObject = stylesToGet.reduce(
         (acc, style) => {
           const camelCaseStyle = style.replace(/-([a-z])/g, (g) =>
@@ -39,31 +40,38 @@ export default function HomePageTitle() {
       );
       setStyleObject(tempStyleObject);
     }
-  }, [ref.current, lg]);
+  }, []);
 
   return (
-    <div>
+    <div className="flex flex-col items-center">
+      <h1 className="invisible left-[-9999px] absolute">
+        Josh Jensen Creative
+      </h1>
       <span
-        ref={ref}
-        className={`${raleway.className} ${spanStyle} border-b border-white mb-8`}
+        ref={measuredRef}
+        className={`${raleway.className} ${spanStyle} border-b border-black-decoration`}
       >
         Josh
       </span>
+      <span className="w-4 h-4 lg:w-8 lg:h-8 text-xs text-black-decoration flex items-center justify-center">
+        {lg ? "32px" : "16px"}
+      </span>
       <span
-        className={`${raleway.className} ${spanStyle} border-b border-t border-white mb-8`}
+        className={`${raleway.className} ${spanStyle} border-b border-t border-black-decoration`}
       >
         Jensen
       </span>
+      <span className="w-4 h-4 lg:w-8 lg:h-8 text-xs text-black-decoration flex items-center justify-center">
+        {lg ? "32px" : "16px"}
+      </span>
       <span
-        className={`${raleway.className} ${spanStyle} border-t border-white mb-8`}
+        className={`${raleway.className} ${spanStyle} border-t border-black-decoration mb-2 lg:mb-4`}
       >
         Creative
       </span>
-      {lg ? (
-        <pre>
-          {JSON.stringify(styleObject, null, 2).replace(/"([^"]+)":/g, "$1:")}
-        </pre>
-      ) : null}
+      <pre className="w-full text-xs text-black-decoration">
+        {JSON.stringify(styleObject, null, 2).replace(/"([^"]+)":/g, "$1:")}
+      </pre>
     </div>
   );
 }

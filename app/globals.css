@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-black-bg: #242B2C;
+  --color-black-decoration: #3B4647;
+  --color-blue: #6EC9F2;
+  --color-white: #ffffff;
+  --color-white-decoration: #CECECE;
+  --color-white-border: #D9D9D9;
+}
+
+body {
+  color: var(--color-white);
+  background: var(--color-black-bg);
+}
+
+@page { size: auto;  margin: 0mm; }

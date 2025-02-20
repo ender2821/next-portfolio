@@ -7,14 +7,14 @@ module.exports = {
   ],
   theme: {
     screens: {
-      sm: '480px',
-      md: '768px',
-      lg: '976px',
-      xl: '1440px',
+      xs: '0',
+      sm: '600px',
+      md: '900px',
+      lg: '1200px',
+      xl: '1536px',
       'print': { 'raw': 'print' },
     },
     colors: {
-      'blue': '#1fb6ff',
       'blueDark': '#157FB2',
       'purple': '#7e5bef',
       'pink': '#ff49db',
@@ -24,6 +24,12 @@ module.exports = {
       'gray-dark': '#273444',
       'gray': '#8492a6',
       'gray-light': '#d3dce6',
+      'black-bg': '#242B2C',
+      'black-decoration': '#3B4647',
+      'blue': '#6EC9F2',
+      'white-decoration': '#CECECE',
+      'white-border': '#D9D9D9',
+      
     },
     extend: {
       backgroundImage: {
