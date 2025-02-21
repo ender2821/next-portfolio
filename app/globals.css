@@ -41,4 +41,16 @@ body {
   font-weight: 700;
   color: var(--color-white);
 }
+
+.iconButton {
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  background: var(--color-blue);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-black-bg);
+}
+
 @page { size: auto;  margin: 0mm; }

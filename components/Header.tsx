@@ -36,17 +36,9 @@ const menuItems = [
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const toggleDrawer =
-    (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
-      if (
-        event.type === "keydown" &&
-        ((event as React.KeyboardEvent).key === "Tab" ||
-          (event as React.KeyboardEvent).key === "Shift")
-      ) {
-        return;
-      }
-      setIsOpen(open);
-    };
+  const toggleDrawer = (open: boolean) => () => {
+    setIsOpen(open);
+  };
 
   return (
     <header className="w-full bg-black relative border-b border-black-decoration">
@@ -69,17 +61,17 @@ export default function Header() {
           </ul>
         </nav>
 
-        {/* Logo - Centered on all screen sizes */}
-        <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
+        <Link
+          href="/"
+          className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2"
+        >
           <Image
-            src="/placeholder.svg?height=40&width=40"
-            alt="Logo"
-            width={40}
-            height={40}
-            className="w-10 h-10"
-            priority
+            src={"/joshJensenCreativeLogo.svg"}
+            alt={"Josh Jensen Creative"}
+            width={50}
+            height={50}
           />
-        </div>
+        </Link>
 
         {/* Mobile Menu Button */}
         <div className="md:hidden ml-auto">

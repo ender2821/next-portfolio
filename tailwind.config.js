@@ -39,6 +39,8 @@ module.exports = {
       },
       boxShadow: {
         'shadow-button-right': '16px 16px 16px 0px rgba(0, 0, 0, 0.25)',
+        'shadow-button-left': '-16px 16px 16px 0px rgba(0, 0, 0, 0.25)',
+        'shadow-image-left': '-32px 32px 32px 0px rgba(0, 0, 0, 0.25)',
       },
     },
   },
