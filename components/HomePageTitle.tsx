@@ -6,7 +6,6 @@ import { useMediaQuery, useTheme } from "@mui/system";
 import { raleway } from "@/app/fonts";
 
 export default function HomePageTitle() {
-  // const ref = useRef<HTMLDivElement>(null);
   const theme = useTheme();
   const lg = useMediaQuery(theme.breakpoints.up("lg"));
 
@@ -69,7 +68,7 @@ export default function HomePageTitle() {
       >
         Creative
       </span>
-      <pre className="w-full text-xs text-black-decoration">
+      <pre className="w-full text-xs text-black-decoration lg:absolute lg:top-[23rem] lg:left-8">
         {JSON.stringify(styleObject, null, 2).replace(/"([^"]+)":/g, "$1:")}
       </pre>
     </div>

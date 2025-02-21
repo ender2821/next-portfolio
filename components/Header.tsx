@@ -22,9 +22,7 @@ const StyledDrawer = styled(Drawer)(() => ({
 
 const MenuButton = styled(IconButton)(() => ({
   padding: "8px",
-  "&:hover": {
-    backgroundColor: "rgba(255, 255, 255, 0.1)",
-  },
+  "&:hover": { backgroundColor: "rgba(255, 255, 255, 0.1)" },
 }));
 
 const menuItems = [
@@ -51,7 +49,7 @@ export default function Header() {
     };
 
   return (
-    <header className="w-full bg-black relative">
+    <header className="w-full bg-black relative border-b border-black-decoration">
       <div className="mx-auto px-6 h-16 flex items-center">
         {/* Desktop Navigation */}
         <nav className="flex-1 hidden md:block">
@@ -106,9 +104,7 @@ export default function Header() {
                 key={text}
                 sx={{
                   py: 2,
-                  "&:hover": {
-                    backgroundColor: "rgba(255, 255, 255, 0.1)",
-                  },
+                  "&:hover": { backgroundColor: "rgba(255, 255, 255, 0.1)" },
                 }}
               >
                 <Link
