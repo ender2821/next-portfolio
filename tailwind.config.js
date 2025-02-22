@@ -12,6 +12,7 @@ module.exports = {
       md: '900px',
       lg: '1200px',
       xl: '1536px',
+      homeHero: '1800px',
       'print': { 'raw': 'print' },
     },
     colors: {

@@ -13,13 +13,13 @@ export default async function Home() {
   console.log(home);
   return (
     <main className="flex min-h-screen flex-col items-center">
-      <section className="p-4 lg:p-8 relative w-full lg:h-[720px]">
+      <section className="p-4 lg:p-8 lg:pb-0 relative w-full grid grid-cols-6 gap-4">
         <HomePageTitle />
         {home?.heroCTAButtonTxt ? (
           <HomeCtaButton heroCTAButtonTxt={home.heroCTAButtonTxt} />
         ) : null}
         {home?.heroTitle ? (
-          <div className="max-w-[400px] homeHeroTitle left-1/2 translate-x-[-50%] relative">
+          <div className=" homeHeroTitle left-1/2 translate-x-[-50%] relative col-span-6 sm:col-span-3 md:mb-[10rem] lg:col-start-2 homeHero:mb-0 homeHero:max-w-[400px] homeHero:col-span-2 homeHero:col-start-3">
             <PortableText value={home.heroTitle} />
           </div>
         ) : null}

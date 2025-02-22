@@ -12,9 +12,15 @@ interface HomeGlacierImageProps {
 export default function HomeGlacierImage(props: HomeGlacierImageProps) {
   const { src, alt, toggleDrawer } = props;
   return (
-    <TiltImage className="lg:absolute lg:right-8 lg:bottom-[-2rem]">
+    <TiltImage className="col-span-6 sm:col-start-4 sm:row-start-2 sm:row-end-4 sm:col-span-3 relative lg:bottom-[-2rem] grid-col lg:col-span-2 lg:col-start-5 lg:row-start-1 lg:row-span-2">
       <div className="relative">
-        <Image src={src} alt={alt} width={578} height={732} />
+        <Image
+          src={src}
+          alt={alt}
+          width={900}
+          height={1200}
+          style={{ objectFit: "contain", width: "100%" }}
+        />
         <button
           className="absolute bottom-4 left-4 flex items-center gap-4 group"
           onClick={toggleDrawer(true)}

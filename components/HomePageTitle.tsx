@@ -42,7 +42,7 @@ export default function HomePageTitle() {
   }, []);
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center col-span-6 lg:col-span-4 lg:w-[calc(100%+1rem)]">
       <h1 className="invisible left-[-9999px] absolute">
         Josh Jensen Creative
       </h1>

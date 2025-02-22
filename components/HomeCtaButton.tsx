@@ -37,7 +37,7 @@ export default function HomeCtaButton(props: HomeCtaButtonProps) {
       ) : (
         <Link
           href="/contact"
-          className="siteButton shadow-shadow-button-right w-full sm:w-auto mt-8 mb-8"
+          className="col-span-6 max-h-[3.5rem] sm:m-0 sm:col-span-3 siteButton shadow-shadow-button-right w-full sm:w-auto mt-8 mb-8"
         >
           {props.heroCTAButtonTxt}
         </Link>
