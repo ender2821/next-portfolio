@@ -9,7 +9,7 @@ const StyledDrawer = styled(Drawer)(() => ({
     display: "grid",
     gridTemplateColumns: "repeat(6, 1fr)",
     overflow: "auto",
-    marginRight: "-4rem",
+    marginRight: "-2rem",
   },
   "& .MuiDrawer-paper": {
     background: "transparent",
@@ -39,7 +39,7 @@ export default function HomeGlacierDrawer(props: HomeGlacierDrawerProps) {
     <StyledDrawer anchor="right" open={isOpen} onClose={toggleDrawer(false)}>
       <div
         className={
-          "grid-cols-5 gap-4 mg-8 grid bg-[#fff] col-span-5 col-start-2 pointer-events-auto overflow-visible h-[100vh] shadow-drawer"
+          "grid-cols-5 gap-4 mg-8 grid bg-[#fff] col-span-5 col-start-2 pointer-events-auto overflow-visible h-[100vh] shadow-drawer pr-8 lg:pt-[100px]"
         }
       >
         {children}

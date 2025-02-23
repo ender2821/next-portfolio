@@ -8,14 +8,15 @@ interface HomeGlacierImageProps {
   src: string;
   alt: string;
   isOpen: boolean;
-  toggleDrawer(open: boolean): MouseEventHandler<HTMLButtonElement> | undefined;
+  shadow?: "left" | "right";
   className?: string;
+  toggleDrawer(open: boolean): MouseEventHandler<HTMLButtonElement> | undefined;
 }
 
 export default function HomeGlacierImage(props: HomeGlacierImageProps) {
-  const { src, alt, isOpen, className, toggleDrawer } = props;
+  const { src, alt, isOpen, className, shadow, toggleDrawer } = props;
   return (
-    <TiltImage className={className}>
+    <TiltImage className={className} shadow={shadow}>
       <div className="relative">
         <Image
           src={src}
@@ -25,7 +26,10 @@ export default function HomeGlacierImage(props: HomeGlacierImageProps) {
           style={{ objectFit: "contain", width: "100%" }}
         />
         {isOpen ? (
-          <button className="iconButton" onClick={toggleDrawer(false)}>
+          <button
+            className="iconButton absolute bottom-4 left-4 "
+            onClick={toggleDrawer(false)}
+          >
             <CloseIcon />
           </button>
         ) : (

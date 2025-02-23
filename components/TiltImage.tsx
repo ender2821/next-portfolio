@@ -4,13 +4,18 @@ import Tilt from "react-parallax-tilt";
 interface TiltImageProps {
   children: React.ReactNode;
   className?: string;
+  shadow?: "left" | "right";
 }
 
-export default function TiltImage({ children, className }: TiltImageProps) {
+export default function TiltImage({
+  children,
+  className,
+  shadow,
+}: TiltImageProps) {
   return (
-    <div className={`${className} flex justify-center items-center`}>
+    <div className={className}>
       <Tilt
-        className="overflow-hidden  shadow-shadow-image-left"
+        className={`${shadow === "left" ? " shadow-shadow-image-left" : ""} ${shadow === "right" ? " shadow-shadow-image-right" : ""} overflow-hidden`}
         tiltMaxAngleX={5}
         tiltMaxAngleY={5}
         perspective={800}

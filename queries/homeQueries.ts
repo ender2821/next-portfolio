@@ -31,7 +31,7 @@ export const HOME_QUERY = defineQuery(`
     meetGlacierSubtitle,
     meetGlacierContent,
     meetGlacierButtonCTA,
-    glacierGallery->{
+    glacierGallery[]->{
       "imageUrl": image.asset->url,
       "imageName": name,
     },

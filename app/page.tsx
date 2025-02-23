@@ -26,6 +26,11 @@ export default async function Home() {
         <HomeGlacier
           imageUrl={home?.heroImage?.imageUrl ?? "/default-image.jpg"}
           imageName={home?.heroImage?.imageName ?? "default image description"}
+          glacierSubtitle={home?.meetGlacierSubtitle ?? ""}
+          glacierContent={
+            home?.meetGlacierContent ? home?.meetGlacierContent : []
+          }
+          glacierGallery={home?.glacierGallery ? home?.glacierGallery : []}
         />
       </section>
       <section className="p-4 lg:p-8 w-full bg-[#fff]">
