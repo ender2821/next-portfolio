@@ -39,7 +39,7 @@ export default function HomeGlacierDrawer(props: HomeGlacierDrawerProps) {
     <StyledDrawer anchor="right" open={isOpen} onClose={toggleDrawer(false)}>
       <div
         className={
-          "grid-cols-5 gap-4 mg-8 grid bg-[#fff] col-span-5 col-start-2 pointer-events-auto overflow-visible shadow-drawer pr-8 lg:pt-[100px]"
+          "col-span-6 md:grid-cols-5 gap-4 mg-8 grid bg-[#fff] md:col-start-2 pointer-events-auto overflow-visible shadow-drawer pr-8 lg:pt-[6.25rem]"
         }
       >
         {children}

@@ -57,10 +57,12 @@ export default function HomeGlacier(props: HomeGlacierProps) {
           }
           shadow={"right"}
         />
-        <div className="col-span-3 sm:border-l border-white-border">
+        <div className="col-span-3 glacierContent">
           <h2 className="glacerTitle">Meet Glacier</h2>
-          <h3>{glacierSubtitle}</h3>
-          <PortableText value={props?.glacierContent} />
+          <h3 className="lg:w-[calc(66.6666%-1rem)]">{glacierSubtitle}</h3>
+          <div className=" lg:grid lg:grid-cols-3 lg:gap-4">
+            <PortableText value={props?.glacierContent} />
+          </div>
         </div>
         <ImageList
           // variant="masonry"
