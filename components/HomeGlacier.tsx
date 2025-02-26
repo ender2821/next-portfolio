@@ -53,11 +53,11 @@ export default function HomeGlacier(props: HomeGlacierProps) {
           toggleDrawer={toggleDrawer}
           isOpen={isOpen}
           className={
-            "col-span-6 sm:col-span-3 relative lg:left-[-2rem] lg:col-span-2 lg:col-start-1"
+            "z-10 col-span-6 sm:col-span-3 relative lg:left-[-2rem] lg:col-span-2 lg:col-start-1"
           }
           shadow={"right"}
         />
-        <div className="col-span-3 glacierContent">
+        <div className="col-span-6 sm:col-span-5 lg:col-span-3 glacierContent">
           <h2 className="glacerTitle">Meet Glacier</h2>
           <h3 className="lg:w-[calc(66.6666%-1rem)]">{glacierSubtitle}</h3>
           <div className=" lg:grid lg:grid-cols-3 lg:gap-4">
@@ -68,7 +68,7 @@ export default function HomeGlacier(props: HomeGlacierProps) {
           // variant="masonry"
           cols={5}
           gap={16}
-          className="col-span-5 !overflow-y-visible mt-12"
+          className="col-span-6 sm:col-span-5 !overflow-y-visible mt-12"
         >
           {glacierGallery.map((item, i) => (
             <ImageListItem key={`${item.imageName}${i}`}>

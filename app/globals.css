@@ -68,6 +68,10 @@ h3 {
   }
 }
 
+p {
+  margin-bottom: 1rem;
+}
+
 .iconButton {
   border-radius: 50%;
   width: 3rem;
