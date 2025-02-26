@@ -57,12 +57,17 @@ export default function HomeGlacier(props: HomeGlacierProps) {
           }
           shadow={"right"}
         />
-        <div className="col-span-3">
-          <h2>Meet Glacier</h2>
+        <div className="col-span-3 sm:border-l border-white-border">
+          <h2 className="glacerTitle">Meet Glacier</h2>
           <h3>{glacierSubtitle}</h3>
           <PortableText value={props?.glacierContent} />
         </div>
-        <ImageList variant="masonry" cols={3} gap={8}>
+        <ImageList
+          // variant="masonry"
+          cols={5}
+          gap={16}
+          className="col-span-5 !overflow-y-visible mt-12"
+        >
           {glacierGallery.map((item, i) => (
             <ImageListItem key={`${item.imageName}${i}`}>
               <img

@@ -7,6 +7,7 @@ import HomePageTitle from "@/components/HomePageTitle";
 import HomeCtaButton from "@/components/HomeCtaButton";
 import HomeGlacierImage from "@/components/HomeGlacierImage";
 import HomeGlacier from "@/components/HomeGlacier";
+import { Inter } from "next/font/google";
 
 export default async function Home() {
   const { data: home } = await sanityFetch({ query: HOME_QUERY, params: {} });

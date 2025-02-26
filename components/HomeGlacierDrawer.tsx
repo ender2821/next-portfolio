@@ -3,7 +3,7 @@ import { styled } from "@mui/material/styles";
 
 const StyledDrawer = styled(Drawer)(() => ({
   "&.MuiModal-root ": {
-    gridGap: "1rem",
+    gridGap: "0 1rem",
     paddingLeft: "2rem",
     paddingRight: "2rem",
     display: "grid",
@@ -39,7 +39,7 @@ export default function HomeGlacierDrawer(props: HomeGlacierDrawerProps) {
     <StyledDrawer anchor="right" open={isOpen} onClose={toggleDrawer(false)}>
       <div
         className={
-          "grid-cols-5 gap-4 mg-8 grid bg-[#fff] col-span-5 col-start-2 pointer-events-auto overflow-visible h-[100vh] shadow-drawer pr-8 lg:pt-[100px]"
+          "grid-cols-5 gap-4 mg-8 grid bg-[#fff] col-span-5 col-start-2 pointer-events-auto overflow-visible shadow-drawer pr-8 lg:pt-[100px]"
         }
       >
         {children}

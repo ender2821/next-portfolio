@@ -17,7 +17,7 @@ export default function HomeGlacierImage(props: HomeGlacierImageProps) {
   const { src, alt, isOpen, className, shadow, toggleDrawer } = props;
   return (
     <TiltImage className={className} shadow={shadow}>
-      <div className="relative">
+      <div className={`relative ${isOpen ? "border border-white-border" : ""}`}>
         <Image
           src={src}
           alt={alt}
