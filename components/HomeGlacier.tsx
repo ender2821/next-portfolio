@@ -4,12 +4,19 @@ import { useState } from "react";
 import HomeGlacierImage from "./HomeGlacierImage";
 import HomeGlacierDrawer from "./HomeGlacierDrawer";
 import { PortableText } from "next-sanity";
-import { ImageList, ImageListItem } from "@mui/material";
+import {
+  ImageList,
+  ImageListItem,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
+import Link from "next/link";
 
 interface HomeGlacierProps {
   imageUrl: string;
   imageName: string;
   glacierSubtitle: string;
+  meetGlacierButtonCTA: string;
   glacierContent: {
     _type: string;
     children?: {
@@ -25,12 +32,21 @@ interface HomeGlacierProps {
 }
 
 export default function HomeGlacier(props: HomeGlacierProps) {
-  const { imageUrl, imageName, glacierSubtitle, glacierGallery } = props;
+  const {
+    imageUrl,
+    imageName,
+    glacierSubtitle,
+    meetGlacierButtonCTA,
+    glacierGallery,
+  } = props;
   const [isOpen, setIsOpen] = useState(false);
+  const theme = useTheme();
 
   const toggleDrawer = (open: boolean) => () => {
     setIsOpen(open);
   };
+
+  const lg = useMediaQuery(theme.breakpoints.up("lg"));
 
   return (
     <>
@@ -59,16 +75,26 @@ export default function HomeGlacier(props: HomeGlacierProps) {
         />
         <div className="col-span-6 sm:col-span-5 lg:col-span-3 glacierContent">
           <h2 className="glacerTitle">Meet Glacier</h2>
-          <h3 className="lg:w-[calc(66.6666%-1rem)]">{glacierSubtitle}</h3>
+          {glacierSubtitle ? (
+            <h3 className="lg:w-[calc(66.6666%-1rem)]">{glacierSubtitle}</h3>
+          ) : null}
           <div className=" lg:grid lg:grid-cols-3 lg:gap-4">
             <PortableText value={props?.glacierContent} />
+            {meetGlacierButtonCTA ? (
+              <Link
+                href="/contact"
+                className="max-h-[3.5rem] lg:col-start-2 sm:m-0 sm:col-span-3 md:col-span-1 siteButton w-full sm:w-auto mt-8 mb-8"
+              >
+                {meetGlacierButtonCTA}
+              </Link>
+            ) : null}
           </div>
         </div>
         <ImageList
           // variant="masonry"
-          cols={5}
+          cols={lg ? 5 : 3}
           gap={16}
-          className="col-span-6 sm:col-span-5 !overflow-y-visible mt-12"
+          className="col-span-6 sm:col-span-5 !overflow-y-visible lg:mt-12"
         >
           {glacierGallery.map((item, i) => (
             <ImageListItem key={`${item.imageName}${i}`}>

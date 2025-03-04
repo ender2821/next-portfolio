@@ -1,17 +1,14 @@
-import ImageSlider from "@/components/ImageSlider";
 import Link from "next/link";
 import { sanityFetch } from "@/sanity/lib/live";
 import { HOME_QUERY } from "@/queries/homeQueries";
 import { PortableText } from "next-sanity";
 import HomePageTitle from "@/components/HomePageTitle";
 import HomeCtaButton from "@/components/HomeCtaButton";
-import HomeGlacierImage from "@/components/HomeGlacierImage";
 import HomeGlacier from "@/components/HomeGlacier";
-import { Inter } from "next/font/google";
+import HomeImageSliders from "@/components/HomeImageSliders";
 
 export default async function Home() {
   const { data: home } = await sanityFetch({ query: HOME_QUERY, params: {} });
-  console.log(home);
   return (
     <main className="flex min-h-screen flex-col items-center">
       <section className="p-4 lg:p-8 lg:pb-0 relative w-full grid grid-cols-6 gap-4">
@@ -32,10 +29,22 @@ export default async function Home() {
             home?.meetGlacierContent ? home?.meetGlacierContent : []
           }
           glacierGallery={home?.glacierGallery ? home?.glacierGallery : []}
+          meetGlacierButtonCTA={home?.meetGlacierButtonCTA ?? ""}
         />
       </section>
-      <section className="p-4 lg:p-8 w-full bg-[#fff]">
-        <ImageSlider />
+      <section className="p-4 lg:pr-8 lg:pl-8 lg:pt-0 w-full bg-[#fff]">
+        <div
+          className={
+            "hidden lg:flex lg:h-[10rem] items-center justify-center relative text-white-decoration"
+          }
+        >
+          <span className="absolute left-1/2 top-0 -translate-x-1/2 w-[1px] h-[10rem] bg-white-border z-0"></span>
+          <span className="bg-white z-10">160px</span>
+        </div>
+        <h2 className="text-right">Work</h2>
+        {home?.workGallery && home?.workGallery.length > 0 ? (
+          <HomeImageSliders images={home?.workGallery} />
+        ) : null}
       </section>
       <Link href="/resume">Resume</Link>
     </main>

@@ -30,6 +30,7 @@ module.exports = {
       'blue': '#6EC9F2',
       'white-decoration': '#CECECE',
       'white-border': '#D9D9D9',
+      'white': '#FFFFFF',
       
     },
     extend: {

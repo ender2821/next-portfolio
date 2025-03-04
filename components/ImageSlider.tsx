@@ -4,47 +4,23 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Slug } from "sanity";
 
-const images = [
-  {
-    src: "/placeholder.svg?height=400&width=600",
-    alt: "Image 1",
-    title: "Beautiful Landscape",
-    link: "/landscape",
-  },
-  {
-    src: "/placeholder.svg?height=400&width=600",
-    alt: "Image 2",
-    title: "City Skyline",
-    link: "/skyline",
-  },
-  {
-    src: "/placeholder.svg?height=400&width=600",
-    alt: "Image 3",
-    title: "Mountain View",
-    link: "/mountain",
-  },
-  {
-    src: "/placeholder.svg?height=400&width=600",
-    alt: "Image 4",
-    title: "Serene Beach",
-    link: "/beach",
-  },
-  {
-    src: "/placeholder.svg?height=400&width=600",
-    alt: "Image 5",
-    title: "Forest Trail",
-    link: "/forest",
-  },
-  {
-    src: "/placeholder.svg?height=400&width=600",
-    alt: "Image 6",
-    title: "Desert Sunset",
-    link: "/desert",
-  },
-];
+interface ImageSliderProps {
+  images: {
+    name: string | null;
+    slug: Slug | null;
+    workPageLayout: {
+      workLayoutGallery: {
+        imageUrl: string | null;
+        imageName: string | null;
+      } | null;
+    } | null;
+  }[];
+}
 
-export default function ImageSlider() {
+export default function ImageSlider(props: ImageSliderProps) {
+  const { images } = props;
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
@@ -104,24 +80,47 @@ export default function ImageSlider() {
         style={{ transform: `translateX(-${currentIndex * 33.333}%)` }}
         onTransitionEnd={handleTransitionEnd}
       >
-        {images.map((image, index) => (
-          <Link key={index} href={image.link} className="flex-none w-1/3 p-2">
-            <div className="relative w-full h-full">
-              <Image
-                src={image.src}
-                alt={image.alt}
-                fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                className="rounded-lg shadow-md hover:shadow-xl transition-shadow duration-600 ease-in-out object-cover"
-              />
-              <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-2 rounded-b-lg">
-                <h3 className="text-lg font-semibold truncate">
-                  {image.title}
-                </h3>
+        {images.map(
+          (
+            image: {
+              name: string | null;
+              slug: Slug | null;
+              workPageLayout: {
+                workLayoutGallery: {
+                  imageUrl: string | null;
+                  imageName: string | null;
+                } | null;
+              } | null;
+            },
+            index: number
+          ) => (
+            <Link
+              key={index}
+              href={`/work/${image?.slug?.current}`}
+              className="flex-none w-1/3 p-2"
+            >
+              <div className="relative w-full h-full">
+                <Image
+                  src={
+                    image?.workPageLayout?.workLayoutGallery?.imageUrl ??
+                    "/default-image.jpg"
+                  }
+                  alt={
+                    image?.workPageLayout?.workLayoutGallery?.imageName ?? ""
+                  }
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="rounded-lg shadow-md hover:shadow-xl transition-shadow duration-600 ease-in-out object-cover"
+                />
+                <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-2 rounded-b-lg">
+                  <h3 className="text-lg font-semibold truncate">
+                    {image?.name ?? ""}
+                  </h3>
+                </div>
               </div>
-            </div>
-          </Link>
-        ))}
+            </Link>
+          )
+        )}
       </div>
       <button
         onClick={() => handleClick("left")}
