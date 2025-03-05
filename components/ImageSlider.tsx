@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Slug } from "sanity";
+import { useMediaQuery, useTheme } from "@mui/material";
 
 interface ImageSliderProps {
   images: {
@@ -17,13 +18,16 @@ interface ImageSliderProps {
       } | null;
     } | null;
   }[];
+  button: string;
 }
 
 export default function ImageSlider(props: ImageSliderProps) {
-  const { images } = props;
+  const { images, button } = props;
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
+  const theme = useTheme();
+  const lg = useMediaQuery(theme.breakpoints.up("lg"));
 
   const nextSlide = useCallback(() => {
     if (!isAnimating) {
@@ -74,7 +78,59 @@ export default function ImageSlider(props: ImageSliderProps) {
   };
 
   return (
-    <div className="relative w-full mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <div className="relative overflow-hidden">
+      <div className="grid grid-cols-1 lg:grid-cols-3 lg:gap-y-4 relative">
+        {lg && (
+          <div>
+            <button
+              onClick={() => handleClick("left")}
+              className="absolute left-0 top-1/2 -translate-y-1/2 iconButton shadow-md z-10"
+              aria-label="Previous images"
+              disabled={isAnimating}
+            >
+              <ChevronLeft className="w-6 h-6 text-gray-800" />
+            </button>
+          </div>
+        )}
+        <div className="justify-self-center">
+          <div
+            className={
+              "hidden lg:flex lg:h-[3.5rem] items-center justify-center relative text-white-decoration "
+            }
+          >
+            <span className="absolute left-1/2 top-0 -translate-x-1/2 w-[1px] h-[3.5rem] bg-white-border z-0"></span>
+            <span className="bg-white z-10 text-xs">56px</span>
+          </div>
+          {button && (
+            <Link
+              href="/work"
+              className="max-h-[3.5rem] lg:col-start-2 sm:m-0 sm:col-span-3 md:col-span-1 siteButton w-full sm:w-auto mt-8 mb-8"
+            >
+              {button}
+            </Link>
+          )}
+          <div
+            className={
+              "hidden lg:flex lg:h-[3.5rem] items-center justify-center relative text-white-decoration"
+            }
+          >
+            <span className="absolute left-1/2 top-0 -translate-x-1/2 w-[1px] h-[3.5rem] bg-white-border z-0"></span>
+            <span className="bg-white z-10 text-xs">56px</span>
+          </div>
+        </div>
+        {lg && (
+          <div>
+            <button
+              onClick={() => handleClick("right")}
+              className="absolute right-0 top-1/2 -translate-y-1/2 iconButton shadow-md z-10"
+              aria-label="Next images"
+              disabled={isAnimating}
+            >
+              <ChevronRight className="w-6 h-6 text-gray-800" />
+            </button>
+          </div>
+        )}
+      </div>
       <div
         className="flex transition-transform duration-500 ease-in-out h-[400px]"
         style={{ transform: `translateX(-${currentIndex * 33.333}%)` }}
@@ -122,22 +178,6 @@ export default function ImageSlider(props: ImageSliderProps) {
           )
         )}
       </div>
-      <button
-        onClick={() => handleClick("left")}
-        className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 hover:bg-opacity-75 rounded-full p-2 shadow-md transition-all duration-300 ease-in-out z-10"
-        aria-label="Previous images"
-        disabled={isAnimating}
-      >
-        <ChevronLeft className="w-6 h-6 text-gray-800" />
-      </button>
-      <button
-        onClick={() => handleClick("right")}
-        className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 hover:bg-opacity-75 rounded-full p-2 shadow-md transition-all duration-300 ease-in-out z-10"
-        aria-label="Next images"
-        disabled={isAnimating}
-      >
-        <ChevronRight className="w-6 h-6 text-gray-800" />
-      </button>
     </div>
   );
 }

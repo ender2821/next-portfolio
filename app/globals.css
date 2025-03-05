@@ -81,6 +81,7 @@ p {
   justify-content: center;
   align-items: center;
   color: var(--color-black-bg);
+  cursor: pointer;
 }
 
 .siteButton {

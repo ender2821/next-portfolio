@@ -33,6 +33,23 @@ module.exports = {
       'white': '#FFFFFF',
       
     },
+    text: {
+      'blueDark': '#157FB2',
+      'purple': '#7e5bef',
+      'pink': '#ff49db',
+      'orange': '#ff7849',
+      'green': '#13ce66',
+      'yellow': '#ffc82c',
+      'gray-dark': '#273444',
+      'gray': '#8492a6',
+      'gray-light': '#d3dce6',
+      'black-bg': '#242B2C',
+      'black-decoration': '#3B4647',
+      'blue': '#6EC9F2',
+      'white-decoration': '#CECECE',
+      'white-border': '#D9D9D9',
+      'white': '#FFFFFF',
+    },
     extend: {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

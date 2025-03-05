@@ -39,11 +39,14 @@ export default async function Home() {
           }
         >
           <span className="absolute left-1/2 top-0 -translate-x-1/2 w-[1px] h-[10rem] bg-white-border z-0"></span>
-          <span className="bg-white z-10">160px</span>
+          <span className="bg-white z-10 text-xs">160px</span>
         </div>
-        <h2 className="text-right">Work</h2>
+        <h2 className="lg:mb-0 text-right">Work</h2>
         {home?.workGallery && home?.workGallery.length > 0 ? (
-          <HomeImageSliders images={home?.workGallery} />
+          <HomeImageSliders
+            images={home?.workGallery}
+            button={home?.workCTAButtonTxt ?? ""}
+          />
         ) : null}
       </section>
       <Link href="/resume">Resume</Link>

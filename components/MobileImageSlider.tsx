@@ -18,12 +18,13 @@ interface MobileImageSliderProps {
       } | null;
     } | null;
   }[];
+  button: string;
 }
 
 // Sample slide data
 
 export default function MobileImageSlider(props: MobileImageSliderProps) {
-  const { images } = props;
+  const { images, button } = props;
   const [activeStep, setActiveStep] = useState(0);
   const [swipeDirection, setSwipeDirection] = useState<"left" | "right" | null>(
     null
@@ -54,9 +55,12 @@ export default function MobileImageSlider(props: MobileImageSliderProps) {
   return (
     <ThemeProvider theme={theme}>
       <div className="mx-auto max-w-md px-4 py-8">
-        <Typography variant="h5" className="mb-4 text-center font-bold">
-          Featured Destinations
-        </Typography>
+        <Link
+          href="/work"
+          className="max-h-[3.5rem] lg:col-start-2 sm:m-0 sm:col-span-3 md:col-span-1 siteButton w-full sm:w-auto mt-8 mb-8"
+        >
+          {button}
+        </Link>
 
         <Paper
           elevation={3}
