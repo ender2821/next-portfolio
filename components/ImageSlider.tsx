@@ -27,13 +27,13 @@ export default function ImageSlider(props: ImageSliderProps) {
   const [isAnimating, setIsAnimating] = useState(false);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
   const theme = useTheme();
-  const lg = useMediaQuery(theme.breakpoints.up("lg"));
+  const xl = useMediaQuery(theme.breakpoints.up("xl"));
 
   const nextSlide = useCallback(() => {
     if (!isAnimating) {
       setIsAnimating(true);
       if (images.length > 6) {
-        if (currentIndex === images.length - 6) {
+        if (currentIndex === images.length - (xl ? 6 : 3)) {
           setCurrentIndex(0);
         } else {
           setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
@@ -46,11 +46,9 @@ export default function ImageSlider(props: ImageSliderProps) {
     if (!isAnimating) {
       setIsAnimating(true);
       if (images.length > 6) {
-        // if (currentIndex > 0) {
         setCurrentIndex(
           (prevIndex) => (prevIndex - 1 + images.length) % images.length
         );
-        // }
       }
     }
   }, [isAnimating]);
@@ -59,7 +57,7 @@ export default function ImageSlider(props: ImageSliderProps) {
     if (!isAnimating) {
       setIsAnimating(true);
       if (images.length > 6) {
-        setCurrentIndex(images.length - 6);
+        setCurrentIndex(images.length - (xl ? 6 : 3));
       }
     }
   }, [isAnimating]);
@@ -68,7 +66,7 @@ export default function ImageSlider(props: ImageSliderProps) {
     if (timerRef.current) {
       clearTimeout(timerRef.current);
     }
-    timerRef.current = setTimeout(nextSlide, 5000); // Changed to 5 seconds
+    timerRef.current = setTimeout(nextSlide, 5000);
   }, [nextSlide]);
 
   useEffect(() => {
@@ -97,8 +95,6 @@ export default function ImageSlider(props: ImageSliderProps) {
   const handleTransitionEnd = () => {
     setIsAnimating(false);
   };
-
-  console.log(currentIndex);
 
   return (
     <div className="relative">
@@ -155,8 +151,10 @@ export default function ImageSlider(props: ImageSliderProps) {
         )}
       </div>
       <div
-        className="flex transition-transform duration-500 ease-in-out h-[400px]"
-        style={{ transform: `translateX(-${currentIndex * 16.666}%)` }}
+        className="flex transition-transform duration-500 ease-in-out"
+        style={{
+          transform: `translateX(-${currentIndex * (xl ? 16.666 : 33.333)}%)`,
+        }}
         onTransitionEnd={handleTransitionEnd}
       >
         {images.map(
@@ -176,9 +174,9 @@ export default function ImageSlider(props: ImageSliderProps) {
             <Link
               key={index}
               href={`/work/${image?.slug?.current}`}
-              className="flex-none w-1/6 px-2 first:pl-0 last:pr-0"
+              className="flex-none w-1/3 xl:w-1/6 px-2 first:pl-0 last:pr-0 "
             >
-              <div className="relative w-full h-full">
+              <div className="relative w-full aspect-square">
                 <Image
                   src={
                     image?.workPageLayout?.workLayoutGallery?.imageUrl ??
@@ -189,13 +187,13 @@ export default function ImageSlider(props: ImageSliderProps) {
                   }
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  className="shadow-md hover:shadow-xl transition-shadow duration-600 ease-in-out object-cover"
+                  className="object-cover"
                 />
-                <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-2 rounded-b-lg">
-                  <h3 className="text-lg font-semibold truncate">
-                    {image?.name ?? ""}
-                  </h3>
-                </div>
+              </div>
+              <div className="w-full border-white-decoration border bg-white bg-opacity-50 text-white p-2 text-center">
+                <h3 className="text-lg font-semibold truncate m-0">
+                  {image?.name ?? ""}
+                </h3>
               </div>
             </Link>
           )
