@@ -26,7 +26,7 @@ export const work = defineType({
     }),
     defineField({
       name: "workPages",
-      title: "work Pages",
+      title: "Work Pages",
       type: "array",
       of: [{ type: "reference", to: [{ type: "workPage" }]}],
       validation: (rule) => rule.required(),

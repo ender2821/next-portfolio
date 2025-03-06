@@ -32,16 +32,35 @@ export default function ImageSlider(props: ImageSliderProps) {
   const nextSlide = useCallback(() => {
     if (!isAnimating) {
       setIsAnimating(true);
-      setCurrentIndex((prevIndex) => (prevIndex + 3) % images.length);
+      if (images.length > 6) {
+        if (currentIndex === images.length - 6) {
+          setCurrentIndex(0);
+        } else {
+          setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+        }
+      }
     }
   }, [isAnimating]);
 
   const prevSlide = useCallback(() => {
     if (!isAnimating) {
       setIsAnimating(true);
-      setCurrentIndex(
-        (prevIndex) => (prevIndex - 3 + images.length) % images.length
-      );
+      if (images.length > 6) {
+        // if (currentIndex > 0) {
+        setCurrentIndex(
+          (prevIndex) => (prevIndex - 1 + images.length) % images.length
+        );
+        // }
+      }
+    }
+  }, [isAnimating]);
+
+  const prevSlideClick = useCallback(() => {
+    if (!isAnimating) {
+      setIsAnimating(true);
+      if (images.length > 6) {
+        setCurrentIndex(images.length - 6);
+      }
     }
   }, [isAnimating]);
 
@@ -49,7 +68,7 @@ export default function ImageSlider(props: ImageSliderProps) {
     if (timerRef.current) {
       clearTimeout(timerRef.current);
     }
-    timerRef.current = setTimeout(nextSlide, 7000); // Changed to 5 seconds
+    timerRef.current = setTimeout(nextSlide, 5000); // Changed to 5 seconds
   }, [nextSlide]);
 
   useEffect(() => {
@@ -63,8 +82,10 @@ export default function ImageSlider(props: ImageSliderProps) {
 
   const handleClick = useCallback(
     (direction: "left" | "right") => {
-      if (direction === "left") {
+      if (direction === "left" && currentIndex > 0) {
         prevSlide();
+      } else if (direction === "left") {
+        prevSlideClick();
       } else {
         nextSlide();
       }
@@ -77,10 +98,12 @@ export default function ImageSlider(props: ImageSliderProps) {
     setIsAnimating(false);
   };
 
+  console.log(currentIndex);
+
   return (
-    <div className="relative overflow-hidden">
+    <div className="relative">
       <div className="grid grid-cols-1 lg:grid-cols-3 lg:gap-y-4 relative">
-        {lg && (
+        {images.length > 6 && (
           <div>
             <button
               onClick={() => handleClick("left")}
@@ -118,7 +141,7 @@ export default function ImageSlider(props: ImageSliderProps) {
             <span className="bg-white z-10 text-xs">56px</span>
           </div>
         </div>
-        {lg && (
+        {images.length > 6 && (
           <div>
             <button
               onClick={() => handleClick("right")}
@@ -133,7 +156,7 @@ export default function ImageSlider(props: ImageSliderProps) {
       </div>
       <div
         className="flex transition-transform duration-500 ease-in-out h-[400px]"
-        style={{ transform: `translateX(-${currentIndex * 33.333}%)` }}
+        style={{ transform: `translateX(-${currentIndex * 16.666}%)` }}
         onTransitionEnd={handleTransitionEnd}
       >
         {images.map(
@@ -153,7 +176,7 @@ export default function ImageSlider(props: ImageSliderProps) {
             <Link
               key={index}
               href={`/work/${image?.slug?.current}`}
-              className="flex-none w-1/3 p-2"
+              className="flex-none w-1/6 px-2 first:pl-0 last:pr-0"
             >
               <div className="relative w-full h-full">
                 <Image
@@ -166,7 +189,7 @@ export default function ImageSlider(props: ImageSliderProps) {
                   }
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  className="rounded-lg shadow-md hover:shadow-xl transition-shadow duration-600 ease-in-out object-cover"
+                  className="shadow-md hover:shadow-xl transition-shadow duration-600 ease-in-out object-cover"
                 />
                 <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-2 rounded-b-lg">
                   <h3 className="text-lg font-semibold truncate">

@@ -11,7 +11,7 @@ export default async function Home() {
   const { data: home } = await sanityFetch({ query: HOME_QUERY, params: {} });
   return (
     <main className="flex min-h-screen flex-col items-center">
-      <section className="p-4 lg:p-8 lg:pb-0 relative w-full grid grid-cols-6 gap-4">
+      <section className="p-4 lg:p-8 lg:pb-0 relative grid grid-cols-6 gap-4 w-full">
         <HomePageTitle />
         {home?.heroCTAButtonTxt ? (
           <HomeCtaButton heroCTAButtonTxt={home.heroCTAButtonTxt} />
@@ -32,7 +32,7 @@ export default async function Home() {
           meetGlacierButtonCTA={home?.meetGlacierButtonCTA ?? ""}
         />
       </section>
-      <section className="p-4 lg:pr-8 lg:pl-8 lg:pt-0 w-full bg-[#fff]">
+      <section className="p-4 lg:pr-8 lg:pl-8 lg:pt-0 w-full bg-[#fff] overflow-hidden">
         <div
           className={
             "hidden lg:flex lg:h-[10rem] items-center justify-center relative text-white-decoration"

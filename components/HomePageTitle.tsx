@@ -68,7 +68,7 @@ export default function HomePageTitle() {
       >
         Creative
       </span>
-      <pre className="w-full text-xs text-black-decoration lg:absolute lg:top-[23rem] lg:left-8">
+      <pre className="text-xs text-black-decoration lg:absolute lg:top-[23rem] lg:left-8">
         {JSON.stringify(styleObject, null, 2).replace(/"([^"]+)":/g, "$1:")}
       </pre>
     </div>
