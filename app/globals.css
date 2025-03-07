@@ -22,6 +22,8 @@
   --size-xl: '1536px',
 }
 
+@page { size: auto;  margin: 0mm; }
+
 body {
   color: var(--color-white);
   background: var(--color-black-bg);
@@ -132,5 +134,123 @@ p {
   margin-left: -0.5rem;
 }
 
+@media screen and (min-width: 900px) {
 
-@page { size: auto;  margin: 0mm; }
+.sectionMtnLeftWhite {
+  display: flex;
+  flex-wrap:nowrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.sectionMtnLeftWhite::before {
+  content: '';
+  width: 4rem;
+  height: 4rem;
+  background: var(--color-white);
+  transform: rotate(45deg);
+  displaY: block;
+  z-index: 10;
+  margin-left: 0.89rem;
+  margin-right: 1rem;
+}
+
+.sectionMtnLeftWhite:after {
+  content: '';
+  width: 2rem;
+  height: 2rem;
+  background: var(--color-white);
+  transform: rotate(45deg);
+  display: block;
+  z-index: 10;
+}
+
+.sectionMtnRightWhite {
+  display: flex;
+  flex-wrap:nowrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.sectionMtnRightWhite:before {
+  content: '';
+  width: 2rem;
+  height: 2rem;
+  background: var(--color-white);
+  transform: rotate(45deg);
+  display: block;
+  z-index: 10;
+}
+
+.sectionMtnRightWhite::after {
+  content: '';
+  width: 4rem;
+  height: 4rem;
+  background: var(--color-white);
+  transform: rotate(45deg);
+  displaY: block;
+  z-index: 10;
+  margin-Right: 0.89rem;
+  margin-right: 1rem;
+}
+
+.sectionMtnLeftBlack {
+  display: flex;
+  flex-wrap:nowrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.sectionMtnLeftBlack::before {
+  content: '';
+  width: 4rem;
+  height: 4rem;
+  background: var(--color-black-bg);
+  transform: rotate(45deg);
+  displaY: block;
+  z-index: 10;
+  margin-left: 0.89rem;
+  margin-right: 1rem;
+}
+
+.sectionMtnLeftBlack:after {
+  content: '';
+  width: 2rem;
+  height: 2rem;
+  background: var(--color-black-bg);
+  transform: rotate(45deg);
+  display: block;
+  z-index: 10;
+}
+
+.sectionMtnRightBlack {
+  display: flex;
+  flex-wrap:nowrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.sectionMtnRightBlack:before {
+  content: '';
+  width: 2rem;
+  height: 2rem;
+  background: var(--color-black-bg);
+  transform: rotate(45deg);
+  display: block;
+  z-index: 10;
+}
+
+.sectionMtnRightBlack::after {
+  content: '';
+  width: 4rem;
+  height: 4rem;
+  background: var(--color-black-bg);
+  transform: rotate(45deg);
+  displaY: block;
+  z-index: 10;
+  margin-Right: 0.89rem;
+  margin-right: 1rem;
+}
+}
+
+

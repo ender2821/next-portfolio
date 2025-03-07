@@ -30,7 +30,7 @@ export default function ImageSlider(props: ImageSliderProps) {
   const xl = useMediaQuery(theme.breakpoints.up("xl"));
   const lg = useMediaQuery(theme.breakpoints.up("lg"));
 
-  const nextSlide = useCallback(() => {
+  const nextSlide = () => {
     if (!isAnimating) {
       setIsAnimating(true);
       if (images.length > 6) {
@@ -41,9 +41,9 @@ export default function ImageSlider(props: ImageSliderProps) {
         }
       }
     }
-  }, [isAnimating]);
+  };
 
-  const prevSlide = useCallback(() => {
+  const prevSlide = () => {
     if (!isAnimating) {
       setIsAnimating(true);
       if (images.length > 6) {
@@ -52,16 +52,16 @@ export default function ImageSlider(props: ImageSliderProps) {
         );
       }
     }
-  }, [isAnimating]);
+  };
 
-  const prevSlideClick = useCallback(() => {
+  const prevSlideClick = () => {
     if (!isAnimating) {
       setIsAnimating(true);
       if (images.length > 6) {
         setCurrentIndex(images.length - (xl ? 6 : 3));
       }
     }
-  }, [isAnimating]);
+  };
 
   const resetTimer = useCallback(() => {
     if (timerRef.current) {
@@ -79,19 +79,16 @@ export default function ImageSlider(props: ImageSliderProps) {
     };
   }, [currentIndex, resetTimer]);
 
-  const handleClick = useCallback(
-    (direction: "left" | "right") => {
-      if (direction === "left" && currentIndex > 0) {
-        prevSlide();
-      } else if (direction === "left") {
-        prevSlideClick();
-      } else {
-        nextSlide();
-      }
-      resetTimer();
-    },
-    [prevSlide, nextSlide, resetTimer]
-  );
+  const handleClick = (direction: "left" | "right") => {
+    if (direction === "left" && currentIndex > 0) {
+      prevSlide();
+    } else if (direction === "left") {
+      prevSlideClick();
+    } else {
+      nextSlide();
+    }
+    resetTimer();
+  };
 
   const handleTransitionEnd = () => {
     setIsAnimating(false);
@@ -112,7 +109,7 @@ export default function ImageSlider(props: ImageSliderProps) {
             </button>
             {lg && (
               <pre className="text-xs text-white-decoration absolute left-8">
-                {`const prevSlide = useCallback(() => {
+                {`const prevSlide = () => {
     if (!isAnimating) {
       setIsAnimating(true);
       if (images.length > 6) {
@@ -121,7 +118,7 @@ export default function ImageSlider(props: ImageSliderProps) {
         );
       }
     }
-  }, [isAnimating]);`}
+  };`}
               </pre>
             )}
           </div>
@@ -156,7 +153,7 @@ export default function ImageSlider(props: ImageSliderProps) {
           <div className="relative">
             {lg && (
               <pre className="text-xs text-white-decoration absolute left-0">
-                {`const nextSlide = useCallback(() => {
+                {`const nextSlide = () => {
     if (!isAnimating) {
       setIsAnimating(true);
       if (images.length > 6) {
@@ -167,7 +164,7 @@ export default function ImageSlider(props: ImageSliderProps) {
         }
       }
     }
-  }, [isAnimating]);`}
+  };`}
               </pre>
             )}
             <button

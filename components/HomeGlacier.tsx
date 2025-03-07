@@ -69,7 +69,7 @@ export default function HomeGlacier(props: HomeGlacierProps) {
           toggleDrawer={toggleDrawer}
           isOpen={isOpen}
           className={
-            "z-10 col-span-6 sm:col-span-3 relative lg:left-[-3rem] lg:col-span-2 lg:col-start-1"
+            "z-10 col-span-6 sm:col-span-3 relative lg:left-[-3.5rem] lg:col-span-2 lg:col-start-1"
           }
           shadow={"right"}
         />

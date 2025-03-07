@@ -32,7 +32,8 @@ export default async function Home() {
           meetGlacierButtonCTA={home?.meetGlacierButtonCTA ?? ""}
         />
       </section>
-      <section className="p-4 lg:pr-8 lg:pl-8 lg:pt-0 lg:pb-[10rem] w-full bg-[#fff] overflow-hidden">
+      <section className="p-4 lg:pr-8 lg:pl-8 lg:pt-0 lg:pb-[10rem] w-full bg-[#fff] relative">
+        <div className="sectionMtnLeftWhite absolute left-0 top-0 -translate-y-1/2" />
         <div
           className={
             "hidden lg:flex lg:h-[10rem] items-center justify-center relative text-white-decoration"
