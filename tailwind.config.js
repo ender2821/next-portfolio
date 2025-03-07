@@ -61,7 +61,8 @@ module.exports = {
         'shadow-button-left': '-16px 16px 16px 0px rgba(0, 0, 0, 0.25)',
         'shadow-image-left': '-32px 32px 32px 0px rgba(0, 0, 0, 0.25)',
         'shadow-image-right': '32px 32px 32px 0px rgba(0, 0, 0, 0.25)',
-        'drawer': '0px 8px 10px -5px rgba(0,0,0,0.2),0px 16px 24px 2px rgba(0,0,0,0.14),0px 6px 30px 5px rgba(0,0,0,0.12)'
+        'drawer': '0px 8px 10px -5px rgba(0,0,0,0.2),0px 16px 24px 2px rgba(0,0,0,0.14),0px 6px 30px 5px rgba(0,0,0,0.12)',
+        'shadow-image-mobile': '0px 4px 16px 0px rgba(0, 0, 0, 0.25)',
       },
     },
   },

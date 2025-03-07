@@ -171,31 +171,33 @@ export default function ImageSlider(props: ImageSliderProps) {
             },
             index: number
           ) => (
-            <Link
-              key={index}
-              href={`/work/${image?.slug?.current}`}
-              className="flex-none w-1/3 xl:w-1/6 px-2 first:pl-0 last:pr-0 "
-            >
-              <div className="relative w-full aspect-square">
-                <Image
-                  src={
-                    image?.workPageLayout?.workLayoutGallery?.imageUrl ??
-                    "/default-image.jpg"
-                  }
-                  alt={
-                    image?.workPageLayout?.workLayoutGallery?.imageName ?? ""
-                  }
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  className="object-cover"
-                />
-              </div>
-              <div className="w-full border-white-decoration border bg-white bg-opacity-50 text-white p-2 text-center">
-                <h3 className="text-lg font-semibold truncate m-0">
-                  {image?.name ?? ""}
-                </h3>
-              </div>
-            </Link>
+            <div className="px-2 first:pl-0 last:pr-0 w-1/3 xl:w-1/6 flex-none">
+              <Link
+                key={index}
+                href={`/work/${image?.slug?.current}`}
+                className="hover:scale-105 hover:shadow-shadow-image-mobile transition duration-300 ease-in-out block"
+              >
+                <div className="relative w-full aspect-square">
+                  <Image
+                    src={
+                      image?.workPageLayout?.workLayoutGallery?.imageUrl ??
+                      "/default-image.jpg"
+                    }
+                    alt={
+                      image?.workPageLayout?.workLayoutGallery?.imageName ?? ""
+                    }
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="object-cover"
+                  />
+                </div>
+                <div className="w-full border-white-decoration border bg-white bg-opacity-50 text-white p-2 text-center">
+                  <p className="font-normal truncate m-0 text-black-bg uppercase">
+                    {image?.name ?? ""}
+                  </p>
+                </div>
+              </Link>
+            </div>
           )
         )}
       </div>

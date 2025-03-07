@@ -113,7 +113,6 @@ p {
 
 .glacierContent{
   position: relative;
-  padding-left: 1px;
 }
 
 @media screen and (min-width:1200px) {
