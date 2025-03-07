@@ -2,7 +2,7 @@
 
 import type React from "react";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Drawer from "@mui/material/Drawer";
@@ -35,23 +35,30 @@ const menuItems = [
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const [width, setWidth] = useState(window.innerWidth);
 
   const toggleDrawer = (open: boolean) => () => {
     setIsOpen(open);
   };
 
+  useEffect(() => {
+    const handleResize = () => setWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
-    <header className="w-full bg-black relative border-b border-black-decoration">
-      <div className="mx-auto px-6 h-16 flex items-center">
+    <header className="w-full bg-black relative border-b border-black-decoration relative">
+      <div className="mx-auto flex items-center">
         {/* Desktop Navigation */}
         <nav className="flex-1 hidden md:block">
-          <ul className="flex gap-8">
+          <ul className="flex">
             {menuItems.map((item) => {
               return (
                 <li key={item.text}>
                   <Link
                     href={item.href}
-                    className="text-white hover:text-gray-300 transition-colors text-sm"
+                    className="text-white hover:text-gray-300 transition-colors text-sm pt-8 pb-8 block pl-6 pr-6"
                   >
                     {item.text}
                   </Link>
@@ -72,6 +79,9 @@ export default function Header() {
             height={50}
           />
         </Link>
+        <p className="hidden sm:block text-xs text-black-decoration absolute bg-black-bg left-1/2 -translate-x-1/2 bottom-0 translate-y-1/2 mb-0 pr-2 pl-2 z-10">
+          {`${width}px`}
+        </p>
 
         {/* Mobile Menu Button */}
         <div className="md:hidden ml-auto">
