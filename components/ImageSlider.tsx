@@ -28,6 +28,7 @@ export default function ImageSlider(props: ImageSliderProps) {
   const timerRef = useRef<NodeJS.Timeout | null>(null);
   const theme = useTheme();
   const xl = useMediaQuery(theme.breakpoints.up("xl"));
+  const lg = useMediaQuery(theme.breakpoints.up("lg"));
 
   const nextSlide = useCallback(() => {
     if (!isAnimating) {
@@ -100,7 +101,7 @@ export default function ImageSlider(props: ImageSliderProps) {
     <div className="relative">
       <div className="grid grid-cols-1 lg:grid-cols-3 lg:gap-y-4 relative">
         {images.length > 6 && (
-          <div>
+          <div className="relative">
             <button
               onClick={() => handleClick("left")}
               className="absolute left-0 top-1/2 -translate-y-1/2 iconButton shadow-md z-10"
@@ -109,6 +110,20 @@ export default function ImageSlider(props: ImageSliderProps) {
             >
               <ChevronLeft className="w-6 h-6 text-gray-800" />
             </button>
+            {lg && (
+              <pre className="text-xs text-white-decoration absolute left-8">
+                {`const prevSlide = useCallback(() => {
+    if (!isAnimating) {
+      setIsAnimating(true);
+      if (images.length > 6) {
+        setCurrentIndex(
+          (prevIndex) => (prevIndex - 1 + images.length) % images.length
+        );
+      }
+    }
+  }, [isAnimating]);`}
+              </pre>
+            )}
           </div>
         )}
         <div className="justify-self-center">
@@ -123,7 +138,7 @@ export default function ImageSlider(props: ImageSliderProps) {
           {button && (
             <Link
               href="/work"
-              className="max-h-[3.5rem] lg:col-start-2 sm:m-0 sm:col-span-3 md:col-span-1 siteButton w-full sm:w-auto mt-8 mb-8"
+              className="max-h-[3.5rem] lg:col-start-2 sm:m-0 sm:col-span-3 md:col-span-1 siteButton w-full sm:w-auto mt-8 mb-8 relative z-10"
             >
               {button}
             </Link>
@@ -138,7 +153,23 @@ export default function ImageSlider(props: ImageSliderProps) {
           </div>
         </div>
         {images.length > 6 && (
-          <div>
+          <div className="relative">
+            {lg && (
+              <pre className="text-xs text-white-decoration absolute left-0">
+                {`const nextSlide = useCallback(() => {
+    if (!isAnimating) {
+      setIsAnimating(true);
+      if (images.length > 6) {
+        if (currentIndex === images.length - (xl ? 6 : 3)) {
+          setCurrentIndex(0);
+        } else {
+          setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+        }
+      }
+    }
+  }, [isAnimating]);`}
+              </pre>
+            )}
             <button
               onClick={() => handleClick("right")}
               className="absolute right-0 top-1/2 -translate-y-1/2 iconButton shadow-md z-10"
@@ -151,7 +182,7 @@ export default function ImageSlider(props: ImageSliderProps) {
         )}
       </div>
       <div
-        className="flex transition-transform duration-500 ease-in-out"
+        className="flex transition-transform duration-500 ease-in-out -ml-2 -mr-2"
         style={{
           transform: `translateX(-${currentIndex * (xl ? 16.666 : 33.333)}%)`,
         }}
@@ -171,7 +202,7 @@ export default function ImageSlider(props: ImageSliderProps) {
             },
             index: number
           ) => (
-            <div className="px-2 first:pl-0 last:pr-0 w-1/3 xl:w-1/6 flex-none">
+            <div className="px-2 w-1/3 xl:w-1/6 flex-none">
               <Link
                 key={index}
                 href={`/work/${image?.slug?.current}`}
