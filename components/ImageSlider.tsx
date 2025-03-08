@@ -67,7 +67,7 @@ export default function ImageSlider(props: ImageSliderProps) {
     if (timerRef.current) {
       clearTimeout(timerRef.current);
     }
-    timerRef.current = setTimeout(nextSlide, 5000);
+    timerRef.current = setTimeout(nextSlide, 4000);
   }, [nextSlide]);
 
   useEffect(() => {
@@ -96,12 +96,12 @@ export default function ImageSlider(props: ImageSliderProps) {
 
   return (
     <div className="relative">
-      <div className="grid grid-cols-1 lg:grid-cols-3 lg:gap-y-4 relative">
+      <div className="py-8 lg:py-0 grid grid-cols-1 sm:grid-cols-3 lg:gap-y-4 relative">
         {images.length > 6 && (
           <div className="relative">
             <button
               onClick={() => handleClick("left")}
-              className="absolute left-0 top-1/2 -translate-y-1/2 iconButton shadow-md z-10"
+              className="lg:absolute left-0 top-1/2 lg:-translate-y-1/2 iconButton shadow-md z-10"
               aria-label="Previous images"
               disabled={isAnimating}
             >
@@ -169,7 +169,7 @@ export default function ImageSlider(props: ImageSliderProps) {
             )}
             <button
               onClick={() => handleClick("right")}
-              className="absolute right-0 top-1/2 -translate-y-1/2 iconButton shadow-md z-10"
+              className="float-right lg:absolute right-0 top-1/2 lg:-translate-y-1/2 iconButton shadow-md z-10"
               aria-label="Next images"
               disabled={isAnimating}
             >
@@ -199,9 +199,8 @@ export default function ImageSlider(props: ImageSliderProps) {
             },
             index: number
           ) => (
-            <div className="px-2 w-1/3 xl:w-1/6 flex-none">
+            <div className="px-2 w-1/3 xl:w-1/6 flex-none" key={index}>
               <Link
-                key={index}
                 href={`/work/${image?.slug?.current}`}
                 className="hover:scale-105 hover:shadow-shadow-image-mobile transition duration-300 ease-in-out block"
               >

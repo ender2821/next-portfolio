@@ -48,7 +48,7 @@ export default function Header() {
   }, []);
 
   return (
-    <header className="w-full bg-black relative border-b border-black-decoration relative">
+    <header className="w-full bg-black border-b border-black-decoration relative">
       <div className="mx-auto flex items-center">
         {/* Desktop Navigation */}
         <nav className="flex-1 hidden md:block">
@@ -58,7 +58,7 @@ export default function Header() {
                 <li key={item.text}>
                   <Link
                     href={item.href}
-                    className="text-white hover:text-gray-300 transition-colors text-sm pt-8 pb-8 block pl-6 pr-6"
+                    className="text-white hover:text-gray-300 transition-colors text-sm pt-8 pb-8 block px-4 lg:px-6"
                   >
                     {item.text}
                   </Link>
@@ -85,7 +85,11 @@ export default function Header() {
 
         {/* Mobile Menu Button */}
         <div className="md:hidden ml-auto">
-          <MenuButton onClick={toggleDrawer(true)} aria-label="Open menu">
+          <MenuButton
+            onClick={toggleDrawer(true)}
+            aria-label="Open menu"
+            className="!p-7 block hover:!bg-black-bg"
+          >
             <div className="space-y-1.5">
               <div className="w-6 h-0.5 bg-[#6ec9f2]"></div>
               <div className="w-6 h-0.5 bg-[#6ec9f2]"></div>

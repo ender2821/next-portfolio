@@ -11,7 +11,7 @@ export default async function Home() {
   const { data: home } = await sanityFetch({ query: HOME_QUERY, params: {} });
   return (
     <main className="flex min-h-screen flex-col items-center">
-      <section className="p-4 lg:p-8 lg:pb-0 relative grid grid-cols-6 gap-4 w-full">
+      <section className="px-4 lg:p-8 lg:pb-0 relative grid grid-cols-6 gap-4 w-full">
         <HomePageTitle />
         {home?.heroCTAButtonTxt ? (
           <HomeCtaButton heroCTAButtonTxt={home.heroCTAButtonTxt} />
@@ -32,23 +32,25 @@ export default async function Home() {
           meetGlacierButtonCTA={home?.meetGlacierButtonCTA ?? ""}
         />
       </section>
-      <section className="p-4 lg:pr-8 lg:pl-8 lg:pt-0 lg:pb-[10rem] w-full bg-[#fff] relative">
-        <div className="sectionMtnLeftWhite absolute left-0 top-0 -translate-y-1/2" />
-        <div
-          className={
-            "hidden lg:flex lg:h-[10rem] items-center justify-center relative text-white-decoration"
-          }
-        >
-          <span className="absolute left-1/2 top-0 -translate-x-1/2 w-[1px] h-[10rem] bg-white-border z-0"></span>
-          <span className="bg-white z-10 text-xs">160px</span>
+      <section className="py-4 sm:pt-16 sm:pb-16 lg:pt-0 lg:pb-[10rem] w-full bg-[#fff] relative">
+        <div className="px-4 lg:pl-8 lg:pr-8 overflow-hidden">
+          <div className="sectionMtnLeftWhite absolute left-0 top-0 -translate-y-1/2" />
+          <div
+            className={
+              "hidden lg:flex lg:h-[10rem] items-center justify-center relative text-white-decoration"
+            }
+          >
+            <span className="absolute left-1/2 top-0 -translate-x-1/2 w-[1px] h-[10rem] bg-white-border z-0"></span>
+            <span className="bg-white z-10 text-xs">160px</span>
+          </div>
+          <h2 className="lg:mb-0 text-right">Work</h2>
+          {home?.workGallery && home?.workGallery.length > 0 ? (
+            <HomeImageSliders
+              images={home?.workGallery}
+              button={home?.workCTAButtonTxt ?? ""}
+            />
+          ) : null}
         </div>
-        <h2 className="lg:mb-0 text-right">Work</h2>
-        {home?.workGallery && home?.workGallery.length > 0 ? (
-          <HomeImageSliders
-            images={home?.workGallery}
-            button={home?.workCTAButtonTxt ?? ""}
-          />
-        ) : null}
       </section>
       <Link href="/resume">Resume</Link>
     </main>

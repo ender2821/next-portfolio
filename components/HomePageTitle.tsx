@@ -42,21 +42,21 @@ export default function HomePageTitle() {
   }, []);
 
   return (
-    <div className="flex flex-col items-center col-span-6 lg:col-span-4 lg:w-[calc(100%+1rem)]">
+    <div className="flex flex-col lg:items-center col-span-6 lg:col-span-4 lg:w-[calc(100%+1rem)]">
       <h1 className="invisible left-[-9999px] absolute">
         Josh Jensen Creative
       </h1>
       <span
         ref={measuredRef}
-        className={`${raleway.className} ${spanStyle} border-b border-black-decoration`}
+        className={`${raleway.className} ${spanStyle} border-b border-black-decoration  md:text-[5rem] md:leading-[3.5rem]`}
       >
         Josh
       </span>
-      <span className="w-4 h-4 lg:w-8 lg:h-8 text-xs text-black-decoration flex items-center justify-center">
+      <span className="w-4 h-4 lg:w-8 lg:h-8 text-xs text-black-decoration flex items-center justify-center ">
         {lg ? "32px" : "16px"}
       </span>
       <span
-        className={`${raleway.className} ${spanStyle} border-b border-t border-black-decoration`}
+        className={`${raleway.className} ${spanStyle} border-b border-t border-black-decoration md:text-[5rem] md:leading-[3.5rem]`}
       >
         Jensen
       </span>
@@ -64,7 +64,7 @@ export default function HomePageTitle() {
         {lg ? "32px" : "16px"}
       </span>
       <span
-        className={`${raleway.className} ${spanStyle} border-t border-black-decoration mb-2 lg:mb-4`}
+        className={`${raleway.className} ${spanStyle} border-t border-black-decoration mb-2 lg:mb-4 md:text-[5rem] md:leading-[3.5rem]`}
       >
         Creative
       </span>

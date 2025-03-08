@@ -45,6 +45,13 @@ h2 {
 
 @media screen and (min-width: 900px) {
   h2 {
+    font-size: 5rem;
+    line-height: 3.5rem;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  h2 {
     font-size: 7.5rem;
     line-height: 5.2rem;
   }
@@ -135,122 +142,121 @@ p {
 }
 
 @media screen and (min-width: 900px) {
+  .sectionMtnLeftWhite {
+    display: flex;
+    flex-wrap:nowrap;
+    align-items: center;
+    justify-content: center;
+  }
 
-.sectionMtnLeftWhite {
-  display: flex;
-  flex-wrap:nowrap;
-  align-items: center;
-  justify-content: center;
-}
+  .sectionMtnLeftWhite::before {
+    content: '';
+    width: 4rem;
+    height: 4rem;
+    background: var(--color-white);
+    transform: rotate(45deg);
+    displaY: block;
+    z-index: 10;
+    margin-left: 0.89rem;
+    margin-right: 1rem;
+  }
 
-.sectionMtnLeftWhite::before {
-  content: '';
-  width: 4rem;
-  height: 4rem;
-  background: var(--color-white);
-  transform: rotate(45deg);
-  displaY: block;
-  z-index: 10;
-  margin-left: 0.89rem;
-  margin-right: 1rem;
-}
+  .sectionMtnLeftWhite:after {
+    content: '';
+    width: 2rem;
+    height: 2rem;
+    background: var(--color-white);
+    transform: rotate(45deg);
+    display: block;
+    z-index: 10;
+  }
 
-.sectionMtnLeftWhite:after {
-  content: '';
-  width: 2rem;
-  height: 2rem;
-  background: var(--color-white);
-  transform: rotate(45deg);
-  display: block;
-  z-index: 10;
-}
+  .sectionMtnRightWhite {
+    display: flex;
+    flex-wrap:nowrap;
+    align-items: center;
+    justify-content: center;
+  }
 
-.sectionMtnRightWhite {
-  display: flex;
-  flex-wrap:nowrap;
-  align-items: center;
-  justify-content: center;
-}
+  .sectionMtnRightWhite:before {
+    content: '';
+    width: 2rem;
+    height: 2rem;
+    background: var(--color-white);
+    transform: rotate(45deg);
+    display: block;
+    z-index: 10;
+  }
 
-.sectionMtnRightWhite:before {
-  content: '';
-  width: 2rem;
-  height: 2rem;
-  background: var(--color-white);
-  transform: rotate(45deg);
-  display: block;
-  z-index: 10;
-}
+  .sectionMtnRightWhite::after {
+    content: '';
+    width: 4rem;
+    height: 4rem;
+    background: var(--color-white);
+    transform: rotate(45deg);
+    displaY: block;
+    z-index: 10;
+    margin-Right: 0.89rem;
+    margin-right: 1rem;
+  }
 
-.sectionMtnRightWhite::after {
-  content: '';
-  width: 4rem;
-  height: 4rem;
-  background: var(--color-white);
-  transform: rotate(45deg);
-  displaY: block;
-  z-index: 10;
-  margin-Right: 0.89rem;
-  margin-right: 1rem;
-}
+  .sectionMtnLeftBlack {
+    display: flex;
+    flex-wrap:nowrap;
+    align-items: center;
+    justify-content: center;
+  }
 
-.sectionMtnLeftBlack {
-  display: flex;
-  flex-wrap:nowrap;
-  align-items: center;
-  justify-content: center;
-}
+  .sectionMtnLeftBlack::before {
+    content: '';
+    width: 4rem;
+    height: 4rem;
+    background: var(--color-black-bg);
+    transform: rotate(45deg);
+    displaY: block;
+    z-index: 10;
+    margin-left: 0.89rem;
+    margin-right: 1rem;
+  }
 
-.sectionMtnLeftBlack::before {
-  content: '';
-  width: 4rem;
-  height: 4rem;
-  background: var(--color-black-bg);
-  transform: rotate(45deg);
-  displaY: block;
-  z-index: 10;
-  margin-left: 0.89rem;
-  margin-right: 1rem;
-}
+  .sectionMtnLeftBlack:after {
+    content: '';
+    width: 2rem;
+    height: 2rem;
+    background: var(--color-black-bg);
+    transform: rotate(45deg);
+    display: block;
+    z-index: 10;
+  }
 
-.sectionMtnLeftBlack:after {
-  content: '';
-  width: 2rem;
-  height: 2rem;
-  background: var(--color-black-bg);
-  transform: rotate(45deg);
-  display: block;
-  z-index: 10;
-}
+  .sectionMtnRightBlack {
+    display: flex;
+    flex-wrap:nowrap;
+    align-items: center;
+    justify-content: center;
+  }
 
-.sectionMtnRightBlack {
-  display: flex;
-  flex-wrap:nowrap;
-  align-items: center;
-  justify-content: center;
-}
+  .sectionMtnRightBlack:before {
+    content: '';
+    width: 2rem;
+    height: 2rem;
+    background: var(--color-black-bg);
+    transform: rotate(45deg);
+    display: block;
+    z-index: 10;
+  }
 
-.sectionMtnRightBlack:before {
-  content: '';
-  width: 2rem;
-  height: 2rem;
-  background: var(--color-black-bg);
-  transform: rotate(45deg);
-  display: block;
-  z-index: 10;
-}
-
-.sectionMtnRightBlack::after {
-  content: '';
-  width: 4rem;
-  height: 4rem;
-  background: var(--color-black-bg);
-  transform: rotate(45deg);
-  displaY: block;
-  z-index: 10;
-  margin-Right: 0.89rem;
-  margin-right: 1rem;
-}
+  .sectionMtnRightBlack::after {
+    content: '';
+    width: 4rem;
+    height: 4rem;
+    background: var(--color-black-bg);
+    transform: rotate(45deg);
+    displaY: block;
+    z-index: 10;
+    margin-Right: 0.89rem;
+    margin-right: 1rem;
+  }
 }
 
 
