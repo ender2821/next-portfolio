@@ -196,7 +196,7 @@ p {
     transform: rotate(45deg);
     displaY: block;
     z-index: 10;
-    margin-Right: 0.89rem;
+    margin-right: 0.89rem;
     margin-right: 1rem;
   }
 
@@ -243,6 +243,7 @@ p {
     background: var(--color-black-bg);
     transform: rotate(45deg);
     display: block;
+    margin-right: 0.89rem;
     z-index: 10;
   }
 
@@ -254,8 +255,7 @@ p {
     transform: rotate(45deg);
     displaY: block;
     z-index: 10;
-    margin-Right: 0.89rem;
-    margin-right: 1rem;
+    margin-right: 0.89xrem;
   }
 }
 

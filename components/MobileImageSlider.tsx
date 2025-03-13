@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useSwipeable } from "react-swipeable";
 import { Box, MobileStepper, Paper, Typography } from "@mui/material";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
@@ -54,7 +55,7 @@ export default function MobileImageSlider(props: MobileImageSliderProps) {
 
   return (
     <ThemeProvider theme={theme}>
-      <div className="mx-auto max-w-md px-4 py-8">
+      <div>
         <Link
           href="/work"
           className="max-h-[3.5rem] lg:col-start-2 sm:m-0 sm:col-span-3 md:col-span-1 siteButton w-full sm:w-auto mt-8 mb-8"
@@ -62,17 +63,11 @@ export default function MobileImageSlider(props: MobileImageSliderProps) {
           {button}
         </Link>
 
-        <Paper
-          elevation={3}
-          className="overflow-hidden rounded-lg"
-          {...handlers}
-          aria-label="Image slider"
-          role="region"
-        >
+        <div>
           {/* Current Slide */}
           <Link href={`/work/${images[activeStep]?.slug?.current}`}>
             <div
-              className={`relative h-64 w-full transition-transform duration-300 ease-out ${
+              className={`relative w-full transition-transform duration-300 ease-out ${
                 swipeDirection === "left"
                   ? "-translate-x-full"
                   : swipeDirection === "right"
@@ -80,31 +75,28 @@ export default function MobileImageSlider(props: MobileImageSliderProps) {
                     : ""
               }`}
             >
-              <div></div>
-              <img
-                className="h-full w-full object-cover"
-                src={
-                  images[activeStep]?.workPageLayout?.workLayoutGallery
-                    ?.imageUrl || "/placeholder.svg"
-                }
-                alt={
-                  images[activeStep]?.workPageLayout?.workLayoutGallery
-                    ?.imageName || ""
-                }
-              />
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
-                <Typography className="text-white">
+              <div className="relative w-full aspect-square">
+                <Image
+                  className="object-cover"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  src={
+                    images[activeStep]?.workPageLayout?.workLayoutGallery
+                      ?.imageUrl || "/placeholder.svg"
+                  }
+                  alt={
+                    images[activeStep]?.workPageLayout?.workLayoutGallery
+                      ?.imageName || ""
+                  }
+                />
+              </div>
+              <div className="w-full border-white-decoration border bg-white bg-opacity-50 text-white p-2 text-center">
+                <p className="font-normal truncate m-0 text-black-bg uppercase">
                   {images[activeStep]?.name || ""}
-                </Typography>
+                </p>
               </div>
             </div>
           </Link>
-
-          {/* Swipe Instructions */}
-          <div className="absolute inset-x-0 top-1/2 flex -translate-y-1/2 justify-between px-4 text-white opacity-50">
-            <span className="text-2xl">&lt;</span>
-            <span className="text-2xl">&gt;</span>
-          </div>
 
           {/* Dots Stepper */}
           <MobileStepper
@@ -114,16 +106,17 @@ export default function MobileImageSlider(props: MobileImageSliderProps) {
             activeStep={activeStep}
             sx={{
               backgroundColor: "transparent",
-              padding: "8px 16px",
-              "& .MuiMobileStepper-dot": { margin: "0 4px" },
-              "& .MuiMobileStepper-dotActive": {
-                backgroundColor: "primary.main",
+              padding: "2rem 1rem",
+              "& .MuiMobileStepper-dot": {
+                margin: "0 4px",
+                backgroundColor: "#6EC9F2",
               },
+              "& .MuiMobileStepper-dotActive": { backgroundColor: "#3B4647" },
             }}
             nextButton={<Box />}
             backButton={<Box />}
           />
-        </Paper>
+        </div>
       </div>
     </ThemeProvider>
   );
