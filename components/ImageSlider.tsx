@@ -95,7 +95,7 @@ export default function ImageSlider(props: ImageSliderProps) {
   };
 
   return (
-    <div className="relative">
+    <div className="relative hidden md:block ">
       <div className="py-8 lg:py-0 grid grid-cols-1 sm:grid-cols-3 lg:gap-y-4 relative">
         {images.length > 6 && (
           <div className="relative">

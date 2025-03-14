@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -55,7 +57,7 @@ export default function MobileImageSlider(props: MobileImageSliderProps) {
 
   return (
     <ThemeProvider theme={theme}>
-      <div>
+      <div className="block md:hidden">
         <Link
           href="/work"
           className="max-h-[3.5rem] lg:col-start-2 sm:m-0 sm:col-span-3 md:col-span-1 siteButton w-full sm:w-auto mt-8 mb-8"

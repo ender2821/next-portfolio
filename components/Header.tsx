@@ -2,7 +2,7 @@
 
 import type React from "react";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Drawer from "@mui/material/Drawer";
@@ -10,6 +10,7 @@ import IconButton from "@mui/material/IconButton";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import { styled } from "@mui/material/styles";
+import dynamic from "next/dynamic";
 
 // Custom styled MUI components
 const StyledDrawer = styled(Drawer)(() => ({
@@ -35,17 +36,14 @@ const menuItems = [
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
-  const [width, setWidth] = useState(window.innerWidth);
+  const HeaderScreenWidth = dynamic(
+    () => import("../components/HeaderScreenWidth"),
+    { ssr: false }
+  );
 
   const toggleDrawer = (open: boolean) => () => {
     setIsOpen(open);
   };
-
-  useEffect(() => {
-    const handleResize = () => setWidth(window.innerWidth);
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
 
   return (
     <header className="w-full bg-black border-b border-black-decoration relative">
@@ -79,9 +77,7 @@ export default function Header() {
             height={50}
           />
         </Link>
-        <p className="hidden sm:block text-xs text-black-decoration absolute bg-black-bg left-1/2 -translate-x-1/2 bottom-0 translate-y-1/2 mb-0 pr-2 pl-2 z-10">
-          {`${width}px`}
-        </p>
+        <HeaderScreenWidth />
 
         {/* Mobile Menu Button */}
         <div className="md:hidden ml-auto">

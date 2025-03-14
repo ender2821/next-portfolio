@@ -6,6 +6,8 @@ import HomePageTitle from "@/components/HomePageTitle";
 import HomeCtaButton from "@/components/HomeCtaButton";
 import HomeGlacier from "@/components/HomeGlacier";
 import HomeImageSliders from "@/components/HomeImageSliders";
+import HomeServices from "@/components/HomeServices";
+import { ServiceCategory } from "@/__sanity-generated__/types";
 
 export default async function Home() {
   const { data: home } = await sanityFetch({ query: HOME_QUERY, params: {} });
@@ -52,19 +54,22 @@ export default async function Home() {
           ) : null}
         </div>
       </section>
-      <section className="px-4 py-4 sm:pt-16 lg:px-8 lg:pt-[10rem] lg:pb-0 relative grid grid-cols-6 gap-4 w-full">
+      <section className="px-4 py-4 sm:pt-16 lg:px-8 lg:pt-[10rem] lg:pb-0 relative grid grid-cols-6 gap-x-4 w-full">
         <div className="sectionMtnRightBlack absolute right-0 top-0 -translate-y-1/2" />
-        <h2 className="lg:mb-0 text-white col-span-6 lg:grid-col-span-5 lg:col-start-2 border-black-decoration">
+        <h2 className="lg:mb-8 text-white col-span-6 lg:grid-col-span-5 lg:col-start-2 border-black-decoration">
           Services
         </h2>
         {home?.serviceCTAButtonTxt ? (
           <Link
             href="/contact"
-            className="max-h-[3.5rem] md:px-[1.6rem] sm:col-start-2 sm:m-0 siteButton shadow-shadow-button-right w-full sm:w-auto mt-8 mb-8"
+            className="max-h-[3.5rem] md:px-[1rem] sm:col-start-2 sm:m-0 siteButton shadow-shadow-button-right w-full sm:w-auto mt-8 mb-8"
           >
             {home?.serviceCTAButtonTxt}
           </Link>
         ) : null}
+        <HomeServices
+          categories={home?.serviceHomeCategories as ServiceCategory[]}
+        />
       </section>
       <Link href="/resume">Resume</Link>
     </main>

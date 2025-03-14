@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import Header from "@/components/Header";
 import { SanityLive } from "@/sanity/lib/live";
+import { Suspense } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,7 +23,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <AppRouterCacheProvider>
           <Header />
-          {children}
+          <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
           <SanityLive />
         </AppRouterCacheProvider>
       </body>
