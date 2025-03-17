@@ -1,4 +1,4 @@
-import { Inter, Raleway, Quicksand } from 'next/font/google'
+import { Inter, Raleway } from 'next/font/google'
  
 export const inter = Inter({
   subsets: ['latin'],
