@@ -1,16 +1,25 @@
 import Link from "next/link";
 import { sanityFetch } from "@/sanity/lib/live";
 import { HOME_QUERY } from "@/queries/homeQueries";
-import { PortableText } from "next-sanity";
+import { PortableText, PortableTextReactComponents } from "next-sanity";
 import HomePageTitle from "@/components/HomePageTitle";
 import HomeCtaButton from "@/components/HomeCtaButton";
 import HomeGlacier from "@/components/HomeGlacier";
 import HomeImageSliders from "@/components/HomeImageSliders";
 import HomeServices from "@/components/HomeServices";
 import { ServiceCategory } from "@/__sanity-generated__/types";
+import TiltImage from "@/components/TiltImage";
+import Image from "next/image";
 
 export default async function Home() {
   const { data: home } = await sanityFetch({ query: HOME_QUERY, params: {} });
+  const aboutComponents: Partial<PortableTextReactComponents> = {
+    block: {
+      normal: ({ children }) => {
+        return <p className="last-of-type:mb-0 text-black-bg">{children}</p>;
+      },
+    },
+  };
   return (
     <main className="flex min-h-screen flex-col items-center">
       <section className="px-4 lg:p-8 lg:pb-0 relative grid grid-cols-6 gap-4 w-full">
@@ -71,7 +80,83 @@ export default async function Home() {
           categories={home?.serviceHomeCategories as ServiceCategory[]}
         />
       </section>
-      <Link href="/resume">Resume</Link>
+      <section
+        className="pt-4 sm:pt-16 sm:pb-8 lg:pt-0 lg:pb-[10rem] w-full bg-[#fff] relative"
+        id="#about"
+      >
+        <div className="hidden lg:grid absolute z-0 grid-cols-6 w-[100%] h-[100%] gap-4 lg:pl-8 lg:pr-8">
+          <span className="border-white-border border-r h-[100%] relative" />
+          <span className="border-white-border border-l border-r h-[100%] relative" />
+          <span className="border-white-border border-l border-r h-[100%] relative" />
+          <span className="border-white-border border-l border-r h-[100%] relative" />
+          <span className="border-white-border border-l border-r h-[100%] relative" />
+          <span className="border-white-border border-l h-[100%] relative" />
+        </div>
+        <div className="px-4 lg:pl-8 lg:pr-8 md:pb-8 grid grid-cols-6 gap-4 relative">
+          <div className="sectionMtnRightWhite absolute right-0 top-0 -translate-y-1/2" />
+          <div className="col-span-6 sm:col-span-3 sm:top-[-2rem] lg:col-span-2 lg:row-span-2 relative grid grid-cols-2 gap-8">
+            <TiltImage
+              className={"z-10 col-span-2 w-[calc(100%-4rem)]"}
+              shadow={"right"}
+            >
+              <Image
+                src={home?.aboutImage?.imageUrl ?? "/default-image.jpg"}
+                alt={home?.aboutImage?.imageName ?? "default image description"}
+                width={900}
+                height={1200}
+                style={{ objectFit: "contain", width: "100%" }}
+              />
+            </TiltImage>
+            <pre className="text-xs text-white-decoration lg:col-span-2">
+              {`if (isManualInputIgnoreOtherInputs) {
+  this.tiltAngleX = tiltAngleXManual !== null ? tiltAngleXManual! : 0;
+  this.tiltAngleY = tiltAngleYManual !== null ? tiltAngleYManual! : 0;
+  wrapperElClientPosition.xPercentage = (100 * this.tiltAngleX) / tiltMaxAngleX!;
+  wrapperElClientPosition.yPercentage = (100 * this.tiltAngleY) / tiltMaxAngleY!;
+}`}
+            </pre>
+          </div>
+          <div className="grid grid-cols-6 lg:grid-cols-4 lg:col-span-4 gap-4 lg:pt-[10rem]">
+            <h2 className="lg:mb-0 text-right col-span-4 lg:-ml-[6rem] lg:w-[calc(100%+6rem)]">
+              Meet Josh
+            </h2>
+            {home?.aboutSubtitle ? (
+              <h3 className="col-span-4 lg:mb-0 lg:col-span-2 lg:col-start-2 pb-4 position ">
+                {home?.aboutSubtitle}
+              </h3>
+            ) : null}
+            <div className="hidden lg:block lg:col-start-4"></div>
+            <PortableText
+              value={home?.aboutContent ? home?.aboutContent : []}
+              components={aboutComponents}
+            />
+            <div className="col-start-1 flex flex-col gap-4 lg:row-start-3 items-center">
+              <Link href="/resume" className="siteButton w-[100%]">
+                Resume
+              </Link>
+              <span className="w-8 h-[1px] bg-white-decoration" />
+              {home?.aboutGithub ? (
+                <Link href={home?.aboutGithub} className="siteButton w-[100%]">
+                  Visit my Github
+                </Link>
+              ) : null}
+              <span className="w-8 h-[1px] bg-white-decoration" />
+              {home?.aboutLinkedIn ? (
+                <Link
+                  href={home?.aboutLinkedIn}
+                  className="siteButton w-[100%]"
+                >
+                  Visit my Linkedin
+                </Link>
+              ) : null}
+              <span className="w-8 h-[1px] bg-white-decoration" />
+              <Link href="/contact" className="siteButton w-[100%]">
+                Reach Out
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }

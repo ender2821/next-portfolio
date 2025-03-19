@@ -185,6 +185,7 @@ p {
     background: var(--color-white);
     transform: rotate(45deg);
     display: block;
+    margin-right: 0.89rem;
     z-index: 10;
   }
 
@@ -197,7 +198,6 @@ p {
     displaY: block;
     z-index: 10;
     margin-right: 0.89rem;
-    margin-right: 1rem;
   }
 
   .sectionMtnLeftBlack {
@@ -255,7 +255,7 @@ p {
     transform: rotate(45deg);
     displaY: block;
     z-index: 10;
-    margin-right: 0.89xrem;
+    margin-right: 0.89rem;
   }
 }
 
