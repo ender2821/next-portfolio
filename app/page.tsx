@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { sanityFetch } from "@/sanity/lib/live";
 import { HOME_QUERY } from "@/queries/homeQueries";
 import { PortableText, PortableTextReactComponents } from "next-sanity";
@@ -10,6 +9,7 @@ import HomeServices from "@/components/HomeServices";
 import { ServiceCategory } from "@/__sanity-generated__/types";
 import TiltImage from "@/components/TiltImage";
 import Image from "next/image";
+import SiteButton from "@/components/SiteButton";
 
 export default async function Home() {
   const { data: home } = await sanityFetch({ query: HOME_QUERY, params: {} });
@@ -69,12 +69,12 @@ export default async function Home() {
           Services
         </h2>
         {home?.serviceCTAButtonTxt ? (
-          <Link
+          <SiteButton
             href="/contact"
             className="max-h-[3.5rem] md:px-[1rem] col-span-6 sm:col-span-2 xl:col-span-1 xl:col-start-2 sm:m-0 siteButton shadow-shadow-button-right w-full sm:w-auto mt-8 mb-8 order-2 lg:-order-none"
           >
             {home?.serviceCTAButtonTxt}
-          </Link>
+          </SiteButton>
         ) : null}
         <HomeServices
           categories={home?.serviceHomeCategories as ServiceCategory[]}
@@ -131,28 +131,34 @@ export default async function Home() {
               components={aboutComponents}
             />
             <div className="pb-8 sm:pb-0 col-start-1 pt-4 lg:pt-0 flex flex-col gap-3 col-span-2 xl:col-span-1 lg:row-start-3 items-center">
-              <Link href="/resume" className="siteButton w-[100%]">
-                Resume
-              </Link>
+              <SiteButton
+                href="/resume"
+                className="siteButton w-[100%] relative"
+              >
+                <span className="z-10 relative">Resume</span>
+              </SiteButton>
               <span className="w-8 h-[1px] bg-white-decoration" />
               {home?.aboutGithub ? (
-                <Link href={home?.aboutGithub} className="siteButton w-[100%]">
+                <SiteButton
+                  href={home?.aboutGithub}
+                  className="siteButton w-[100%]"
+                >
                   Visit my Github
-                </Link>
+                </SiteButton>
               ) : null}
               <span className="w-8 h-[1px] bg-white-decoration" />
               {home?.aboutLinkedIn ? (
-                <Link
+                <SiteButton
                   href={home?.aboutLinkedIn}
                   className="siteButton w-[100%]"
                 >
                   Visit my Linkedin
-                </Link>
+                </SiteButton>
               ) : null}
               <span className="w-8 h-[1px] bg-white-decoration" />
-              <Link href="/contact" className="siteButton w-[100%]">
+              <SiteButton href="/contact" className="siteButton w-[100%]">
                 Reach Out
-              </Link>
+              </SiteButton>
             </div>
           </div>
         </div>

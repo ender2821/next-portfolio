@@ -10,7 +10,7 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import Link from "next/link";
+import SiteButton from "./SiteButton";
 
 interface HomeGlacierProps {
   imageUrl: string;
@@ -81,12 +81,12 @@ export default function HomeGlacier(props: HomeGlacierProps) {
           <div className=" lg:grid lg:grid-cols-3 lg:gap-4">
             <PortableText value={props?.glacierContent} />
             {meetGlacierButtonCTA ? (
-              <Link
+              <SiteButton
                 href="/contact"
-                className="max-h-[3.5rem] lg:col-start-2 sm:m-0 sm:col-span-3 md:col-span-1 siteButton w-full sm:w-auto mt-8 mb-8"
+                className="max-h-[3.5rem] lg:col-start-2 sm:m-0 sm:col-span-3 md:col-span-1 w-full sm:w-auto mt-8 mb-8"
               >
                 {meetGlacierButtonCTA}
-              </Link>
+              </SiteButton>
             ) : null}
           </div>
         </div>

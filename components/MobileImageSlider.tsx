@@ -7,6 +7,7 @@ import { useSwipeable } from "react-swipeable";
 import { Box, MobileStepper, Paper, Typography } from "@mui/material";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { Slug } from "sanity";
+import SiteButton from "./SiteButton";
 
 const theme = createTheme({ palette: { primary: { main: "#000000" } } });
 
@@ -58,12 +59,12 @@ export default function MobileImageSlider(props: MobileImageSliderProps) {
   return (
     <ThemeProvider theme={theme}>
       <div className="block sm:hidden">
-        <Link
+        <SiteButton
           href="/work"
-          className="max-h-[3.5rem] lg:col-start-2 sm:m-0 sm:col-span-3 md:col-span-1 siteButton w-full sm:w-auto mt-8 mb-8"
+          className="max-h-[3.5rem] lg:col-start-2 sm:m-0 sm:col-span-3 md:col-span-1 w-full sm:w-auto mt-8 mb-8"
         >
           {button}
-        </Link>
+        </SiteButton>
 
         <div>
           {/* Current Slide */}

@@ -6,6 +6,7 @@ import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Slug } from "sanity";
 import { useMediaQuery, useTheme } from "@mui/material";
+import SiteButton from "./SiteButton";
 
 interface ImageSliderProps {
   images: {
@@ -134,12 +135,12 @@ export default function ImageSlider(props: ImageSliderProps) {
             <span className="bg-white z-10 text-xs">56px</span>
           </div>
           {button && (
-            <Link
+            <SiteButton
               href="/work"
-              className="max-h-[3.5rem] lg:col-start-2 sm:m-0 sm:col-span-3 md:col-span-1 siteButton w-full sm:w-auto mt-8 mb-8 relative z-10"
+              className="max-h-[3.5rem] lg:col-start-2 sm:m-0 sm:col-span-3 md:col-span-1 w-full sm:w-auto mt-8 mb-8 relative z-10"
             >
               {button}
-            </Link>
+            </SiteButton>
           )}
           <div
             className={
