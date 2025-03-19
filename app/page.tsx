@@ -63,7 +63,7 @@ export default async function Home() {
           ) : null}
         </div>
       </section>
-      <section className="px-4 py-4 sm:pt-16 lg:px-8 lg:pt-[10rem] lg:pb-[10rem] relative grid grid-cols-6 gap-x-4 w-full">
+      <section className="px-4 py-4 pt-8 sm:pt-16 sm:pb-16 lg:px-8 lg:pt-[10rem] lg:pb-[10rem] relative grid grid-cols-6 gap-x-4 w-full">
         <div className="sectionMtnRightBlack absolute right-0 top-0 -translate-y-1/2" />
         <h2 className="lg:mb-8 text-white col-span-6 xl:grid-col-span-5 xl:col-start-2 border-black-decoration">
           Services
@@ -71,7 +71,7 @@ export default async function Home() {
         {home?.serviceCTAButtonTxt ? (
           <Link
             href="/contact"
-            className="max-h-[3.5rem] md:px-[1rem] col-span-6 sm:col-span-2 xl:col-span-1 xl:col-start-2 sm:m-0 siteButton shadow-shadow-button-right w-full sm:w-auto mt-8 mb-8"
+            className="max-h-[3.5rem] md:px-[1rem] col-span-6 sm:col-span-2 xl:col-span-1 xl:col-start-2 sm:m-0 siteButton shadow-shadow-button-right w-full sm:w-auto mt-8 mb-8 order-2 lg:-order-none"
           >
             {home?.serviceCTAButtonTxt}
           </Link>
@@ -81,10 +81,11 @@ export default async function Home() {
         />
       </section>
       <section
-        className="pt-4 sm:pt-16 sm:pb-8 lg:pt-0 lg:pb-0 w-full bg-[#fff] relative"
+        className="pt-4 sm:pt-0 sm:pb-8 lg:pt-0 lg:pb-0 w-full bg-[#fff] relative"
         id="#about"
       >
-        <div className="hidden lg:grid absolute z-0 grid-cols-6 w-[100%] h-[100%] gap-4 lg:pl-8 lg:pr-8">
+        <div className="sectionMtnRightWhite absolute right-0 top-0 -translate-y-1/2" />
+        <div className="hidden md:grid absolute z-0 grid-cols-6 w-[100%] h-[100%] gap-4 pl-4 pr-4 lg:pl-8 lg:pr-8">
           <span className="border-white-border border-r h-[100%] relative" />
           <span className="border-white-border border-l border-r h-[100%] relative" />
           <span className="border-white-border border-l border-r h-[100%] relative" />
@@ -93,10 +94,9 @@ export default async function Home() {
           <span className="border-white-border border-l h-[100%] relative" />
         </div>
         <div className="px-4 lg:pl-8 lg:pr-8 md:pb-8 grid grid-cols-6 gap-4 relative">
-          <div className="sectionMtnRightWhite absolute right-0 top-0 -translate-y-1/2" />
           <div className="col-span-6 sm:col-span-3 sm:top-[-2rem] lg:col-span-2 lg:row-span-2 relative grid grid-cols-2 gap-8">
             <TiltImage
-              className={"z-10 col-span-2 w-[calc(100%-4rem)]"}
+              className={"z-10 col-span-2 sm:w-[calc(100%-4rem)]"}
               shadow={"right"}
             >
               <Image
@@ -107,7 +107,7 @@ export default async function Home() {
                 style={{ objectFit: "contain", width: "100%" }}
               />
             </TiltImage>
-            <pre className="text-xs text-white-decoration lg:col-span-2">
+            <pre className="text-xs text-white-decoration lg:col-span-2 z-0">
               {`if (isManualInputIgnoreOtherInputs) {
   this.tiltAngleX = tiltAngleXManual !== null ? tiltAngleXManual! : 0;
   this.tiltAngleY = tiltAngleYManual !== null ? tiltAngleYManual! : 0;
@@ -116,21 +116,21 @@ export default async function Home() {
 }`}
             </pre>
           </div>
-          <div className="grid grid-cols-6 lg:grid-cols-4 lg:col-span-4 gap-4 lg:pt-[10rem]">
-            <h2 className="lg:mb-0 text-right col-span-4 lg:-ml-[6rem] lg:w-[calc(100%+6rem)]">
+          <div className="lg:grid grid-cols-1 md:grid-cols-1 lg:grid-cols-4 col-span-6 sm:col-span-3 lg:col-span-4 lg:gap-4 lg:pt-[10rem] relative sm:pt-16">
+            <h2 className="lg:mb-0 text-right col-span-6 md:col-span-3 lg:col-span-4 lg:-ml-[6rem] lg:w-[calc(100%+6rem)]">
               Meet Josh
             </h2>
             {home?.aboutSubtitle ? (
-              <h3 className="col-span-4 lg:mb-0 lg:col-span-2 lg:col-start-2 pb-4 position ">
+              <h3 className="col-span-4 lg:mb-0 lg:col-span-2 lg:col-start-3 xl:col-start-2 pb-4 position ">
                 {home?.aboutSubtitle}
               </h3>
             ) : null}
-            <div className="hidden lg:block lg:col-start-4"></div>
+            <div className="hidden xl:block lg:col-start-4 lg:hidden"></div>
             <PortableText
               value={home?.aboutContent ? home?.aboutContent : []}
               components={aboutComponents}
             />
-            <div className="col-start-1 flex flex-col gap-3 lg:row-start-3 items-center">
+            <div className="col-start-1 pt-4 lg:pt-0 flex flex-col gap-3 col-span-2 xl:col-span-1 lg:row-start-3 items-center">
               <Link href="/resume" className="siteButton w-[100%]">
                 Resume
               </Link>

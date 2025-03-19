@@ -57,7 +57,7 @@ export default function MobileImageSlider(props: MobileImageSliderProps) {
 
   return (
     <ThemeProvider theme={theme}>
-      <div className="block md:hidden">
+      <div className="block sm:hidden">
         <Link
           href="/work"
           className="max-h-[3.5rem] lg:col-start-2 sm:m-0 sm:col-span-3 md:col-span-1 siteButton w-full sm:w-auto mt-8 mb-8"

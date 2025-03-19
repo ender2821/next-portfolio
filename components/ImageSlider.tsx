@@ -29,12 +29,13 @@ export default function ImageSlider(props: ImageSliderProps) {
   const theme = useTheme();
   const xl = useMediaQuery(theme.breakpoints.up("xl"));
   const lg = useMediaQuery(theme.breakpoints.up("lg"));
+  const md = useMediaQuery(theme.breakpoints.up("md"));
 
   const nextSlide = () => {
     if (!isAnimating) {
       setIsAnimating(true);
       if (images.length > 6) {
-        if (currentIndex === images.length - (xl ? 6 : 3)) {
+        if (currentIndex === images.length - (xl ? 6 : md ? 3 : 2)) {
           setCurrentIndex(0);
         } else {
           setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
@@ -58,7 +59,7 @@ export default function ImageSlider(props: ImageSliderProps) {
     if (!isAnimating) {
       setIsAnimating(true);
       if (images.length > 6) {
-        setCurrentIndex(images.length - (xl ? 6 : 3));
+        setCurrentIndex(images.length - (xl ? 6 : md ? 3 : 2));
       }
     }
   };
@@ -95,7 +96,7 @@ export default function ImageSlider(props: ImageSliderProps) {
   };
 
   return (
-    <div className="relative hidden md:block ">
+    <div className="relative hidden sm:block ">
       <div className="py-8 lg:py-0 grid grid-cols-1 sm:grid-cols-3 lg:gap-y-4 relative">
         {images.length > 6 && (
           <div className="relative">
@@ -157,7 +158,7 @@ export default function ImageSlider(props: ImageSliderProps) {
     if (!isAnimating) {
       setIsAnimating(true);
       if (images.length > 6) {
-        if (currentIndex === images.length - (xl ? 6 : 3)) {
+        if (currentIndex === images.length - (xl ? 6 : md ? 3 : 2)) {
           setCurrentIndex(0);
         } else {
           setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
@@ -181,7 +182,7 @@ export default function ImageSlider(props: ImageSliderProps) {
       <div
         className="flex transition-transform duration-500 ease-in-out -ml-2 -mr-2"
         style={{
-          transform: `translateX(-${currentIndex * (xl ? 16.666 : 33.333)}%)`,
+          transform: `translateX(-${currentIndex * (xl ? 16.666 : md ? 33.333 : 50)}%)`,
         }}
         onTransitionEnd={handleTransitionEnd}
       >
@@ -199,7 +200,7 @@ export default function ImageSlider(props: ImageSliderProps) {
             },
             index: number
           ) => (
-            <div className="px-2 w-1/3 xl:w-1/6 flex-none" key={index}>
+            <div className="px-2 w-1/2 md:w-1/3 xl:w-1/6 flex-none" key={index}>
               <Link
                 href={`/work/${image?.slug?.current}`}
                 className="hover:scale-105 hover:shadow-shadow-image-mobile transition duration-300 ease-in-out block"
