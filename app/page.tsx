@@ -65,13 +65,13 @@ export default async function Home() {
       </section>
       <section className="px-4 py-4 sm:pt-16 lg:px-8 lg:pt-[10rem] lg:pb-[10rem] relative grid grid-cols-6 gap-x-4 w-full">
         <div className="sectionMtnRightBlack absolute right-0 top-0 -translate-y-1/2" />
-        <h2 className="lg:mb-8 text-white col-span-6 lg:grid-col-span-5 lg:col-start-2 border-black-decoration">
+        <h2 className="lg:mb-8 text-white col-span-6 xl:grid-col-span-5 xl:col-start-2 border-black-decoration">
           Services
         </h2>
         {home?.serviceCTAButtonTxt ? (
           <Link
             href="/contact"
-            className="max-h-[3.5rem] md:px-[1rem] sm:col-start-2 sm:m-0 siteButton shadow-shadow-button-right w-full sm:w-auto mt-8 mb-8"
+            className="max-h-[3.5rem] md:px-[1rem] col-span-6 sm:col-span-2 xl:col-span-1 xl:col-start-2 sm:m-0 siteButton shadow-shadow-button-right w-full sm:w-auto mt-8 mb-8"
           >
             {home?.serviceCTAButtonTxt}
           </Link>
@@ -81,7 +81,7 @@ export default async function Home() {
         />
       </section>
       <section
-        className="pt-4 sm:pt-16 sm:pb-8 lg:pt-0 lg:pb-[10rem] w-full bg-[#fff] relative"
+        className="pt-4 sm:pt-16 sm:pb-8 lg:pt-0 lg:pb-0 w-full bg-[#fff] relative"
         id="#about"
       >
         <div className="hidden lg:grid absolute z-0 grid-cols-6 w-[100%] h-[100%] gap-4 lg:pl-8 lg:pr-8">
@@ -130,7 +130,7 @@ export default async function Home() {
               value={home?.aboutContent ? home?.aboutContent : []}
               components={aboutComponents}
             />
-            <div className="col-start-1 flex flex-col gap-4 lg:row-start-3 items-center">
+            <div className="col-start-1 flex flex-col gap-3 lg:row-start-3 items-center">
               <Link href="/resume" className="siteButton w-[100%]">
                 Resume
               </Link>

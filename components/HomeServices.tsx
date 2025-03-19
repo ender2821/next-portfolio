@@ -5,6 +5,7 @@ import { useMediaQuery, useTheme } from "@mui/material";
 import { PortableText, PortableTextReactComponents } from "next-sanity";
 
 import { raleway } from "../app/fonts";
+import MobileAccordion from "./MobileAccordion";
 
 interface HomeServicesProps {
   categories: ServiceCategory[];
@@ -39,7 +40,7 @@ export default function HomeServices({ categories }: HomeServicesProps) {
               </h3>
               {category?.serviceCategoryDescription && (
                 <div className="flex-[50%]">
-                  <div className="max-w-[900px] mr-8 border border-dashed border-blue relative">
+                  <div className="max-w-[900px] mr-5 border border-dashed border-blue relative">
                     <span className="topLeftBlueHandle" />
                     <span className="topRightBlueHandle" />
                     <PortableText
@@ -54,6 +55,9 @@ export default function HomeServices({ categories }: HomeServicesProps) {
             </div>
           </div>
         ))}
+      </div>
+      <div className="lg:hidden col-span-6">
+        <MobileAccordion items={categories} />
       </div>
       <></>
     </>
