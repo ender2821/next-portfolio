@@ -22,7 +22,7 @@ export default async function Home() {
   };
   return (
     <main className="flex min-h-screen flex-col items-center">
-      <section className="px-4 lg:p-8 lg:pb-0 relative grid grid-cols-6 gap-4 w-full">
+      <section className="px-4 pb-8 pt-4 lg:pt-8 sm:pb-0 lg:p-8 lg:pb-0 relative grid grid-cols-6 gap-4 w-full">
         <HomePageTitle />
         {home?.heroCTAButtonTxt ? (
           <HomeCtaButton heroCTAButtonTxt={home.heroCTAButtonTxt} />
@@ -54,7 +54,7 @@ export default async function Home() {
             <span className="absolute left-1/2 top-0 -translate-x-1/2 w-[1px] h-[10rem] bg-white-border z-0"></span>
             <span className="bg-white z-10 text-xs">160px</span>
           </div>
-          <h2 className="lg:mb-0 text-right">Work</h2>
+          <h2 className="mt-8 sm:mt-0 lg:mb-0 text-right">Work</h2>
           {home?.workGallery && home?.workGallery.length > 0 ? (
             <HomeImageSliders
               images={home?.workGallery}
@@ -130,7 +130,7 @@ export default async function Home() {
               value={home?.aboutContent ? home?.aboutContent : []}
               components={aboutComponents}
             />
-            <div className="col-start-1 pt-4 lg:pt-0 flex flex-col gap-3 col-span-2 xl:col-span-1 lg:row-start-3 items-center">
+            <div className="pb-8 sm:pb-0 col-start-1 pt-4 lg:pt-0 flex flex-col gap-3 col-span-2 xl:col-span-1 lg:row-start-3 items-center">
               <Link href="/resume" className="siteButton w-[100%]">
                 Resume
               </Link>

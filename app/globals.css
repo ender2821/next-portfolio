@@ -141,120 +141,169 @@ p {
   margin-left: -0.5rem;
 }
 
-@media screen and (min-width: 900px) {
-  .sectionMtnLeftWhite {
-    display: flex;
-    flex-wrap:nowrap;
-    align-items: center;
-    justify-content: center;
-  }
+.sectionMtnLeftWhite {
+  display: flex;
+  flex-wrap:nowrap;
+  align-items: center;
+  justify-content: center;
+}
 
+.sectionMtnLeftWhite::before {
+  content: '';
+  width: 2rem;
+  height: 2rem;
+  background: var(--color-white);
+  transform: rotate(45deg);
+  displaY: block;
+  z-index: 10;
+  margin-left: 0.445rem;
+  margin-right: 0.5rem;
+}
+
+.sectionMtnLeftWhite:after {
+  content: '';
+  width: 1rem;
+  height: 1rem;
+  background: var(--color-white);
+  transform: rotate(45deg);
+  display: block;
+  z-index: 10;
+}
+
+.sectionMtnRightWhite {
+  display: flex;
+  flex-wrap:nowrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.sectionMtnRightWhite:before {
+  content: '';
+  width: 1rem;
+  height: 1rem;
+  background: var(--color-white);
+  transform: rotate(45deg);
+  display: block;
+  margin-right: 0.445rem;
+  z-index: 10;
+}
+
+.sectionMtnRightWhite::after {
+  content: '';
+  width: 2rem;
+  height: 2rem;
+  background: var(--color-white);
+  transform: rotate(45deg);
+  displaY: block;
+  z-index: 10;
+  margin-right: 0.445rem;
+}
+
+.sectionMtnLeftBlack {
+  display: flex;
+  flex-wrap:nowrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.sectionMtnLeftBlack::before {
+  content: '';
+  width: 2rem;
+  height: 2rem;
+  background: var(--color-black-bg);
+  transform: rotate(45deg);
+  displaY: block;
+  z-index: 10;
+  margin-left: 0.445rem;
+  margin-right: 0.5rem;
+}
+
+.sectionMtnLeftBlack:after {
+  content: '';
+  width: 1rem;
+  height: 1rem;
+  background: var(--color-black-bg);
+  transform: rotate(45deg);
+  display: block;
+  z-index: 10;
+}
+
+.sectionMtnRightBlack {
+  display: flex;
+  flex-wrap:nowrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.sectionMtnRightBlack:before {
+  content: '';
+  width: 1rem;
+  height: 1rem;
+  background: var(--color-black-bg);
+  transform: rotate(45deg);
+  display: block;
+  margin-right: 0.445rem;
+  z-index: 10;
+}
+
+.sectionMtnRightBlack::after {
+  content: '';
+  width: 2rem;
+  height: 2rem;
+  background: var(--color-black-bg);
+  transform: rotate(45deg);
+  displaY: block;
+  z-index: 10;
+  margin-right: 0.445rem;
+}
+
+@media screen and (min-width: 900px) {
   .sectionMtnLeftWhite::before {
-    content: '';
     width: 4rem;
     height: 4rem;
-    background: var(--color-white);
-    transform: rotate(45deg);
-    displaY: block;
-    z-index: 10;
-    margin-left: 0.89rem;
-    margin-right: 1rem;
+    margin-left: 0.445rem;
+    margin-right: 0.5rem;
   }
 
   .sectionMtnLeftWhite:after {
-    content: '';
     width: 2rem;
     height: 2rem;
-    background: var(--color-white);
-    transform: rotate(45deg);
-    display: block;
-    z-index: 10;
-  }
-
-  .sectionMtnRightWhite {
-    display: flex;
-    flex-wrap:nowrap;
-    align-items: center;
-    justify-content: center;
   }
 
   .sectionMtnRightWhite:before {
-    content: '';
     width: 2rem;
     height: 2rem;
-    background: var(--color-white);
-    transform: rotate(45deg);
-    display: block;
     margin-right: 0.89rem;
-    z-index: 10;
   }
 
   .sectionMtnRightWhite::after {
-    content: '';
     width: 4rem;
     height: 4rem;
-    background: var(--color-white);
-    transform: rotate(45deg);
-    displaY: block;
-    z-index: 10;
     margin-right: 0.89rem;
   }
 
-  .sectionMtnLeftBlack {
-    display: flex;
-    flex-wrap:nowrap;
-    align-items: center;
-    justify-content: center;
-  }
-
   .sectionMtnLeftBlack::before {
-    content: '';
     width: 4rem;
     height: 4rem;
-    background: var(--color-black-bg);
-    transform: rotate(45deg);
-    displaY: block;
-    z-index: 10;
     margin-left: 0.89rem;
     margin-right: 1rem;
   }
 
   .sectionMtnLeftBlack:after {
-    content: '';
     width: 2rem;
     height: 2rem;
-    background: var(--color-black-bg);
-    transform: rotate(45deg);
-    display: block;
-    z-index: 10;
-  }
-
-  .sectionMtnRightBlack {
-    display: flex;
-    flex-wrap:nowrap;
-    align-items: center;
-    justify-content: center;
   }
 
   .sectionMtnRightBlack:before {
-    content: '';
     width: 2rem;
     height: 2rem;
     background: var(--color-black-bg);
-    transform: rotate(45deg);
-    display: block;
     margin-right: 0.89rem;
-    z-index: 10;
   }
 
   .sectionMtnRightBlack::after {
-    content: '';
     width: 4rem;
     height: 4rem;
-    background: var(--color-black-bg);
-    transform: rotate(45deg);
-    displaY: block;
-    z-index: 10;
     margin-right: 0.89rem;
   }
 }
