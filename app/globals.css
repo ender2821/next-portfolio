@@ -259,4 +259,44 @@ p {
   }
 }
 
+.topLeftBlueHandle {
+  background: var(--color-white);
+  border: 1px solid var(--color-blue);
+  width: 9px;
+  height: 9px;
+  position: absolute;
+  left: -4px;
+  top: -4px;
+}
+
+.topRightBlueHandle {
+  background: var(--color-white);
+  border: 1px solid var(--color-blue);
+  width: 9px;
+  height: 9px;
+  position: absolute;
+  top: -4px;
+  right: -4px;
+}
+
+.bottomLeftBlueHandle {
+  background: var(--color-white);
+  border: 1px solid var(--color-blue);
+  width: 9px;
+  height: 9px;
+  position: absolute;
+  bottom: -4px;
+  left: -4px;
+}
+
+.bottomRightBlueHandle {
+  background: var(--color-white);
+  border: 1px solid var(--color-blue);
+  width: 9px;
+  height: 9px;
+  position: absolute;
+  bottom: -4px;
+  right: -4px;
+}
+
 

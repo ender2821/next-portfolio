@@ -2,7 +2,7 @@
 
 import { ServiceCategory } from "@/__sanity-generated__/types";
 import { useMediaQuery, useTheme } from "@mui/material";
-import { PortableText } from "next-sanity";
+import { PortableText, PortableTextReactComponents } from "next-sanity";
 
 import { raleway } from "../app/fonts";
 
@@ -13,6 +13,14 @@ interface HomeServicesProps {
 export default function HomeServices({ categories }: HomeServicesProps) {
   const theme = useTheme();
   const lg = useMediaQuery(theme.breakpoints.up("lg"));
+
+  const ptComponents: Partial<PortableTextReactComponents> = {
+    block: {
+      normal: ({ children }) => {
+        return <p className="last-of-type:mb-0">{children}</p>;
+      },
+    },
+  };
 
   return (
     <>
@@ -30,9 +38,16 @@ export default function HomeServices({ categories }: HomeServicesProps) {
                 {category.serviceCatergoryTitle}
               </h3>
               {category?.serviceCategoryDescription && (
-                <div className="flex-[50%] -mb-4">
-                  <div className="max-w-[900px] mr-8 border border-dashed border-blue ">
-                    <PortableText value={category.serviceCategoryDescription} />
+                <div className="flex-[50%]">
+                  <div className="max-w-[900px] mr-8 border border-dashed border-blue relative">
+                    <span className="topLeftBlueHandle" />
+                    <span className="topRightBlueHandle" />
+                    <PortableText
+                      value={category.serviceCategoryDescription}
+                      components={ptComponents} // Pass the custom components here
+                    />
+                    <span className="bottomLeftBlueHandle" />
+                    <span className="bottomRightBlueHandle" />
                   </div>
                 </div>
               )}
