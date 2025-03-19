@@ -6,15 +6,20 @@ interface SiteButtonProps {
   href?: string;
   onClick?: () => void;
   className?: string;
+  textHover?: "light" | "dark";
 }
 
 export default function SiteButton(props: SiteButtonProps) {
-  const { children, href, onClick, className, ...rest } = props;
+  const { children, href, onClick, className, textHover, ...rest } = props;
 
   return (
     <>
       {href ? (
-        <Link className={`siteButton ${className}`} href={href} {...rest}>
+        <Link
+          className={`siteButton ${className} ${textHover === "light" && "hover:text-white"}  transition-colors !duration-0`}
+          href={href}
+          {...rest}
+        >
           <span className="z-10 relative">{children}</span>
         </Link>
       ) : (

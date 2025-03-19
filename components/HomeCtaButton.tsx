@@ -17,7 +17,8 @@ export default function HomeCtaButton(props: HomeCtaButtonProps) {
           </span>
           <SiteButton
             href="/contact"
-            className="siteButton shadow-shadow-button-right z-20 relative w-[300px]"
+            textHover="light"
+            className="!px-0 shadow-shadow-button-right z-20 relative w-[300px]"
           >
             {props.heroCTAButtonTxt}
           </SiteButton>
@@ -29,7 +30,8 @@ export default function HomeCtaButton(props: HomeCtaButtonProps) {
       </div>
       <SiteButton
         href="/contact"
-        className="block lg:hidden sm:!mt-8 lg:!mt-0 col-span-6 max-h-[3.5rem] sm:px-[0.7rem] md:px-[1.6rem] sm:m-0 sm:col-span-3 shadow-shadow-button-right w-full sm:w-auto mt-8 mb-8"
+        textHover="light"
+        className="block !px-0 lg:hidden sm:!mt-8 lg:!mt-0 col-span-6 max-h-[3.5rem] sm:px-[0.7rem] sm:m-0 sm:col-span-3 shadow-shadow-button-right w-full sm:w-auto mt-8 mb-8"
       >
         {props.heroCTAButtonTxt}
       </SiteButton>
