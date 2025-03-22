@@ -49,7 +49,7 @@ export default async function Home() {
         console.log(workPage?.workPageMainGallery?.[0]?.imageUrl);
         return (
           <section
-            className={`pt-4 sm:pt-16 sm:pb-8 lg:pb-[8rem] lg:px-8 grid grid-cols-6 w-full ${isEven(i) ? "bg-[#fff]" : "bg-black-bg"} relative lg:pt-[10rem]`}
+            className={`sm:pb-8 lg:pb-[8rem] lg:px-8 grid grid-cols-6 gap-4 w-full ${isEven(i) ? "bg-[#fff]" : "bg-black-bg"} relative`}
             key={i}
           >
             {isEven(i) ? (
@@ -58,7 +58,7 @@ export default async function Home() {
               <div className="sectionMtnLeftBlack absolute left-0 top-0 -translate-y-1/2" />
             )}
             <TiltImage
-              className={`z-10 col-span-2 ${isEven(i) ? "lg:col-start-1" : "lg:col-start-5"} ${isEven(i) ? "order-0" : "order-2"}`}
+              className={`z-10 col-span-2 ${isEven(i) ? "lg:col-start-1" : "lg:col-start-5"} ${isEven(i) ? "order-0" : "order-2"} -mt-8 z-30`}
               shadow={isEven(i) ? "right" : "left"}
             >
               <Image
@@ -73,7 +73,7 @@ export default async function Home() {
               />
             </TiltImage>
             <div
-              className={`col-span-4 ${isEven(i) ? "text-black-bg" : "text-white"}`}
+              className={`col-span-4 ${isEven(i) ? "text-black-bg" : "text-white"} pt-4 sm:pt-16 lg:pt-[10rem]`}
             >
               <h2
                 className={`${isEven(i) ? "text-black-bg" : "text-white"} ${isEven(i) ? "text-left" : "text-right"} ${isEven(i) ? "border-white-border" : "border-black-decoration"} text-[3.75rem] leading-[2.5rem] mt-8 sm:mt-0 lg:mb-0`}
