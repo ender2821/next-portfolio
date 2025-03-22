@@ -46,7 +46,7 @@ export default function Header() {
   };
 
   return (
-    <header className="w-full bg-black border-b border-black-decoration relative">
+    <header className="w-full bg-black border-b border-black-decoration relative z-30">
       <div className="mx-auto flex items-center">
         {/* Desktop Navigation */}
         <nav className="flex-1 hidden md:block">

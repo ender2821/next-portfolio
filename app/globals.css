@@ -406,4 +406,30 @@ p {
   right: -4px;
 }
 
+@keyframes scaleUpDown {
+  0%, 100% {
+    transform: translateY(-42%) scale(1);
+  }
+  50% {
+    transform: translateY(-42%) scale(1.1);
+  }
+}
+
+@keyframes scaleDownUp {
+  0%, 100% {
+    transform: translateY(-42%) scale(1.1);
+  }
+  50% {
+    transform: translateY(-42%) scale(1);
+  }
+}
+
+.scaling-image-up {
+  animation: scaleUpDown 20s infinite linear;
+}
+
+.scaling-image-down {
+  animation: scaleDownUp 20s infinite linear;
+}
+
 
