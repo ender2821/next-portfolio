@@ -58,7 +58,7 @@ export default async function Home() {
               <div className="sectionMtnLeftBlack absolute left-0 top-0 -translate-y-1/2" />
             )}
             <TiltImage
-              className={`z-10 col-span-2 ${isEven(i) ? "lg:col-start-1" : "lg:col-start-5"} ${isEven(i) ? "order-0" : "order-2"} -mt-8 z-30`}
+              className={`z-10 col-span-2 ${isEven(i) ? "lg:col-start-1" : "lg:col-start-5"} ${isEven(i) ? "order-0" : "order-2"} -mt-8 z-30 row-start-1`}
               shadow={isEven(i) ? "right" : "left"}
             >
               <Image
@@ -73,20 +73,44 @@ export default async function Home() {
               />
             </TiltImage>
             <div
-              className={`col-span-4 ${isEven(i) ? "text-black-bg" : "text-white"} pt-4 sm:pt-16 lg:pt-[10rem]`}
+              className={`${isEven(i) ? "text-black-bg" : "text-white"} pt-4 sm:pt-16 lg:pt-[10rem] lg:col-span-3 z-10 ${isEven(i) ? "lg:pl-8" : "lg:pr-8"} ${isEven(i) ? "lg:col-start-3" : "lg:col-start-2"}`}
             >
               <h2
-                className={`${isEven(i) ? "text-black-bg" : "text-white"} ${isEven(i) ? "text-left" : "text-right"} ${isEven(i) ? "border-white-border" : "border-black-decoration"} text-[3.75rem] leading-[2.5rem] mt-8 sm:mt-0 lg:mb-0`}
+                className={`${isEven(i) ? "text-black-bg" : "text-white"} ${isEven(i) ? "text-left" : "text-right"} ${isEven(i) ? "border-white-border" : "border-black-decoration"} text-[3.75rem] leading-[2.5rem] mt-8 sm:mt-0 lg:mb-8`}
               >
                 {workPage?.name}
               </h2>
-              <PortableText
-                value={
-                  workPage?.workPageLayout?.workLayoutContent
-                    ? workPage?.workPageLayout?.workLayoutContent
-                    : []
-                }
-              />
+              <div className="grid grid-cols-3 gap-4">
+                <PortableText
+                  value={
+                    workPage?.workPageLayout?.workLayoutContent
+                      ? workPage?.workPageLayout?.workLayoutContent
+                      : []
+                  }
+                />
+              </div>
+            </div>
+            <div
+              className={`flex items-end ${isEven(i) ? "lg:col-start-6" : "lg:col-start-1"} row-start-1`}
+            >
+              <div
+                className={`grid grid-cols-2 gap-4 workPageThumbnails relative ${isEven(i) ? "before:bg-white-content-bg" : "before:bg-black-content-bg"} ${isEven(i) ? "before:right-[calc(100%+1rem)]" : "before:left-[calc(100%+1rem)]"}`}
+              >
+                {workPage?.workPageMainGallery?.map((image, i: number) => (
+                  <div
+                    key={i}
+                    className="w-full aspect-square flex items-center overflow-hidden flex-1"
+                  >
+                    <Image
+                      src={image?.imageUrl ?? "/default-image.jpg"}
+                      alt={image?.imageName ?? ""}
+                      width={900}
+                      height={1200}
+                      className="object-cover"
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
           </section>
         );

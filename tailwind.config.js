@@ -27,11 +27,12 @@ module.exports = {
       'gray-light': '#d3dce6',
       'black-bg': '#242B2C',
       'black-decoration': '#3B4647',
+      'black-content-bg': '#1D2324',
       'blue': '#6EC9F2',
       'white-decoration': '#CECECE',
       'white-border': '#D9D9D9',
       'white': '#FFFFFF',
-      
+      'white-content-bg': '#EDEDED',
     },
     text: {
       'blueDark': '#157FB2',

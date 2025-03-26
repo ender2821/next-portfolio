@@ -432,4 +432,13 @@ p {
   animation: scaleDownUp 20s infinite linear;
 }
 
+.workPageThumbnails::before {
+  content: '';
+  width: calc(100vw - (200% - 4rem) );
+  height: 100%;
+  position: absolute;
+  z-index: 0;
+  display: block;
+  pointer-events: none;
+}
 
