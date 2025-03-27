@@ -87,6 +87,19 @@ export default async function Home() {
                       ? workPage?.workPageLayout?.workLayoutContent
                       : []
                   }
+                  components={{
+                    block: {
+                      normal: ({ children }) => {
+                        return (
+                          <p
+                            className={`${isEven(i) ? "" : workPage?.workPageLayout?.workLayoutContent && workPage?.workPageLayout?.workLayoutContent.length < 3 && "first-of-type:col-start-2"} ${isEven(i) ? "" : workPage?.workPageLayout?.workLayoutContent && workPage?.workPageLayout?.workLayoutContent.length === 1 && "first-of-type:col-start-3"}`}
+                          >
+                            {children}
+                          </p>
+                        );
+                      },
+                    },
+                  }}
                 />
               </div>
             </div>
@@ -94,12 +107,12 @@ export default async function Home() {
               className={`flex items-end ${isEven(i) ? "lg:col-start-6" : "lg:col-start-1"} row-start-1`}
             >
               <div
-                className={`grid grid-cols-2 gap-4 workPageThumbnails relative ${isEven(i) ? "before:bg-white-content-bg" : "before:bg-black-content-bg"} ${isEven(i) ? "before:right-[calc(100%+1rem)]" : "before:left-[calc(100%+1rem)]"}`}
+                className={`flex flex-wrap ${isEven(i) ? "" : "flex-row-reverse"} gap-4 workPageThumbnails relative ${isEven(i) ? "before:bg-white-content-bg" : "before:bg-black-content-bg"} ${isEven(i) ? "before:right-[calc(100%+1rem)]" : "before:left-[calc(100%+1rem)]"}`}
               >
                 {workPage?.workPageMainGallery?.map((image, i: number) => (
                   <div
                     key={i}
-                    className="w-full aspect-square flex items-center overflow-hidden flex-1"
+                    className="w-full aspect-square flex items-center overflow-hidden flex-shrink-0 flex-grow-0 flex-[calc(50%-0.5rem)]"
                   >
                     <Image
                       src={image?.imageUrl ?? "/default-image.jpg"}
