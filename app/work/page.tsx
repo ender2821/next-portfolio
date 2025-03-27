@@ -60,6 +60,7 @@ export default async function Home() {
             images={workPage?.workPageMainGallery ?? []}
             i={i}
             _type={"workLayout"}
+            buttonUrl={`/work/${workPage?.slug?.current}`}
           />
         );
       })}

@@ -2,25 +2,29 @@
 import Image from "next/image";
 import { isEven } from "@/helpers";
 import TiltImage from "@/components/TiltImage";
-import { PortableText, PortableTextBlock } from "next-sanity";
-import {
-  ArbitraryTypedObject,
-  PortableTextMarkDefinition,
-  PortableTextSpan,
-} from "@portabletext/types";
+import { PortableText } from "next-sanity";
 import { WorkLayout } from "@/__sanity-generated__/types";
+import SiteButton from "./SiteButton";
 
 interface WorkPageSectionProps extends WorkLayout {
   i: number;
+  buttonUrl: string;
   images: { imageUrl: string | null; imageName: string | null }[];
   mainImage: { imageUrl: string | null; imageName: string | null };
 }
 
 export default function WorkPageSection(props: WorkPageSectionProps) {
-  const { i, workLayoutTitle, workLayoutContent, images, mainImage } = props;
+  const {
+    i,
+    workLayoutTitle,
+    workLayoutContent,
+    images,
+    mainImage,
+    buttonUrl,
+  } = props;
   return (
     <section
-      className={`sm:pb-8 lg:pb-[8rem] lg:px-8 grid grid-cols-6 gap-4 w-full ${isEven(i) ? "bg-[#fff]" : "bg-black-bg"} relative`}
+      className={`sm:pb-8 lg:pb-0 lg:px-8 grid grid-cols-6 gap-4 w-full ${isEven(i) ? "bg-[#fff]" : "bg-black-bg"} relative`}
       key={i}
     >
       {isEven(i) ? (
@@ -90,6 +94,15 @@ export default function WorkPageSection(props: WorkPageSectionProps) {
             </div>
           ))}
         </div>
+      </div>
+      <div className="col-span-6 lg:mt-[3rem] lg:mb-[4rem]">
+        <SiteButton
+          href={buttonUrl}
+          className="mx-auto w-[300px] !block"
+          textHover={isEven(i) ? "dark" : "light"}
+        >
+          Learn More
+        </SiteButton>
       </div>
     </section>
   );
