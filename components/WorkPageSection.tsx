@@ -5,6 +5,7 @@ import TiltImage from "@/components/TiltImage";
 import { PortableText } from "next-sanity";
 import { WorkLayout } from "@/__sanity-generated__/types";
 import SiteButton from "./SiteButton";
+import { useState } from "react";
 
 interface WorkPageSectionProps extends WorkLayout {
   i: number;
@@ -22,6 +23,12 @@ export default function WorkPageSection(props: WorkPageSectionProps) {
     mainImage,
     buttonUrl,
   } = props;
+  const [activeThumbnail, setActiveThumbnail] = useState([
+    0,
+    images[0]?.imageUrl,
+    images[0]?.imageName,
+  ]);
+  console.log(activeThumbnail);
   return (
     <section
       className={`sm:pb-8 lg:pb-0 lg:px-8 grid grid-cols-6 gap-4 w-full ${isEven(i) ? "bg-[#fff]" : "bg-black-bg"} relative`}
@@ -37,8 +44,8 @@ export default function WorkPageSection(props: WorkPageSectionProps) {
         shadow={isEven(i) ? "right" : "left"}
       >
         <Image
-          src={mainImage.imageUrl ?? "/default-image.jpg"}
-          alt={mainImage?.imageName ?? ""}
+          src={String(activeThumbnail[1] ?? "/default-image.jpg")}
+          alt={String(activeThumbnail[2] ?? "")}
           width={900}
           height={1200}
           style={{ objectFit: "contain", width: "100%" }}
@@ -84,13 +91,19 @@ export default function WorkPageSection(props: WorkPageSectionProps) {
               key={j}
               className="w-full aspect-square flex items-center overflow-hidden flex-shrink-0 flex-grow-0 flex-[calc(50%-0.5rem)]"
             >
-              <Image
-                src={image?.imageUrl ?? "/default-image.jpg"}
-                alt={image?.imageName ?? ""}
-                width={900}
-                height={1200}
-                className="object-cover"
-              />
+              <button
+                onClick={() =>
+                  setActiveThumbnail([j, image?.imageUrl, image?.imageName])
+                }
+              >
+                <Image
+                  src={image?.imageUrl ?? "/default-image.jpg"}
+                  alt={image?.imageName ?? ""}
+                  width={900}
+                  height={1200}
+                  className="object-cover"
+                />
+              </button>
             </div>
           ))}
         </div>
