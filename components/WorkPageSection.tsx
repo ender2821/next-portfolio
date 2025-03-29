@@ -114,41 +114,42 @@ export default function WorkPageSection(props: WorkPageSectionProps) {
           <div
             className={`flex flex-wrap ${isEven(i) ? "" : "flex-row-reverse"} w-full gap-4 workPageThumbnails relative ${isEven(i) ? "before:bg-white-content-bg" : "before:bg-black-content-bg"} ${isEven(i) ? "before:right-[calc(100%+1rem)]" : "before:left-[calc(100%+1rem)]"}`}
           >
-            {images?.map((image: any, j: number) => (
-              <div
-                key={j}
-                className={`w-full aspect-square flex items-center flex-shrink-0 flex-grow-0 flex-[calc(50%-0.5rem)] relative ${activeThumbnail?.index !== j && "hover:scale-105 hover:shadow-shadow-image-mobile"} transition duration-200 ease-in-out`}
-              >
-                <button
-                  onClick={() =>
-                    setActiveThumbnail({
-                      index: j,
-                      url: image?.imageUrl,
-                      name: image?.imageName,
-                    })
-                  }
-                  className={`${activeThumbnail?.index === j && "cursor-default pointer-events-none"}`}
+            {images.length > 1 &&
+              images?.map((image: any, j: number) => (
+                <div
+                  key={j}
+                  className={`w-full aspect-square flex items-center flex-shrink-0 flex-grow-0 flex-[calc(50%-0.5rem)] relative ${activeThumbnail?.index !== j && "hover:scale-105 hover:shadow-shadow-image-mobile"} transition duration-200 ease-in-out`}
                 >
-                  {activeThumbnail?.index === j && (
-                    <div
-                      className={`border border-dashed border-blue absolute top-0 left-0 bottom-0 right-0 z-10 before:content-[''] before:absolute before:top-1/2 before:-translate-y-1/2 ${isEven(i) ? "before:-left-[60vw]" : "before:-right-[60vw]"} before:h-[1px] before:w-[60vw] before:border before:border-dashed before:border-t before:border-blue before:z-20`}
-                    >
-                      <span className="topLeftBlueHandle" />
-                      <span className="topRightBlueHandle" />
-                      <span className="bottomLeftBlueHandle" />
-                      <span className="bottomRightBlueHandle" />
-                    </div>
-                  )}
-                  <Image
-                    src={image?.imageUrl ?? "/default-image.jpg"}
-                    alt={image?.imageName ?? ""}
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    fill
-                    className="object-cover"
-                  />
-                </button>
-              </div>
-            ))}
+                  <button
+                    onClick={() =>
+                      setActiveThumbnail({
+                        index: j,
+                        url: image?.imageUrl,
+                        name: image?.imageName,
+                      })
+                    }
+                    className={`${activeThumbnail?.index === j && "cursor-default pointer-events-none"}`}
+                  >
+                    {activeThumbnail?.index === j && (
+                      <div
+                        className={`border border-dashed border-blue absolute top-0 left-0 bottom-0 right-0 z-10 before:content-[''] before:absolute before:top-1/2 before:-translate-y-1/2 ${isEven(i) ? "before:-left-[60vw]" : "before:-right-[60vw]"} before:h-[1px] before:w-[60vw] before:border before:border-dashed before:border-t before:border-blue before:z-20`}
+                      >
+                        <span className="topLeftBlueHandle" />
+                        <span className="topRightBlueHandle" />
+                        <span className="bottomLeftBlueHandle" />
+                        <span className="bottomRightBlueHandle" />
+                      </div>
+                    )}
+                    <Image
+                      src={image?.imageUrl ?? "/default-image.jpg"}
+                      alt={image?.imageName ?? ""}
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      fill
+                      className="object-cover"
+                    />
+                  </button>
+                </div>
+              ))}
           </div>
         </div>
         <div className="col-span-6 lg:mt-[3rem] lg:mb-[4rem]">
