@@ -117,7 +117,7 @@ export default function WorkPageSection(props: WorkPageSectionProps) {
             {images?.map((image: any, j: number) => (
               <div
                 key={j}
-                className="w-full aspect-square flex items-center overflow-hidden flex-shrink-0 flex-grow-0 flex-[calc(50%-0.5rem)] relative"
+                className={`w-full aspect-square flex items-center flex-shrink-0 flex-grow-0 flex-[calc(50%-0.5rem)] relative ${activeThumbnail?.index !== j && "hover:scale-105 hover:shadow-shadow-image-mobile"} transition duration-200 ease-in-out`}
               >
                 <button
                   onClick={() =>
@@ -127,7 +127,18 @@ export default function WorkPageSection(props: WorkPageSectionProps) {
                       name: image?.imageName,
                     })
                   }
+                  className={`${activeThumbnail?.index === j && "cursor-default pointer-events-none"}`}
                 >
+                  {activeThumbnail?.index === j && (
+                    <div
+                      className={`border border-dashed border-blue absolute top-0 left-0 bottom-0 right-0 z-10 before:content-[''] before:absolute before:top-1/2 before:-translate-y-1/2 ${isEven(i) ? "before:-left-[60vw]" : "before:-right-[60vw]"} before:h-[1px] before:w-[60vw] before:border before:border-dashed before:border-t before:border-blue before:z-20`}
+                    >
+                      <span className="topLeftBlueHandle" />
+                      <span className="topRightBlueHandle" />
+                      <span className="bottomLeftBlueHandle" />
+                      <span className="bottomRightBlueHandle" />
+                    </div>
+                  )}
                   <Image
                     src={image?.imageUrl ?? "/default-image.jpg"}
                     alt={image?.imageName ?? ""}
