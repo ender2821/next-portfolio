@@ -1,8 +1,10 @@
 "use client";
 
 import type React from "react";
+import { usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
 
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Drawer from "@mui/material/Drawer";
@@ -40,6 +42,8 @@ export default function Header() {
     () => import("../components/HeaderScreenWidth"),
     { ssr: false }
   );
+  const pathname = usePathname();
+  const router = useRouter();
 
   const toggleDrawer = (open: boolean) => () => {
     setIsOpen(open);
@@ -53,10 +57,21 @@ export default function Header() {
           <ul className="flex">
             {menuItems.map((item) => {
               return (
-                <li key={item.text}>
+                <li
+                  key={item.text}
+                  className={`relative before:content-[''] before:absolute before:top-1/2 ${pathname === item.href && "before:-translate-y-1/2 before:-left-[60vw] before:h-[1px] before:w-[60vw] before:border before:border-dashed before:border-t before:border-blue before:z-20"}`}
+                >
+                  {pathname === item.href && (
+                    <>
+                      <span className="topLeftBlueHandle" />
+                      <span className="topRightBlueHandle" />
+                      <span className="bottomLeftBlueHandle" />
+                      <span className="bottomRightBlueHandle" />
+                    </>
+                  )}
                   <Link
-                    href={item.href}
-                    className="text-white hover:text-gray-300 transition-colors text-sm pt-8 pb-8 block px-4 lg:px-6"
+                    href={item.text === "About" ? "/#about" : item.href}
+                    className={`${pathname === item.href && "border border-dashed border-blue"} text-white hover:text-gray-300 transition-colors text-sm pt-8 pb-8 block px-4 lg:px-6`}
                   >
                     {item.text}
                   </Link>

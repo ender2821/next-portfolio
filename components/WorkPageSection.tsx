@@ -112,7 +112,7 @@ export default function WorkPageSection(props: WorkPageSectionProps) {
           className={`flex items-end ${isEven(i) ? "lg:col-start-6" : "lg:col-start-1"} row-start-1`}
         >
           <div
-            className={`flex flex-wrap ${isEven(i) ? "" : "flex-row-reverse"} w-full gap-4 workPageThumbnails relative ${isEven(i) ? "before:bg-white-content-bg" : "before:bg-black-content-bg"} ${isEven(i) ? "before:right-[calc(100%+1rem)]" : "before:left-[calc(100%+1rem)]"}`}
+            className={`flex flex-wrap ${isEven(i) ? "" : "flex-row-reverse"} w-full gap-4 workPageThumbnails relative opacity ${isEven(i) ? "before:bg-white-content-bg" : "before:bg-black-content-bg"} ${isEven(i) ? "before:right-[calc(100%+1rem)]" : "before:left-[calc(100%+1rem)]"}`}
           >
             {images.length > 1 &&
               images?.map((image: any, j: number) => (
@@ -128,7 +128,8 @@ export default function WorkPageSection(props: WorkPageSectionProps) {
                         name: image?.imageName,
                       })
                     }
-                    className={`${activeThumbnail?.index === j && "cursor-default pointer-events-none"}`}
+                    aria-label={`${image?.imageName} image`}
+                    className={`${activeThumbnail?.index === j && "cursor-default pointer-events-none"} w-full h-full`}
                   >
                     {activeThumbnail?.index === j && (
                       <div
