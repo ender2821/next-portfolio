@@ -52,7 +52,7 @@ export default function WorkPageSection(props: WorkPageSectionProps) {
   return (
     <AnimatePresence>
       <section
-        className={`sm:pb-8 lg:pb-0 lg:px-8 grid grid-cols-6 gap-4 w-full ${isEven(i) ? "bg-[#fff]" : "bg-black-bg"} relative`}
+        className={`sm:pb-0 px-4 md:px-8 lg:pb-0 lg:px-8 grid grid-cols-6 gap-4 w-full ${isEven(i) ? "bg-[#fff]" : "bg-black-bg"} relative`}
         key={i}
       >
         {isEven(i) ? (
@@ -65,7 +65,7 @@ export default function WorkPageSection(props: WorkPageSectionProps) {
             height: imageContainHeight,
           }}
           exit={{ height: 0 }}
-          className={`self-center z-10 col-span-2 ${isEven(i) ? "lg:col-start-1" : "lg:col-start-5"} ${isEven(i) ? "order-0" : "order-2"} -mt-8 z-30 row-start-1`}
+          className={`xl:self-center z-10 sm:col-span-3 lg:col-span-2 ${isEven(i) ? "md:col-start-1" : "md:col-start-4 lg:col-start-5"} ${isEven(i) ? "order-0" : "order-2"} -mt-8 z-30 row-start-1`}
         >
           <TiltImage className={``} shadow={isEven(i) ? "right" : "left"}>
             <Image
@@ -80,7 +80,7 @@ export default function WorkPageSection(props: WorkPageSectionProps) {
         </motion.div>
 
         <div
-          className={`${isEven(i) ? "text-black-bg" : "text-white"} pt-4 sm:pt-16 lg:pt-[10rem] lg:col-span-3 z-10 ${isEven(i) ? "lg:pl-8" : "lg:pr-8"} ${isEven(i) ? "lg:col-start-3" : "lg:col-start-2"}`}
+          className={`${isEven(i) ? "text-black-bg" : "text-white"} pt-4 sm:pt-16 xl:pt-[10rem] sm:col-span-3 z-10 ${isEven(i) ? "lg:pl-8" : "lg:pr-8"} ${isEven(i) ? "lg:col-start-3" : "lg:col-start-2"}`}
         >
           {workLayoutTitle ? (
             <h2
@@ -89,7 +89,7 @@ export default function WorkPageSection(props: WorkPageSectionProps) {
               {workLayoutTitle}
             </h2>
           ) : null}
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid lg:grid-cols-2 xl:grid-cols-3 gap-4">
             <PortableText
               value={workLayoutContent ? workLayoutContent : []}
               components={{
@@ -97,7 +97,7 @@ export default function WorkPageSection(props: WorkPageSectionProps) {
                   normal: ({ children }) => {
                     return (
                       <p
-                        className={`${isEven(i) ? "" : workLayoutContent && workLayoutContent.length < 3 && "first-of-type:col-start-2"} ${isEven(i) ? "" : workLayoutContent && workLayoutContent.length === 1 && "first-of-type:col-start-3"}`}
+                        className={`${isEven(i) ? "" : workLayoutContent && workLayoutContent.length < 3 && "first-of-type:col-start-2"} ${isEven(i) ? "" : workLayoutContent && workLayoutContent.length === 1 && "first-of-type:col-start-3"} last-of-type:mb-0`}
                       >
                         {children}
                       </p>
@@ -109,10 +109,10 @@ export default function WorkPageSection(props: WorkPageSectionProps) {
           </div>
         </div>
         <div
-          className={`flex items-end ${isEven(i) ? "lg:col-start-6" : "lg:col-start-1"} row-start-1`}
+          className={`hidden lg:flex items-end ${isEven(i) ? "lg:col-start-6" : "lg:col-start-1"} row-start-1`}
         >
           <div
-            className={`flex flex-wrap ${isEven(i) ? "" : "flex-row-reverse"} w-full gap-4 workPageThumbnails relative opacity ${isEven(i) ? "before:bg-white-content-bg" : "before:bg-black-content-bg"} ${isEven(i) ? "before:right-[calc(100%+1rem)]" : "before:left-[calc(100%+1rem)]"}`}
+            className={`bg-opacity-0 flex flex-wrap ${isEven(i) ? "" : "flex-row-reverse"} w-full gap-4 workPageThumbnails relative opacity ${isEven(i) ? "xl:before:bg-white-content-bg" : "xl:before:bg-black-content-bg"} ${isEven(i) ? "before:right-[calc(100%+1rem)]" : "before:left-[calc(100%+1rem)]"}`}
           >
             {images.length > 1 &&
               images?.map((image: any, j: number) => (
@@ -133,7 +133,7 @@ export default function WorkPageSection(props: WorkPageSectionProps) {
                   >
                     {activeThumbnail?.index === j && (
                       <div
-                        className={`border border-dashed border-blue absolute top-0 left-0 bottom-0 right-0 z-10 before:content-[''] before:absolute before:top-1/2 before:-translate-y-1/2 ${isEven(i) ? "before:-left-[60vw]" : "before:-right-[60vw]"} before:h-[1px] before:w-[60vw] before:border before:border-dashed before:border-t before:border-blue before:z-20`}
+                        className={`border border-dashed border-blue absolute top-0 left-0 bottom-0 right-0 z-10 before:content-[''] before:absolute before:top-1/2 before:-translate-y-1/2 ${isEven(i) ? "xl:before:-left-[60vw]" : "xl:before:-right-[60vw]"} xl:before:h-[1px] xl:before:w-[60vw] xl:before:border xl:before:border-dashed xl:before:border-t xl:before:border-blue before:z-20`}
                       >
                         <span className="topLeftBlueHandle" />
                         <span className="topRightBlueHandle" />
@@ -153,7 +153,7 @@ export default function WorkPageSection(props: WorkPageSectionProps) {
               ))}
           </div>
         </div>
-        <div className="col-span-6 lg:mt-[3rem] lg:mb-[4rem]">
+        <div className="py-8 sm:pt-16 sm:pb-28 lg:p-0 col-span-6 lg:mt-[3rem] lg:mb-[4rem]">
           <SiteButton
             href={buttonUrl}
             className="mx-auto w-[300px] !block"
