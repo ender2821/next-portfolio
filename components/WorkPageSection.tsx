@@ -65,7 +65,7 @@ export default function WorkPageSection(props: WorkPageSectionProps) {
             height: imageContainHeight,
           }}
           exit={{ height: 0 }}
-          className={` z-10 col-span-2 ${isEven(i) ? "lg:col-start-1" : "lg:col-start-5"} ${isEven(i) ? "order-0" : "order-2"} -mt-8 z-30 row-start-1`}
+          className={`self-center z-10 col-span-2 ${isEven(i) ? "lg:col-start-1" : "lg:col-start-5"} ${isEven(i) ? "order-0" : "order-2"} -mt-8 z-30 row-start-1`}
         >
           <TiltImage className={``} shadow={isEven(i) ? "right" : "left"}>
             <Image
