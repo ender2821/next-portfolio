@@ -8,29 +8,22 @@ import SiteButton from "./SiteButton";
 import { forwardRef, useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import useWindowSize from "@/hooks/useWindowResize";
+import { useMediaQuery, useTheme } from "@mui/material";
+import WorkPageThumbnail from "./WorkPageThumbnail";
 
 interface WorkPageSectionProps extends WorkLayout {
   i: number;
   buttonUrl: string;
   images: { imageUrl: string | null; imageName: string | null }[];
-  mainImage: { imageUrl: string | null; imageName: string | null };
 }
 
-// type ActiveThumbnail = {
-//   index: number;
-//   url: string | null;
-//   name: string | null;
-// }
-
 export default function WorkPageSection(props: WorkPageSectionProps) {
-  const {
-    i,
-    workLayoutTitle,
-    workLayoutContent,
-    images,
-    mainImage,
-    buttonUrl,
-  } = props;
+  const { i, workLayoutTitle, workLayoutContent, images, buttonUrl } = props;
+  const theme = useTheme();
+  const sm = useMediaQuery(theme.breakpoints.up("sm"));
+  const lg = useMediaQuery(theme.breakpoints.up("lg"));
+  const lgDown = useMediaQuery(theme.breakpoints.down("lg"));
+
   const [activeThumbnail, setActiveThumbnail] = useState({
     index: 0,
     url: images[0]?.imageUrl,
@@ -52,7 +45,7 @@ export default function WorkPageSection(props: WorkPageSectionProps) {
   return (
     <AnimatePresence>
       <section
-        className={`sm:pb-0 px-4 md:px-8 lg:pb-0 lg:px-8 grid grid-cols-6 gap-4 w-full ${isEven(i) ? "bg-[#fff]" : "bg-black-bg"} relative`}
+        className={`${isEven(i) ? "bg-[#fff]" : "bg-black-bg"} sm:pb-0 px-4 md:px-8 lg:pb-0 lg:px-8 grid grid-cols-6 gap-4 w-full relative`}
         key={i}
       >
         {isEven(i) ? (
@@ -62,10 +55,10 @@ export default function WorkPageSection(props: WorkPageSectionProps) {
         )}
         <motion.div
           animate={{
-            height: imageContainHeight,
+            height: lg ? imageContainHeight : "auto",
           }}
           exit={{ height: 0 }}
-          className={`xl:self-center z-10 sm:col-span-3 lg:col-span-2 ${isEven(i) ? "md:col-start-1" : "md:col-start-4 lg:col-start-5"} ${isEven(i) ? "order-0" : "order-2"} -mt-8 z-30 row-start-1`}
+          className={`${isEven(i) ? "sm:col-start-1 order-0" : "sm:col-start-4 lg:col-start-5 order-2"} pt-16 sm:pt-0 col-span-6 xl:self-center sm:col-span-3 lg:col-span-2 sm:-mt-8 z-30 row-start-1`}
         >
           <TiltImage className={``} shadow={isEven(i) ? "right" : "left"}>
             <Image
@@ -77,14 +70,32 @@ export default function WorkPageSection(props: WorkPageSectionProps) {
               ref={mainImageRef}
             />
           </TiltImage>
+          {lgDown && (
+            <div className="grid grid-cols-4 gap-4 mt-4">
+              {images.length > 1 &&
+                images?.map((image: any, j: number) => (
+                  <WorkPageThumbnail
+                    activeThumbnail={{
+                      ...activeThumbnail,
+                      url: activeThumbnail.url ?? "",
+                      name: activeThumbnail.name ?? "",
+                    }}
+                    image={image}
+                    index={j}
+                    evenIndex={i}
+                    setActiveThumbnail={setActiveThumbnail}
+                  />
+                ))}
+            </div>
+          )}
         </motion.div>
 
         <div
-          className={`${isEven(i) ? "text-black-bg" : "text-white"} pt-4 sm:pt-16 xl:pt-[10rem] sm:col-span-3 z-10 ${isEven(i) ? "lg:pl-8" : "lg:pr-8"} ${isEven(i) ? "lg:col-start-3" : "lg:col-start-2"}`}
+          className={`${isEven(i) ? "text-black-bg lg:pl-8 lg:col-start-3" : "text-white lg:pr-8 lg:col-start-2 sm:pr-4"} col-span-6 sm:pl-4 sm:pt-16 xl:pt-[10rem] sm:col-span-3 z-10`}
         >
           {workLayoutTitle ? (
             <h2
-              className={`${isEven(i) ? "text-black-bg" : "text-white"} ${isEven(i) ? "text-left" : "text-right"} ${isEven(i) ? "border-white-border" : "border-black-decoration"} text-[3.75rem] leading-[2.5rem] mt-8 sm:mt-0 lg:mb-8`}
+              className={`${isEven(i) ? "text-black-bg text-left before:bg-white-border after:bg-white-border" : "text-white lg:text-right before:bg-black-decoration after:bg-black-decoration"} text-[3rem] leading-[2.5rem] lg:text-[3.75rem] lg:leading-[3rem] mt-4 sm:mt-0 lg:mb-8`}
             >
               {workLayoutTitle}
             </h2>
@@ -97,7 +108,7 @@ export default function WorkPageSection(props: WorkPageSectionProps) {
                   normal: ({ children }) => {
                     return (
                       <p
-                        className={`${isEven(i) ? "" : workLayoutContent && workLayoutContent.length < 3 && "first-of-type:col-start-2"} ${isEven(i) ? "" : workLayoutContent && workLayoutContent.length === 1 && "first-of-type:col-start-3"} last-of-type:mb-0`}
+                        className={`${isEven(i) ? "" : workLayoutContent && workLayoutContent.length < 3 && "xl:first-of-type:col-start-2"} ${isEven(i) ? "" : workLayoutContent && workLayoutContent.length === 1 && "xl:first-of-type:col-start-3"} last-of-type:mb-0`}
                       >
                         {children}
                       </p>
@@ -112,44 +123,22 @@ export default function WorkPageSection(props: WorkPageSectionProps) {
           className={`hidden lg:flex items-end ${isEven(i) ? "lg:col-start-6" : "lg:col-start-1"} row-start-1`}
         >
           <div
-            className={`bg-opacity-0 flex flex-wrap ${isEven(i) ? "" : "flex-row-reverse"} w-full gap-4 workPageThumbnails relative opacity ${isEven(i) ? "xl:before:bg-white-content-bg" : "xl:before:bg-black-content-bg"} ${isEven(i) ? "before:right-[calc(100%+1rem)]" : "before:left-[calc(100%+1rem)]"}`}
+            className={`${isEven(i) ? "xl:before:bg-white-content-bg before:right-[calc(100%+1rem)]" : "flex-row-reverse xl:before:bg-black-content-bg before:left-[calc(100%+1rem)]"} bg-opacity-0 flex flex-wrap w-full gap-4 workPageThumbnails relative opacity`}
           >
-            {images.length > 1 &&
+            {lg &&
+              images.length > 1 &&
               images?.map((image: any, j: number) => (
-                <div
-                  key={j}
-                  className={`w-full aspect-square flex items-center flex-shrink-0 flex-grow-0 flex-[calc(50%-0.5rem)] relative ${activeThumbnail?.index !== j && "hover:scale-105 hover:shadow-shadow-image-mobile"} transition duration-200 ease-in-out`}
-                >
-                  <button
-                    onClick={() =>
-                      setActiveThumbnail({
-                        index: j,
-                        url: image?.imageUrl,
-                        name: image?.imageName,
-                      })
-                    }
-                    aria-label={`${image?.imageName} image`}
-                    className={`${activeThumbnail?.index === j && "cursor-default pointer-events-none"} w-full h-full`}
-                  >
-                    {activeThumbnail?.index === j && (
-                      <div
-                        className={`border border-dashed border-blue absolute top-0 left-0 bottom-0 right-0 z-10 before:content-[''] before:absolute before:top-1/2 before:-translate-y-1/2 ${isEven(i) ? "xl:before:-left-[60vw]" : "xl:before:-right-[60vw]"} xl:before:h-[1px] xl:before:w-[60vw] xl:before:border xl:before:border-dashed xl:before:border-t xl:before:border-blue before:z-20`}
-                      >
-                        <span className="topLeftBlueHandle" />
-                        <span className="topRightBlueHandle" />
-                        <span className="bottomLeftBlueHandle" />
-                        <span className="bottomRightBlueHandle" />
-                      </div>
-                    )}
-                    <Image
-                      src={image?.imageUrl ?? "/default-image.jpg"}
-                      alt={image?.imageName ?? ""}
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      fill
-                      className="object-cover"
-                    />
-                  </button>
-                </div>
+                <WorkPageThumbnail
+                  activeThumbnail={{
+                    ...activeThumbnail,
+                    url: activeThumbnail.url ?? "",
+                    name: activeThumbnail.name ?? "",
+                  }}
+                  image={image}
+                  index={j}
+                  evenIndex={i}
+                  setActiveThumbnail={setActiveThumbnail}
+                />
               ))}
           </div>
         </div>

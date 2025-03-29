@@ -21,7 +21,7 @@ export default function TiltImage({
         perspective={800}
         glareEnable={true}
         glareMaxOpacity={0.15}
-        scale={1.01}
+        scale={1}
         gyroscope={true}
         transitionSpeed={2000}
       >
