@@ -65,7 +65,7 @@ export default async function Home() {
       </section>
       <section className="px-4 py-4 pt-8 sm:pt-16 sm:pb-16 lg:px-8 lg:pt-[10rem] lg:pb-[10rem] relative grid grid-cols-6 gap-x-4 w-full">
         <div className="sectionMtnRightBlack absolute right-0 top-0 -translate-y-1/2" />
-        <h2 className="lg:mb-8 text-white col-span-6 xl:grid-col-span-5 xl:col-start-2 border-black-decoration">
+        <h2 className="lg:mb-8 text-white col-span-6 xl:grid-col-span-5 xl:col-start-2 before:bg-black-decoration after:bg-black-decoration">
           Services
         </h2>
         {home?.serviceCTAButtonTxt ? (
