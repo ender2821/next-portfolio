@@ -5,19 +5,21 @@ import TiltImage from "@/components/TiltImage";
 import { PortableText } from "next-sanity";
 import { WorkLayout } from "@/__sanity-generated__/types";
 import SiteButton from "./SiteButton";
-import { forwardRef, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import useWindowSize from "@/hooks/useWindowResize";
 import { useMediaQuery, useTheme } from "@mui/material";
-import WorkPageThumbnail from "./WorkPageThumbnail";
+import WorkLandingPageThumbnail from "./WorkLandingPageThumbnail";
 
-interface WorkPageSectionProps extends WorkLayout {
+interface WorkLandingPageSectionProps extends WorkLayout {
   i: number;
   buttonUrl: string;
   images: { imageUrl: string | null; imageName: string | null }[];
 }
 
-export default function WorkPageSection(props: WorkPageSectionProps) {
+export default function WorkLandingPageSection(
+  props: WorkLandingPageSectionProps
+) {
   const { i, workLayoutTitle, workLayoutContent, images, buttonUrl } = props;
   const theme = useTheme();
   const sm = useMediaQuery(theme.breakpoints.up("sm"));
@@ -74,7 +76,7 @@ export default function WorkPageSection(props: WorkPageSectionProps) {
             <div className="grid grid-cols-4 gap-4 mt-4">
               {images.length > 1 &&
                 images?.map((image: any, j: number) => (
-                  <WorkPageThumbnail
+                  <WorkLandingPageThumbnail
                     activeThumbnail={{
                       ...activeThumbnail,
                       url: activeThumbnail.url ?? "",
@@ -84,6 +86,7 @@ export default function WorkPageSection(props: WorkPageSectionProps) {
                     index={j}
                     evenIndex={i}
                     setActiveThumbnail={setActiveThumbnail}
+                    key={j}
                   />
                 ))}
             </div>
@@ -128,7 +131,7 @@ export default function WorkPageSection(props: WorkPageSectionProps) {
             {lg &&
               images.length > 1 &&
               images?.map((image: any, j: number) => (
-                <WorkPageThumbnail
+                <WorkLandingPageThumbnail
                   activeThumbnail={{
                     ...activeThumbnail,
                     url: activeThumbnail.url ?? "",
@@ -138,6 +141,7 @@ export default function WorkPageSection(props: WorkPageSectionProps) {
                   index={j}
                   evenIndex={i}
                   setActiveThumbnail={setActiveThumbnail}
+                  key={j}
                 />
               ))}
           </div>

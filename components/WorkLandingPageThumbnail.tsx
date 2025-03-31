@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { isEven } from "@/helpers";
 
-interface WorkPageThumbnailProps {
+interface WorkLandingPageThumbnailProps {
   activeThumbnail: { index: number; url: string; name: string } | null;
   image: { imageUrl: string; imageName: string };
   index: number;
@@ -13,12 +13,13 @@ interface WorkPageThumbnailProps {
   }) => void;
 }
 
-export default function WorkPageThumbnail(props: WorkPageThumbnailProps) {
+export default function WorkLandingPageThumbnail(
+  props: WorkLandingPageThumbnailProps
+) {
   const { activeThumbnail, setActiveThumbnail, image, index, evenIndex } =
     props;
   return (
     <div
-      key={index}
       className={`${activeThumbnail?.index !== index ? "hover:scale-105 hover:shadow-shadow-image-mobile" : ""} w-full aspect-square flex items-center flex-shrink-0 flex-grow-0 flex-[calc(50%-0.5rem)] relative transition duration-200 ease-in-out`}
     >
       <button

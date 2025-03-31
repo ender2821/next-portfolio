@@ -457,12 +457,14 @@ p {
   }
 }
 
-.scaling-image-up {
-  animation: scaleUpDown 20s infinite linear;
-}
+@media screen and (min-width: 600px) {
+  .scaling-image-up {
+    animation: scaleUpDown 20s infinite linear;
+  }
 
-.scaling-image-down {
-  animation: scaleDownUp 20s infinite linear;
+  .scaling-image-down {
+    animation: scaleDownUp 20s infinite linear;
+  }
 }
 
 .workPageThumbnails::before {

@@ -26,6 +26,12 @@ export const workPage = defineType({
       },
     }),
     defineField({
+      name: "secondaryTitle",
+      title: "Secondary Title",
+      type: "text",
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
       name: "workPageMainGallery",
       title: "Main Gallery",
       type: "array",
