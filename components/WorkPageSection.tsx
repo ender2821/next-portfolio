@@ -15,18 +15,18 @@ export default function WorkPageSection(props: WorkPageSectionProps) {
   const { i, workLayoutTitle, workLayoutContent, workLayoutSubtitle, images } =
     props;
   const theme = useTheme();
-  const lg = useMediaQuery(theme.breakpoints.up("lg"));
+  const sm = useMediaQuery(theme.breakpoints.up("sm"));
 
   return (
     <section
-      className={`bg-[#fff] px-4 md:px-8 lg:px-8 grid grid-cols-6 gap-4 w-full relative sm:pb-16`}
+      className={`bg-[#fff] px-4 md:px-8 lg:px-8 grid grid-cols-6 gap-4 w-full relative pb-8 sm:pb-16`}
     >
-      {i === 0 && (
+      {sm && i === 0 && (
         <div className="sectionMtnRightWhite absolute right-0 top-0 -translate-y-1/2 z-30" />
       )}
       {i !== 0 && workLayoutTitle ? (
         <h2
-          className={`${isEven(i) ? "text-right" : "text-left"} text-[3rem] text-black-bg leading-[2.5rem] lg:text-[3.75rem] lg:leading-[3rem] mt-4 sm:mt-0 lg:mb-4 col-span-6 xl:col-span-4 xl:col-start-2`}
+          className={`${isEven(i) ? "text-right" : "text-left"} text-[3rem] text-black-bg leading-[2.5rem] lg:text-[3.75rem] lg:leading-[3rem] mt-8 mb-0 sm:mt-0 sm:mb-4 lg:mb-4 col-span-6 xl:col-span-4 xl:col-start-2`}
         >
           {workLayoutTitle}
         </h2>
@@ -38,7 +38,7 @@ export default function WorkPageSection(props: WorkPageSectionProps) {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-2 gap-4 text-black-bg">
           {i === 0 && workLayoutTitle ? (
             <h2
-              className={`${isEven(i) ? "text-right" : "text-left"} ${i === 0 && "!text-left"} text-[3rem] text-black-bg leading-[2.5rem] lg:text-[3.75rem] lg:leading-[3rem] mt-4 lg:mb-4 sm:mt-16 lg:mt-[10rem] col-span-1 md:col-span-2 xl:col-span-2`}
+              className={`${isEven(i) ? "text-right" : "text-left"} ${i === 0 && "!text-left"} text-[3rem] text-black-bg leading-[2.5rem] lg:text-[3.75rem] lg:leading-[3rem] mt-4 mb-0 sm:mb-4 sm:mt-16 lg:mt-[10rem] col-span-1 md:col-span-2 xl:col-span-2`}
             >
               {workLayoutTitle}
             </h2>
@@ -69,7 +69,7 @@ export default function WorkPageSection(props: WorkPageSectionProps) {
         </div>
       </div>
       <div
-        className={`${isEven(i) ? "sm:col-start-1 xl:col-start-2" : "sm:col-start-4 xl:col-start-4"} ${i === 0 ? "!row-start-1 sm:-mt-8 z-30" : ""} ${i === 0 ? "flex-col items-start" : "md:items-end"} row-start-3 sm:row-start-2 flex flex-wrap flex-row-reverse col-span-6 sm:col-span-3 xl:col-span-2 gap-4`}
+        className={`${isEven(i) ? "sm:col-start-1 xl:col-start-2" : "sm:col-start-4 xl:col-start-4"} ${i === 0 ? "!row-start-1 -mt-8 z-30" : ""} ${i === 0 ? "flex-col items-start" : "md:items-end"} row-start-3 sm:row-start-2 flex flex-wrap flex-row-reverse col-span-6 sm:col-span-3 xl:col-span-2 gap-4`}
       >
         {images?.map((image: any, j: number) => (
           <div
