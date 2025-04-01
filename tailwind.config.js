@@ -28,6 +28,7 @@ module.exports = {
       'black-bg': '#242B2C',
       'black-decoration': '#3B4647',
       'black-content-bg': '#1D2324',
+      'secondary-title': '#838383',
       'blue': '#6EC9F2',
       'white-decoration': '#CECECE',
       'white-border': '#D9D9D9',
