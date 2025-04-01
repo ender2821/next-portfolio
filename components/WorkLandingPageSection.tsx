@@ -94,7 +94,7 @@ export default function WorkLandingPageSection(
         </motion.div>
 
         <div
-          className={`${isEven(i) ? "text-black-bg lg:pl-8 lg:col-start-3" : "text-white lg:pr-8 lg:col-start-2 sm:pr-4"} col-span-6 sm:pl-4 sm:pt-16 xl:pt-[10rem] sm:col-span-3 z-10`}
+          className={`${isEven(i) ? "text-black-bg lg:pl-8 lg:col-start-3" : "text-white lg:pr-8 lg:col-start-2 sm:pr-4"} col-span-6 md:pl-4 sm:pt-16 xl:pt-[10rem] sm:col-span-3 z-10`}
         >
           {workLayoutTitle ? (
             <h2
