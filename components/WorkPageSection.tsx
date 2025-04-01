@@ -73,11 +73,11 @@ export default function WorkPageSection(props: WorkPageSectionProps) {
       >
         {images?.map((image: any, j: number) => (
           <div
+            key={j}
             className={`${images.length > 1 && "flex-[calc(50%-0.5rem)] flex-shrink-0 flex-grow-0 "} relative`}
           >
             {i === 0 ? (
               <TiltImage className={"z-10"} shadow={"right"}>
-                {" "}
                 <Image
                   src={image.imageUrl ?? "/default-image.jpg"}
                   alt={image.imageName ?? "default image description"}
@@ -99,6 +99,22 @@ export default function WorkPageSection(props: WorkPageSectionProps) {
             )}
           </div>
         ))}
+      </div>
+      <div
+        className={`${isEven(i) ? "lg:col-start-1" : "lg:col-start-6"} ${i === 0 ? "md:mt-8 row-start-1" : "row-start-2"} flex flex-wrap items-end`}
+      >
+        <div className="w-full">
+          <div>
+            {images?.map((image: any, j: number) => (
+              <span
+                key={j}
+                className="text-white-decoration break-words mb-4 block text-xs last-of-type:mb-0"
+              >
+                {image?.imageUrl}
+              </span>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
