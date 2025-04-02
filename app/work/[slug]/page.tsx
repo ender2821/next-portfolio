@@ -3,6 +3,7 @@ import PageBanner from "@/components/PageBanner";
 import WorkPageSection from "@/components/WorkPageSection";
 import { WORK_PAGE_QUERY } from "@/queries/workQueries";
 import { sanityFetch } from "@/sanity/lib/live";
+import SecondaryCallToAction from "@/components/SecondaryCallToAction";
 
 export default async function WorkPage({
   params,
@@ -36,6 +37,7 @@ export default async function WorkPage({
           />
         );
       })}
+      <SecondaryCallToAction />
     </main>
   );
 }
