@@ -22,7 +22,6 @@ export default function WorkLandingPageSection(
 ) {
   const { i, workLayoutTitle, workLayoutContent, images, buttonUrl } = props;
   const theme = useTheme();
-  const sm = useMediaQuery(theme.breakpoints.up("sm"));
   const lg = useMediaQuery(theme.breakpoints.up("lg"));
   const lgDown = useMediaQuery(theme.breakpoints.down("lg"));
 

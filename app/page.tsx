@@ -101,8 +101,11 @@ export default async function Home() {
               shadow={"right"}
             >
               <Image
-                src={home?.aboutImage?.imageUrl ?? "/default-image.jpg"}
-                alt={home?.aboutImage?.imageName ?? "default image description"}
+                src={home?.aboutImage?.aboutImageUrl ?? "/default-image.jpg"}
+                alt={
+                  home?.aboutImage?.aboutImageName ??
+                  "default image description"
+                }
                 width={900}
                 height={1200}
                 style={{ objectFit: "contain", width: "100%" }}

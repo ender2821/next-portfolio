@@ -25,8 +25,8 @@ export const HOME_QUERY = defineQuery(`
       serviceCategoryDescription
     },
     aboutImage->{
-      "imageUrl": image.asset->url,
-      "imageName": name,
+      "aboutImageUrl": image.asset->url,
+      "aboutImageName": name,
     },
     aboutSubtitle,
     aboutContent,

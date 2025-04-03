@@ -23,6 +23,7 @@ export default async function WorkPage({
         subtitle={workPage?.secondaryTitle ?? ""}
         imageUrl={workPage?.workPageMainGallery?.imageUrl ?? ""}
         imageName={workPage?.workPageMainGallery?.imageName ?? ""}
+        backButton={true}
       />
       {workPage?.workPageLayout?.map((section, i) => {
         return (

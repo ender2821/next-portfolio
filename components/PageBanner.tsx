@@ -1,15 +1,21 @@
+"use client";
+
 import Image from "next/image";
 import { raleway } from "../app/fonts";
+import { ChevronLeft } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 interface PageBannerProps {
   title: string;
   subtitle: string;
   imageUrl: string;
   imageName: string;
+  backButton?: boolean;
 }
 
 export default function PageBanner(props: PageBannerProps) {
-  const { title, subtitle, imageUrl, imageName } = props;
+  const { title, subtitle, imageUrl, imageName, backButton } = props;
+  const router = useRouter();
   return (
     <section className="h-[300px] lg:h-[400px] overflow-hidden w-full relative background">
       <div className="h-[300px] lg:h-[400px] w-full bg-black-bg opacity-80 z-20 absolute top-0 left-0"></div>
@@ -48,6 +54,14 @@ export default function PageBanner(props: PageBannerProps) {
         <p className="z-30 relative text-[1.2rem] lg:text-[1.5rem] lg:leading-[2rem] pl-4 md:pl-8 pt-4 lg:pt-8">
           {subtitle}
         </p>
+      )}
+      {backButton && (
+        <button
+          className="iconButton z-20 relative ml-4 md:ml-8"
+          onClick={() => router.back()}
+        >
+          <ChevronLeft />
+        </button>
       )}
     </section>
   );
