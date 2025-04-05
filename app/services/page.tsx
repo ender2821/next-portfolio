@@ -25,6 +25,7 @@ export default async function Services() {
       {data?.servicesServiceList?.map((service, i) => (
         <ServicesSection
           key={i}
+          i={i}
           _id={""}
           _type={"serviceCategory"}
           _createdAt={""}
