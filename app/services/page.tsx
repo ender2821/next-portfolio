@@ -36,7 +36,13 @@ export default async function Services() {
             service?.serviceCategoryImage ?? { imageUrl: "", imageName: "" }
           }
           id={service?.serviceCatergoryId?.current ?? ""}
-          categories={service?.serviceCategories ?? []}
+          categories={
+            service?.serviceCategories?.map((category) => ({
+              ...category,
+              serviceCatergoryListTitle:
+                category.serviceCatergoryListTitle ?? "",
+            })) ?? []
+          }
         />
       ))}
       <SecondaryCallToAction />

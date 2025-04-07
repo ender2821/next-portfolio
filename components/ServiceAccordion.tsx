@@ -3,16 +3,23 @@
 import type React from "react";
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
-import { ServiceCategory } from "@/__sanity-generated__/types";
-import { PortableText } from "next-sanity";
 import { raleway } from "../app/fonts";
 
 interface AccordionItemProps {
   title: string;
+  tags: string[] | null;
   children: React.ReactNode;
 }
 
-const AccordionItem = ({ title, children }: AccordionItemProps) => {
+type ServiceCategoryType = {
+  items: {
+    serviceCatergoryListTitle: string;
+    serviceCatergoryListTags: string[] | null;
+    serviceCatergoryListDescriptions: string[] | null;
+  }[];
+};
+
+const AccordionItem = ({ title, children, tags }: AccordionItemProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -24,6 +31,15 @@ const AccordionItem = ({ title, children }: AccordionItemProps) => {
         aria-expanded={isOpen}
       >
         <span className="text-[1.875rem]">{title}</span>
+        {tags && tags.length > 0 && (
+          <ul className="flex gap-2 text-sm font-normal text-blue">
+            {tags.map((tag, index) => (
+              <li key={index} className="list-disc list-inside">
+                {tag}
+              </li>
+            ))}
+          </ul>
+        )}
         <ChevronDown
           className={`${isOpen && "rotate-180"} h-5 w-5 text-blue transition-transform duration-200`}
         />
@@ -37,16 +53,25 @@ const AccordionItem = ({ title, children }: AccordionItemProps) => {
   );
 };
 
-export default function ServiceAccordion({ items }) {
+export default function ServiceAccordion({ items }: ServiceCategoryType) {
   return (
     <div>
-      {items.map((item: string, index: number) => (
+      {items.map((item, i) => (
         <AccordionItem
-          key={index}
-          title={item.serviceCatergoryTitle ? item.serviceCatergoryTitle : ""}
+          key={i}
+          title={
+            item.serviceCatergoryListTitle ? item.serviceCatergoryListTitle : ""
+          }
+          tags={item.serviceCatergoryListTags}
         >
-          {item.serviceCategoryDescription ? (
-            <li>{item.serviceCategoryDescription}</li>
+          {item.serviceCatergoryListDescriptions ? (
+            <ul>
+              {item.serviceCatergoryListDescriptions.map((desc, j) => (
+                <li key={j} className="text-black-bg">
+                  {desc}
+                </li>
+              ))}
+            </ul>
           ) : (
             []
           )}
