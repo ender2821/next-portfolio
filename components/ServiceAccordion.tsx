@@ -23,25 +23,28 @@ const AccordionItem = ({ title, children, tags }: AccordionItemProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="border-b border-black-decoration last:border-0">
+    <div className="border-b-white-decoration border-b">
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className={`${raleway.className} uppercase text-black-decoration font-bold  flex w-full items-center justify-between py-4 pr-4 text-left transition-all touch-manipulation`}
+        className={`text-black-decoration font-bold flex w-full items-center py-2 pr-4 text-left transition-all touch-manipulation relative`}
         aria-expanded={isOpen}
       >
-        <span className="text-[1.875rem]">{title}</span>
+        <span className=" lg:text-[1.5rem] normal-case">{title}</span>
         {tags && tags.length > 0 && (
-          <ul className="flex gap-2 text-sm font-normal text-blue">
+          <ul className="flex gap-4 text-sm font-normal ml-4">
             {tags.map((tag, index) => (
-              <li key={index} className="list-disc list-inside">
+              <li
+                key={index}
+                className="rounded-xl text-black-bg border-blue border px-4 font-normal "
+              >
                 {tag}
               </li>
             ))}
           </ul>
         )}
         <ChevronDown
-          className={`${isOpen && "rotate-180"} h-5 w-5 text-blue transition-transform duration-200`}
+          className={`${isOpen && "rotate-180"} h-5 w-5 text-black-bg transition-transform duration-200 absolute -left-8 top-4`}
         />
       </button>
       <div
