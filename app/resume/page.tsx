@@ -5,13 +5,13 @@ import { raleway } from "../fonts";
 
 export default function Home() {
   return (
-    <main>
-      <section className="container mx-auto grid grid-cols-4 gap-4 gap-x-10 print:gap-x-5 print:max-w-none m-8 px-4 lg:px-8 print:px-8 print:text-sm">
+    <main className="bg-white text-black-bg print:bg-white print:text-black">
+      <section className="container mx-auto grid grid-cols-4 gap-4 gap-x-10 print:gap-x-5 print:max-w-none p-8 px-4 lg:px-8 print:px-8 print:text-sm">
         <div className="col-span-4">
           <div className="flex gap-4">
             <div className="block print:hidden">
               <Image
-                src="assets/logo.svg"
+                src="joshJensenCreativeLogo.svg"
                 width="100"
                 height="180"
                 alt="Josh Jensen Creative Logo"
@@ -19,7 +19,7 @@ export default function Home() {
             </div>
             <div className="hidden print:block">
               <Image
-                src="assets/logo.svg"
+                src="joshJensenCreativeLogo.svg"
                 width="55"
                 height="100"
                 alt="Josh Jensen Creative Logo"
@@ -41,7 +41,7 @@ export default function Home() {
             </div>
           </div>
           <h2
-            className={`${raleway.className} text-lg font-bold my-2 print:text-sm`}
+            className={`${raleway.className} text-lg font-bold my-2 print:text-sm before:hidden after:hidden`}
           >
             About Me
           </h2>
@@ -96,7 +96,7 @@ export default function Home() {
 
           <hr className="h-px my-4 lg:my-8 bg-blue border-t-1 border-blue"></hr>
           <h2
-            className={`${raleway.className} text-lg font-bold my-2 print:text-sm`}
+            className={`${raleway.className} text-lg font-bold my-2 print:text-sm before:hidden after:hidden`}
           >
             Skills
           </h2>
@@ -126,7 +126,7 @@ export default function Home() {
         <div className="col-span-4 md:col-span-3 print:col-span-3 ">
           <div className="my-2">
             <h2
-              className={`${raleway.className} inline-block text-lg font-bold print:text-sm`}
+              className={`${raleway.className} inline-block text-lg font-bold print:text-sm before:hidden after:hidden`}
             >
               GAVS Technologies - Lead Engineer
             </h2>
@@ -151,7 +151,7 @@ export default function Home() {
           <hr className="h-px my-4 lg:my-8 bg-blue border-t-1 border-blue print:border-0"></hr>
           <div className="my-2">
             <h2
-              className={`${raleway.className} inline-block text-lg font-bold print:text-sm`}
+              className={`${raleway.className} inline-block text-lg font-bold print:text-sm before:hidden after:hidden`}
             >
               Portland Webworks - Fullstack Developer Contractor
             </h2>
@@ -170,7 +170,7 @@ export default function Home() {
           <hr className="h-px my-4 lg:my-8 bg-blue border-t-1 border-blue print:border-0"></hr>
           <div className="my-2">
             <h2
-              className={`${raleway.className} inline-block text-lg font-bold print:text-sm`}
+              className={`${raleway.className} inline-block text-lg font-bold print:text-sm before:hidden after:hidden`}
             >
               Rightpoint - Senior Developer
             </h2>
@@ -200,7 +200,7 @@ export default function Home() {
           <hr className="h-px my-4 lg:my-8 bg-blue border-t-1 border-blue print:border-0"></hr>
           <div className="my-2">
             <h2
-              className={`${raleway.className} inline-block text-lg font-bold print:text-sm`}
+              className={`${raleway.className} inline-block text-lg font-bold print:text-sm before:hidden after:hidden`}
             >
               Avant - UI Developer
             </h2>
@@ -223,7 +223,7 @@ export default function Home() {
 
           <div className="my-2">
             <h2
-              className={`${raleway.className} inline-block text-lg font-bold print:text-sm`}
+              className={`${raleway.className} inline-block text-lg font-bold print:text-sm before:hidden after:hidden`}
             >
               Riskbone - Product Developer
             </h2>
@@ -247,7 +247,7 @@ export default function Home() {
           <hr className="h-px my-4 lg:my-8 bg-blue border-t-1 border-blue print:border-0"></hr>
           <div className="my-2">
             <h2
-              className={`${raleway.className} inline-block text-lg font-bold print:text-sm`}
+              className={`${raleway.className} inline-block text-lg font-bold print:text-sm before:hidden after:hidden`}
             >
               Inet - Web Design & Developer
             </h2>
@@ -270,7 +270,7 @@ export default function Home() {
           <hr className="h-px my-4 lg:my-8 bg-blue border-t-1 border-blue print:border-0"></hr>
           <div className="my-2">
             <h2
-              className={`${raleway.className} inline-block text-lg font-bold print:text-sm`}
+              className={`${raleway.className} inline-block text-lg font-bold print:text-sm before:hidden after:hidden`}
             >
               Radyne - Creative Visual Designer
             </h2>
@@ -294,7 +294,7 @@ export default function Home() {
           <hr className="h-px my-4 lg:my-8 bg-blue border-t-1 border-blue print:border-0"></hr>
           <div className="my-2">
             <h2
-              className={`${raleway.className} text-lg font-bold print:text-sm`}
+              className={`${raleway.className} text-lg font-bold print:text-sm before:hidden after:hidden`}
             >
               Freelance
             </h2>
@@ -313,7 +313,7 @@ export default function Home() {
           <hr className="h-px my-4 lg:my-8 bg-blue border-t-1 border-blue print:border-0"></hr>
           <div className="my-2">
             <h2
-              className={`${raleway.className} inline-block text-lg font-bold print:text-sm`}
+              className={`${raleway.className} inline-block text-lg font-bold print:text-sm before:hidden after:hidden`}
             >
               Education - BFA in design and illustration
             </h2>
