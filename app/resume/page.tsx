@@ -12,7 +12,7 @@ export default function Home() {
             <div className="block print:hidden">
               <Image
                 src="joshJensenCreativeLogo.svg"
-                width="100"
+                width="120"
                 height="180"
                 alt="Josh Jensen Creative Logo"
               />
@@ -41,52 +41,38 @@ export default function Home() {
             </div>
           </div>
           <h2
-            className={`${raleway.className} text-lg font-bold my-2 print:text-sm before:hidden after:hidden`}
+            className={`${raleway.className} mb-0 text-lg font-bold my-2 print:text-sm before:hidden after:hidden`}
           >
             About Me
           </h2>
-          <p className="my-4">
-            A seasoned Fullstack and UI/UX web developer with a wealth of
-            expertise spanning 10 years, I specialize in crafting exceptional
+          <p className="mb-4 mt-0">
+            A seasoned Fullstack Developer and UX Designer with a wealth of
+            expertise spanning 13 years, I specialize in crafting exceptional
             digital experiences. With a strong emphasis on React.js and a keen
-            focus on the cutting-edge Next.js framework for the past 5 years, I
-            bring a dynamic skill set to create innovative and user-centric
-            solutions. Beyond my professional pursuits, I thrive on outdoor
-            adventures, including snowboarding, mountain biking, hiking, and
-            exploring off-road terrain with 4x4s and motorcycles, all while
-            enjoying the company of my spirited husky.
+            focus on the cutting-edge Next.js framework, I bring a dynamic skill
+            set to create innovative and user-centric solutions. Beyond my
+            professional pursuits, I thrive on outdoor adventures, including
+            snowboarding, hiking, and exploring off-road terrain with 4x4s and
+            mountain bikes, all while enjoying the company of my spirited husky,
+            Glacier.
           </p>
         </div>
         <div className="col-span-4 md:col-span-1 print:col-span-1">
-          <p className="font-semibold">Design Portfolio</p>
+          <p className="font-semibold mb-0">Website</p>
           <Link
             href="https://joshjensencreative.com/"
             className="mb-3 block break-all text-blueDark print:text-xs"
           >
             https://joshjensencreative.com/
           </Link>
-          <p className="font-semibold ">Linkedin</p>
+          <p className="font-semibold mb-0">Linkedin</p>
           <Link
             href="https://www.linkedin.com/in/joshua-jensen-30747670/"
             className="mb-3 block break-all text-blueDark print:text-xs"
           >
             https://www.linkedin.com/in/joshua-jensen-30747670/
           </Link>
-          <p className="font-semibold ">Personal Recipe Project</p>
-          <Link
-            href="https://jyno-recipe.tech"
-            className="mb-3 block break-all text-blueDark print:text-xs"
-          >
-            https://jyno-recipe.tech
-          </Link>
-          <p className="font-semibold ">Personal List Project</p>
-          <Link
-            href="https://jyno-schit.tech"
-            className="mb-3 block break-all text-blueDark print:text-xs"
-          >
-            https://jyno-recipe.tech
-          </Link>
-          <p className="font-semibold ">Github</p>
+          <p className="font-semibold mb-0">Github</p>
           <Link
             href="https://github.com/ender2821"
             className="mb-3 block break-all text-blueDark print:text-xs"
@@ -94,9 +80,9 @@ export default function Home() {
             https://github.com/ender2821
           </Link>
 
-          <hr className="h-px my-4 lg:my-8 bg-blue border-t-1 border-blue"></hr>
+          <hr className="h-px my-4 bg-blue border-t-1 border-blue"></hr>
           <h2
-            className={`${raleway.className} text-lg font-bold my-2 print:text-sm before:hidden after:hidden`}
+            className={`${raleway.className} mb-0 text-lg font-bold my-2 print:text-sm before:hidden after:hidden`}
           >
             Skills
           </h2>
@@ -109,6 +95,8 @@ export default function Home() {
             <li>Css</li>
             <li>Sass/Scss</li>
             <li>Tailwind</li>
+            <li>Redux</li>
+            <li>Apollo Client</li>
             <li>Contentful</li>
             <li>Sanity.io</li>
             <li>GraphQL</li>
@@ -117,6 +105,7 @@ export default function Home() {
             <li>Node.js</li>
             <li>AWS / Vercel</li>
             <li>Azure</li>
+            <li>CI/CD with yaml</li>
             <li>Git</li>
             <li>MySql</li>
             <li>UX Design</li>
@@ -126,32 +115,48 @@ export default function Home() {
         <div className="col-span-4 md:col-span-3 print:col-span-3 ">
           <div className="my-2">
             <h2
-              className={`${raleway.className} inline-block text-lg font-bold print:text-sm before:hidden after:hidden`}
+              className={`${raleway.className} mb-0 inline-block text-lg font-bold print:text-sm before:hidden after:hidden`}
+            >
+              Frontier Airlines - Lead Developer
+            </h2>
+            <span className="inline-block italic mx-2">Sep 2024 - Present</span>
+          </div>
+          <ul className="list-disc list-inside marker:text-blue">
+            <li>Lead a team of developers based in India and onshore</li>
+          </ul>
+          <hr className="h-px my-4 bg-blue border-t-1 border-blue print:border-0"></hr>
+          <div className="my-2">
+            <h2
+              className={`${raleway.className} mb-0 inline-block text-lg font-bold print:text-sm before:hidden after:hidden`}
             >
               GAVS Technologies - Lead Engineer
             </h2>
-            <span className="inline-block italic mx-2">Jan 2024 - Present</span>
+            <span className="inline-block italic mx-2">
+              Jan 2024 - Aug 2024
+            </span>
           </div>
           <ul className="list-disc list-inside marker:text-blue">
-            <li>Worked as the Lead Web Engineer for Frontier Airlines</li>
+            <li>
+              Worked as the Lead Web Engineer for <b>Frontier Airlines</b>
+            </li>
             <li>Lead a team of developers based in India and onshore</li>
             <li>
               Directed knowledge transfer process that included documentation,
               architecture diagrams, and video presentations
             </li>
             <li>
-              Built and presented POCs for senior directors from content
-              management systems to cacheing services
+              Built and presented POCs for senior directors from{" "}
+              <b>content management systems</b> to <b>cacheing services</b>
             </li>
             <li>
-              Integrated Sanity CMS into a Next.js frontend using Typescript and
-              React-query.
+              Integrated <b>Sanity CMS</b> into a <b>Next.js</b> frontend using{" "}
+              <b>Typescript</b> and <b>React-query</b>.
             </li>
           </ul>
-          <hr className="h-px my-4 lg:my-8 bg-blue border-t-1 border-blue print:border-0"></hr>
+          <hr className="h-px my-4 bg-blue border-t-1 border-blue print:border-0"></hr>
           <div className="my-2">
             <h2
-              className={`${raleway.className} inline-block text-lg font-bold print:text-sm before:hidden after:hidden`}
+              className={`${raleway.className} mb-0 inline-block text-lg font-bold print:text-sm before:hidden after:hidden`}
             >
               Portland Webworks - Fullstack Developer Contractor
             </h2>
@@ -160,17 +165,23 @@ export default function Home() {
             </span>
           </div>
           <ul className="list-disc list-inside marker:text-blue">
-            <li>Developed front-end components using Next.js</li>
-            <li>Constructed mapped data structures integrated into Redux</li>
             <li>
-              Collaborated on API integration through the Spring CM Java backend
+              Developed front-end components using <b>Next.js</b>
             </li>
-            <li>Styled complex forms utilizing the Tailwind CSS framework</li>
+            <li>
+              Constructed mapped data structures integrated into <b>Redux</b>
+            </li>
+            <li>
+              Collaborated on API integration through the <b>Java</b> backend
+            </li>
+            <li>
+              Styled complex forms utilizing the <b>Tailwind</b> CSS framework
+            </li>
           </ul>
-          <hr className="h-px my-4 lg:my-8 bg-blue border-t-1 border-blue print:border-0"></hr>
+          <hr className="h-px my-4 bg-blue border-t-1 border-blue print:border-0"></hr>
           <div className="my-2">
             <h2
-              className={`${raleway.className} inline-block text-lg font-bold print:text-sm before:hidden after:hidden`}
+              className={`${raleway.className} mb-0 inline-block text-lg font-bold print:text-sm before:hidden after:hidden`}
             >
               Rightpoint - Senior Developer
             </h2>
@@ -180,12 +191,13 @@ export default function Home() {
           </div>
           <ul className="list-disc list-inside marker:text-blue">
             <li>
-              Practiced frontend development in HTML, CSS, Sass, JS, and
-              Typescript
+              Practiced frontend development in{" "}
+              <b>HTML, CSS, Sass, JS, and Typescript</b>
             </li>
             <li>Architected frontends and adhered to UX design standards</li>
             <li>
-              Used React, Next, Node, Sharepoint, Episerver, Git, and Azure
+              Used{" "}
+              <b>React, Next, Node, Sharepoint, Episerver, Git, and Azure</b>
             </li>
             <li>Led teams and enhanced development practices</li>
             <li>
@@ -193,14 +205,14 @@ export default function Home() {
               development
             </li>
             <li>
-              Mentored other developers in UI Development and component library
-              construction with Storybook
+              Mentored other developers in <b>UI Development</b> and component
+              library construction with Storybook
             </li>
           </ul>
-          <hr className="h-px my-4 lg:my-8 bg-blue border-t-1 border-blue print:border-0"></hr>
+          <hr className="h-px my-4 bg-blue border-t-1 border-blue print:border-0"></hr>
           <div className="my-2">
             <h2
-              className={`${raleway.className} inline-block text-lg font-bold print:text-sm before:hidden after:hidden`}
+              className={`${raleway.className} mb-0 inline-block text-lg font-bold print:text-sm before:hidden after:hidden`}
             >
               Avant - UI Developer
             </h2>
@@ -209,21 +221,24 @@ export default function Home() {
             </span>
           </div>
           <ul className="list-disc list-inside marker:text-blue">
-            <li>Wrote HTML and CSS for templates within React</li>
-            <li>Conducted cross-browser and WCAG accessibility testing</li>
+            <li>
+              Wrote HTML and CSS for templates within <b>React</b>
+            </li>
+            <li>
+              Conducted cross-browser and <b>WCAG</b> accessibility testing
+            </li>
             <li>
               Experimented with converting styles into React Styled Components
             </li>
             <li>
-              Wrote mock data utilizing GraphQL and TypeScript-based schemas
+              Wrote mock data utilizing <b>GraphQL</b> and TypeScript-based
+              schemas
             </li>
           </ul>
-          <hr className="h-px my-4 lg:my-8 bg-blue border-t-1 border-blue print:border-0"></hr>
-          <div className="print:my-40"></div>
-
+          <hr className="h-px my-4 bg-blue border-t-1 border-blue print:border-0"></hr>
           <div className="my-2">
             <h2
-              className={`${raleway.className} inline-block text-lg font-bold print:text-sm before:hidden after:hidden`}
+              className={`${raleway.className} mb-0 inline-block text-lg font-bold print:text-sm before:hidden after:hidden`}
             >
               Riskbone - Product Developer
             </h2>
@@ -244,10 +259,10 @@ export default function Home() {
             <li>Managed a team of front-end programmers</li>
             <li>Conducted sales pitches and product demos</li>
           </ul>
-          <hr className="h-px my-4 lg:my-8 bg-blue border-t-1 border-blue print:border-0"></hr>
+          <hr className="h-px my-4 bg-blue border-t-1 border-blue print:border-0"></hr>
           <div className="my-2">
             <h2
-              className={`${raleway.className} inline-block text-lg font-bold print:text-sm before:hidden after:hidden`}
+              className={`${raleway.className} mb-0 inline-block text-lg font-bold print:text-sm before:hidden after:hidden`}
             >
               Inet - Web Design & Developer
             </h2>
@@ -267,10 +282,10 @@ export default function Home() {
               Executed web coding for adding key elements for customer approval
             </li>
           </ul>
-          <hr className="h-px my-4 lg:my-8 bg-blue border-t-1 border-blue print:border-0"></hr>
+          <hr className="h-px my-4 bg-blue border-t-1 border-blue print:border-0"></hr>
           <div className="my-2">
             <h2
-              className={`${raleway.className} inline-block text-lg font-bold print:text-sm before:hidden after:hidden`}
+              className={`${raleway.className} mb-0 inline-block text-lg font-bold print:text-sm before:hidden after:hidden`}
             >
               Radyne - Creative Visual Designer
             </h2>
@@ -291,10 +306,10 @@ export default function Home() {
               graphics
             </li>
           </ul>
-          <hr className="h-px my-4 lg:my-8 bg-blue border-t-1 border-blue print:border-0"></hr>
+          <hr className="h-px my-4 bg-blue border-t-1 border-blue print:border-0"></hr>
           <div className="my-2">
             <h2
-              className={`${raleway.className} text-lg font-bold print:text-sm before:hidden after:hidden`}
+              className={`${raleway.className} mb-0 text-lg font-bold print:text-sm before:hidden after:hidden`}
             >
               Freelance
             </h2>
@@ -310,10 +325,10 @@ export default function Home() {
             </li>
             <li>Had a hand in web development for Riffhard</li>
           </ul>
-          <hr className="h-px my-4 lg:my-8 bg-blue border-t-1 border-blue print:border-0"></hr>
+          <hr className="h-px my-4 bg-blue border-t-1 border-blue print:border-0"></hr>
           <div className="my-2">
             <h2
-              className={`${raleway.className} inline-block text-lg font-bold print:text-sm before:hidden after:hidden`}
+              className={`${raleway.className} mb-0 inline-block text-lg font-bold print:text-sm before:hidden after:hidden`}
             >
               Education - BFA in design and illustration
             </h2>
