@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Contact } from "@/__sanity-generated__/types";
+import ContactForm from "./ContactForm";
 
 interface ContactSectionProps extends Contact {
   image: { imageUrl: string | null; imageName: string | null };
@@ -41,6 +42,7 @@ export default function ContactSection(props: ContactSectionProps) {
             {contactSectionSubtitle}
           </h3>
         )}
+        <ContactForm />
       </div>
     </section>
   );
