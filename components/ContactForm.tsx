@@ -2,8 +2,9 @@
 
 import { useForm, SubmitHandler } from "react-hook-form";
 import Input from "@mui/material/Input";
+import { sendEmail } from "@/utils";
 
-type Inputs = {
+export type FormData = {
   example: string;
   exampleRequired: string;
 };
@@ -14,8 +15,8 @@ export default function ContactForm() {
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+  } = useForm<FormData>();
+  const onSubmit: SubmitHandler<FormData> = (data) => sendEmail(data);
 
   console.log(watch("example")); // watch input value by passing the name of it
 
