@@ -45,8 +45,6 @@ const estimatedBudget = [
 ];
 
 export default function ContactForm() {
-  const [projectInMind, setProjectInMind] = useState(false); // Add state for checkbox
-
   const {
     register,
     handleSubmit,
@@ -56,6 +54,7 @@ export default function ContactForm() {
   const onSubmit: SubmitHandler<FormData> = (data) => sendEmail(data);
 
   console.log(watch("projectType")); // watch input value by passing the name of it
+  const projectInMind = watch("projectInMind");
   return (
     /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
@@ -87,9 +86,7 @@ export default function ContactForm() {
       />
       <Input placeholder="phone" {...register("phone")} />
       <FormControlLabel
-        control={
-          <Checkbox onChange={(e) => setProjectInMind(e.target.checked)} />
-        }
+        control={<Checkbox {...register("projectInMind")} />}
         label="Have a project in mind?"
         style={{
           color: "#242B2C",
@@ -122,15 +119,46 @@ export default function ContactForm() {
             ))}
           </TextField>
           <TextField
-            {...register("projectDescription")}
+            {...register(
+              "projectDescription",
+              projectInMind && { required: "project description is required" }
+            )}
             multiline
             placeholder="Project Description"
+          />
+          <ErrorMessage
+            errors={errors}
+            name="projectDescription"
+            render={({ message }) => <p className="text-orange">{message}</p>}
           />
         </>
       ) : (
         <>
-          <Input placeholder="subject" {...register("subject")} />
-          <TextField {...register("message")} multiline placeholder="Message" />
+          <Input
+            placeholder="subject"
+            {...register(
+              "subject",
+              !projectInMind && { required: "subject is required" }
+            )}
+          />
+          <ErrorMessage
+            errors={errors}
+            name="subject"
+            render={({ message }) => <p className="text-orange">{message}</p>}
+          />
+          <TextField
+            {...register(
+              "message",
+              !projectInMind && { required: "message is required" }
+            )}
+            multiline
+            placeholder="Message"
+          />
+          <ErrorMessage
+            errors={errors}
+            name="message"
+            render={({ message }) => <p className="text-orange">{message}</p>}
+          />
         </>
       )}
       <Button type="submit">Submit</Button>
