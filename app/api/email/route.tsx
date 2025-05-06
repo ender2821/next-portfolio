@@ -1,13 +1,25 @@
-import { type NextRequest, NextResponse } from 'next/server';
-import nodemailer from 'nodemailer';
-import Mail from 'nodemailer/lib/mailer';
-import { render } from '@react-email/components';
+import { type NextRequest, NextResponse } from "next/server";
+import nodemailer from "nodemailer";
+import Mail from "nodemailer/lib/mailer";
+import { render } from "@react-email/components";
+import EmailTemplate from "@/components/EmailTemplate"; // Ensure this is a default export of a React component
 
 export async function POST(request: NextRequest) {
-  const { email, name, message } = await request.json();
+  const {
+    name,
+    company,
+    email,
+    phone,
+    projectInMind,
+    subject,
+    message,
+    projectType,
+    estimatedBudget,
+    projectDescription,
+  } = await request.json();
 
   const transport = nodemailer.createTransport({
-    service: 'gmail',
+    service: "gmail",
     /* 
       setting service as 'gmail' is same as providing these setings:
       host: "smtp.gmail.com",
@@ -23,7 +35,20 @@ export async function POST(request: NextRequest) {
     },
   });
 
-  // const emailHtml = await render(<Email url="https://example.com" />);
+  const emailHtml = await render(
+    <EmailTemplate
+      name={name}
+      company={company}
+      email={email}
+      phone={phone}
+      projectInMind={projectInMind}
+      subject={subject}
+      message={message}
+      projectType={projectType}
+      estimatedBudget={estimatedBudget}
+      projectDescription={projectDescription}
+    />
+  );
 
   const mailOptions: Mail.Options = {
     from: process.env.EMAIL,
@@ -31,14 +56,14 @@ export async function POST(request: NextRequest) {
     // cc: email, (uncomment this line if you want to send a copy to the sender)
     subject: `Message from ${name} (${email})`,
     text: message,
-    // html: emailHtml,
+    html: emailHtml,
   };
 
   const sendMailPromise = () =>
     new Promise<string>((resolve, reject) => {
-      transport.sendMail(mailOptions, function (err: Error | null ) {
+      transport.sendMail(mailOptions, function (err: Error | null) {
         if (!err) {
-          resolve('Email sent');
+          resolve("Email sent");
         } else {
           reject(err.message);
         }
@@ -47,7 +72,7 @@ export async function POST(request: NextRequest) {
 
   try {
     await sendMailPromise();
-    return NextResponse.json({ message: 'Email sent' });
+    return NextResponse.json({ message: "Email sent" });
   } catch (err) {
     return NextResponse.json({ error: err }, { status: 500 });
   }
