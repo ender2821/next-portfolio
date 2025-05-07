@@ -1,12 +1,14 @@
 import {
   Body,
+  Column,
   Container,
   Head,
   Heading,
+  Hr,
   Html,
   Img,
-  Link,
-  Section,
+  Preview,
+  Row,
   Text,
 } from "@react-email/components";
 import { FormData } from "@/components/ContactForm";
@@ -20,15 +22,18 @@ const main = {
   fontFamily: "HelveticaNeue,Helvetica,Arial,sans-serif",
 };
 
+const header = {
+  backgroundColor: "#131210",
+  padding: "16px",
+};
+
 const container = {
   backgroundColor: "#ffffff",
   border: "1px solid #eee",
-  borderRadius: "5px",
   boxShadow: "0 5px 10px rgba(20,50,70,.2)",
   marginTop: "20px",
-  maxWidth: "360px",
   margin: "0 auto",
-  padding: "68px 0 130px",
+  padding: "32px",
 };
 
 const logo = {
@@ -46,6 +51,18 @@ const tertiary = {
   margin: "16px 8px 8px 8px",
   textTransform: "uppercase" as const,
   textAlign: "center" as const,
+};
+
+const primary = {
+  color: "#fff",
+  display: "inline-block",
+  fontFamily: "HelveticaNeue-Medium,Helvetica,Arial,sans-serif",
+  fontSize: "32px",
+  fontWeight: 700,
+  lineHeight: "nomral",
+  marginBottom: "0",
+  marginTop: "0",
+  marginLeft: "16px",
 };
 
 const secondary = {
@@ -68,35 +85,13 @@ const codeContainer = {
   width: "280px",
 };
 
-const code = {
-  color: "#000",
-  display: "inline-block",
-  fontFamily: "HelveticaNeue-Bold",
-  fontSize: "32px",
-  fontWeight: 700,
-  letterSpacing: "6px",
-  lineHeight: "40px",
-  paddingBottom: "8px",
-  paddingTop: "8px",
-  margin: "0 auto",
-  width: "100%",
-  textAlign: "center" as const,
-};
-
 const paragraph = {
   color: "#444",
   fontSize: "15px",
   fontFamily: "HelveticaNeue,Helvetica,Arial,sans-serif",
   letterSpacing: "0",
   lineHeight: "23px",
-  padding: "0 40px",
   margin: "0",
-  textAlign: "center" as const,
-};
-
-const link = {
-  color: "#444",
-  textDecoration: "underline",
 };
 
 export default function EmailTemplate({
@@ -115,29 +110,79 @@ export default function EmailTemplate({
     <Html>
       <Head />
       <Body style={main}>
+        <Container style={header}>
+          <Row>
+            <Column>
+              <Img
+                // src={`${baseUrl}/joshJensenCreativeLogo.svg`}
+                src={`http://localhost:3001/joshJensenCreativeLogo.svg`}
+                width="50"
+                height="50"
+                alt="Josh Jensen Creative"
+                style={logo}
+              />
+            </Column>
+            <Column>
+              <Text style={primary}>JOSH JENSEN CREATIVE</Text>
+            </Column>
+          </Row>
+        </Container>
         <Container style={container}>
-          <Img
-            src={`${baseUrl}/static/plaid-logo.png`}
-            width="212"
-            height="88"
-            alt="Plaid"
-            style={logo}
-          />
-          <Text style={tertiary}>Verify Your Identity</Text>
-          <Heading style={secondary}>
-            Enter the following code to finish linking Venmo.
-          </Heading>
-          <Section style={codeContainer}>
-            <Text style={code}></Text>
-          </Section>
-          <Text style={paragraph}>Not expecting this email?</Text>
-          <Text style={paragraph}>
-            Contact{" "}
-            <Link href="mailto:login@plaid.com" style={link}>
-              login@plaid.com
-            </Link>{" "}
-            if you did not request this code.
-          </Text>
+          {projectInMind ? (
+            <>
+              <Preview>New Project Request from {email}</Preview>
+              <Heading style={secondary}>New Project Request</Heading>
+              <Hr />
+              <Text style={paragraph}>
+                From: <b>{name}</b>
+              </Text>
+              {company && (
+                <Text style={paragraph}>
+                  Company: <b>{company}</b>
+                </Text>
+              )}
+              {phone && (
+                <Text style={paragraph}>
+                  Phone: <b>{phone}</b>
+                </Text>
+              )}
+              <Text style={paragraph}>
+                Email: <b>{email}</b>
+              </Text>
+              <Hr />
+              <Text style={paragraph}>
+                Project Type: <b>{projectType}</b>
+              </Text>
+              <Text style={paragraph}>
+                Estimated Budget: <b>{estimatedBudget}</b>
+              </Text>
+              <Text style={paragraph}>{projectDescription}</Text>
+            </>
+          ) : (
+            <>
+              <Preview>Contact Request from {email}</Preview>
+              <Heading style={secondary}>{subject}</Heading>
+              <Hr />
+              <Text style={paragraph}>
+                From: <b>{name}</b>
+              </Text>
+              {company && (
+                <Text style={paragraph}>
+                  Company: <b>{company}</b>
+                </Text>
+              )}
+              {phone && (
+                <Text style={paragraph}>
+                  Phone: <b>{phone}</b>
+                </Text>
+              )}
+              <Text style={paragraph}>
+                Email: <b>{email}</b>
+              </Text>
+              <Hr />
+              <Text style={paragraph}>{message}</Text>
+            </>
+          )}
         </Container>
       </Body>
     </Html>
@@ -149,9 +194,10 @@ EmailTemplate.PreviewProps = {
   company: "JoshJensenCreative LLC",
   email: "ender2821@yahoo.com",
   phone: "123-456-7890",
-  projectInMind: false,
-  subject: "Subject",
-  message: "Message",
+  projectInMind: true,
+  subject: "Website Redesign Inquiry—Available for Work?",
+  message:
+    "I hope you're doing well! I'm reaching out because I'm looking for a skilled web developer to help with [brief description of project—e.g., a new website, a redesign, or specific functionality]. I’d love to learn more about your experience and see if we’d be a good fit to work together. Could we set up a time to discuss details? Please let me know your availability. Looking forward to your response!",
   projectType: "Web Design",
   estimatedBudget: "Less than $1000",
   projectDescription: "Project Description",

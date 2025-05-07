@@ -54,8 +54,8 @@ export async function POST(request: NextRequest) {
     from: process.env.EMAIL,
     to: process.env.EMAIL,
     // cc: email, (uncomment this line if you want to send a copy to the sender)
-    subject: `Message from ${name} (${email})`,
-    text: message,
+    // subject: `Message from ${name} (${email})`,
+    // text: message,
     html: emailHtml,
   };
 
