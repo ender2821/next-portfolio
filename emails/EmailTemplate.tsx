@@ -40,24 +40,11 @@ const logo = {
   margin: "0 auto",
 };
 
-const tertiary = {
-  color: "#0a85ea",
-  fontSize: "11px",
-  fontWeight: 700,
-  fontFamily: "HelveticaNeue,Helvetica,Arial,sans-serif",
-  height: "16px",
-  letterSpacing: "0",
-  lineHeight: "16px",
-  margin: "16px 8px 8px 8px",
-  textTransform: "uppercase" as const,
-  textAlign: "center" as const,
-};
-
 const primary = {
   color: "#fff",
   display: "inline-block",
   fontFamily: "HelveticaNeue-Medium,Helvetica,Arial,sans-serif",
-  fontSize: "32px",
+  fontSize: "30px",
   fontWeight: 700,
   lineHeight: "nomral",
   marginBottom: "0",

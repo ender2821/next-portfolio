@@ -29,7 +29,6 @@ export default async function Services() {
         contactSectionSubtitle={data?.contactSectionSubtitle ?? ""}
         image={data?.contactSectionImage ?? { imageUrl: "", imageName: "" }}
       />
-      <SecondaryCallToAction />
     </main>
   );
 }

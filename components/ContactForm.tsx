@@ -11,6 +11,7 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import { sendEmail } from "@/utils";
 import { useState } from "react";
 import MenuItem from "@mui/material/MenuItem";
+import SiteButton from "./SiteButton";
 
 export type FormData = {
   name: string;
@@ -53,12 +54,9 @@ export default function ContactForm() {
   } = useForm<FormData>();
   const onSubmit: SubmitHandler<FormData> = (data) => sendEmail(data);
 
-  console.log(watch("projectType")); // watch input value by passing the name of it
   const projectInMind = watch("projectInMind");
   return (
-    /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
-    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
-      {/* register your input into the hook by invoking the "register" function */}
+    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-8">
       <Input
         placeholder="name"
         {...register("name", { required: "name is required" })}
@@ -161,7 +159,9 @@ export default function ContactForm() {
           />
         </>
       )}
-      <Button type="submit">Submit</Button>
+      <SiteButton selected={true} textHover={"dark"} type="submit">
+        Submit
+      </SiteButton>
     </form>
   );
 }

@@ -8,11 +8,20 @@ interface SiteButtonProps {
   className?: string;
   textHover?: "light" | "dark";
   selected?: boolean;
+  type?: "button" | "submit" | "reset";
 }
 
 export default function SiteButton(props: SiteButtonProps) {
-  const { children, href, onClick, className, textHover, selected, ...rest } =
-    props;
+  const {
+    children,
+    href,
+    onClick,
+    className,
+    textHover,
+    selected,
+    type,
+    ...rest
+  } = props;
 
   return (
     <>
@@ -34,11 +43,12 @@ export default function SiteButton(props: SiteButtonProps) {
         </Link>
       ) : (
         <button
-          className={`siteButton ${className}`}
+          className={`siteButton ${className} max-w-[300px]`}
           onClick={onClick}
+          type={type ? type : "button"}
           {...rest}
         >
-          <span>{children}</span>
+          <span className="relative z-20">{children}</span>
         </button>
       )}
     </>

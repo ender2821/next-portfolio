@@ -36,9 +36,9 @@ export default function ContactSection(props: ContactSectionProps) {
           />
         </div>
       </div>
-      <div className="col-span-6 md:col-span-4 md:pt-4 md:border-l-white-border md:border-l">
+      <div className="col-span-6 md:col-span-4 md:pt-4 md:border-l-white-border md:border-l lg:pb-[10rem] lg:max-w-[600px]">
         {contactSectionSubtitle && (
-          <h3 className="text-[1.25rem] lg:text-[1.5rem] w-[calc(100%-2rem)] normal-case m-0">
+          <h3 className="text-[1.25rem] lg:text-[1.5rem] w-[calc(100%-2rem)] normal-case mb-8">
             {contactSectionSubtitle}
           </h3>
         )}
