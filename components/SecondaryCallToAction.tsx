@@ -14,7 +14,7 @@ export default function SecondaryCallToAction() {
           selected={true}
           textHover={lg ? "dark" : "light"}
         >
-          Like What you See? Let's chat
+          Like What you See? Let&apos;s chat
         </SiteButton>
       </div>
     </div>

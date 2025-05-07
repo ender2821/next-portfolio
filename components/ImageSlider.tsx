@@ -32,7 +32,7 @@ export default function ImageSlider(props: ImageSliderProps) {
   const lg = useMediaQuery(theme.breakpoints.up("lg"));
   const md = useMediaQuery(theme.breakpoints.up("md"));
 
-  const nextSlide = () => {
+  const nextSlide = useCallback(() => {
     if (!isAnimating) {
       setIsAnimating(true);
       if (images.length > 6) {
@@ -43,7 +43,7 @@ export default function ImageSlider(props: ImageSliderProps) {
         }
       }
     }
-  };
+  }, [setCurrentIndex, currentIndex, images, xl, md, isAnimating]);
 
   const prevSlide = () => {
     if (!isAnimating) {
@@ -70,7 +70,7 @@ export default function ImageSlider(props: ImageSliderProps) {
       clearTimeout(timerRef.current);
     }
     timerRef.current = setTimeout(nextSlide, 4000);
-  }, [nextSlide]);
+  }, [timerRef, nextSlide]);
 
   useEffect(() => {
     resetTimer();

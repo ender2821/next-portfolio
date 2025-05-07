@@ -6,13 +6,19 @@ import HomeCtaButton from "@/components/HomeCtaButton";
 import HomeGlacier from "@/components/HomeGlacier";
 import HomeImageSliders from "@/components/HomeImageSliders";
 import HomeServices from "@/components/HomeServices";
-import { ServiceCategory } from "@/__sanity-generated__/types";
+import {
+  HOME_QUERYResult,
+  ServiceCategory,
+} from "@/__sanity-generated__/types";
 import TiltImage from "@/components/TiltImage";
 import Image from "next/image";
 import SiteButton from "@/components/SiteButton";
 
 export default async function Home() {
-  const { data: home } = await sanityFetch({ query: HOME_QUERY, params: {} });
+  const { data: home }: { data: HOME_QUERYResult } = await sanityFetch({
+    query: HOME_QUERY,
+    params: {},
+  });
   const aboutComponents: Partial<PortableTextReactComponents> = {
     block: {
       normal: ({ children }) => {
@@ -101,9 +107,9 @@ export default async function Home() {
               shadow={"right"}
             >
               <Image
-                src={home?.aboutImage?.aboutImageUrl ?? "/default-image.jpg"}
+                src={home?.aboutSectionImage?.imageUrl ?? "/default-image.jpg"}
                 alt={
-                  home?.aboutImage?.aboutImageName ??
+                  home?.aboutSectionImage?.imageName ??
                   "default image description"
                 }
                 width={900}

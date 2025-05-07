@@ -15,16 +15,15 @@ export default function HomePageTitle() {
 
   const spanStyle = `text-white uppercase w-full block font-bold text-[3.125rem] leading-[2.2rem] lg:text-[7.5rem] lg:leading-[5.25rem]`;
 
-  const stylesToGet = [
-    "color",
-    "font-family",
-    "font-size",
-    "font-style",
-    "font-weight",
-    "line-height",
-  ];
-
   const measuredRef = useCallback((node: HTMLHeadingElement | null) => {
+    const stylesToGet = [
+      "color",
+      "font-family",
+      "font-size",
+      "font-style",
+      "font-weight",
+      "line-height",
+    ];
     if (node !== null) {
       const styles = getComputedStyle(node);
       const tempStyleObject = stylesToGet.reduce(

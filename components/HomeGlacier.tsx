@@ -11,6 +11,7 @@ import {
   useTheme,
 } from "@mui/material";
 import SiteButton from "./SiteButton";
+import Image from "next/image";
 
 interface HomeGlacierProps {
   imageUrl: string;
@@ -98,8 +99,7 @@ export default function HomeGlacier(props: HomeGlacierProps) {
         >
           {glacierGallery.map((item, i) => (
             <ImageListItem key={`${item.imageName}${i}`}>
-              <img
-                srcSet={`${item.imageUrl}?w=248&fit=crop&auto=format&dpr=2 2x`}
+              <Image
                 src={`${item.imageUrl}?w=248&fit=crop&auto=format`}
                 alt={item.imageName ?? ""}
                 loading="lazy"

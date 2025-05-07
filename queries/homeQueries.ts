@@ -24,14 +24,14 @@ export const HOME_QUERY = defineQuery(`
       serviceCatergoryTitle,
       serviceCategoryDescription
     },
-    aboutImage->{
-      "aboutImageUrl": image.asset->url,
-      "aboutImageName": name,
-    },
     aboutSubtitle,
     aboutContent,
     aboutGithub,
     aboutLinkedIn,
+    aboutSectionImage->{
+      "imageUrl": image.asset->url,
+      "imageName": name,
+    },
     meetGlacierSubtitle,
     meetGlacierContent,
     meetGlacierButtonCTA,

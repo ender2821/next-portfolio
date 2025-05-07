@@ -9,7 +9,8 @@
     "lint": "next lint",
     "sanity": "sanity",
     "generate": "sanity typegen generate",
-    "schema": "sanity schema extract"
+    "schema": "sanity schema extract",
+    "email": "email"
   },
   "dependencies": {
     "@emotion/cache": "^11.14.0",
@@ -38,7 +39,7 @@
     "nodemailer": "^6.10.1",
     "postcss": "8.4.49",
     "react": "19.1.0",
-    "react-dom": "19.0.0",
+    "react-dom": "^19.1.0",
     "react-hook-form": "^7.56.1",
     "react-parallax-tilt": "^1.7.279",
     "react-swipeable": "^7.0.2",
@@ -51,6 +52,6 @@
   "devDependencies": {
     "@svgr/webpack": "^8.1.0",
     "@types/nodemailer": "^6.4.17",
-    "react-email": "4.0.7"
+    "react-email": "^4.0.7"
   }
 }

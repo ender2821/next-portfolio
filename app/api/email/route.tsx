@@ -2,7 +2,7 @@ import { type NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 import Mail from "nodemailer/lib/mailer";
 import { render } from "@react-email/components";
-import EmailTemplate from "@/components/EmailTemplate"; // Ensure this is a default export of a React component
+import EmailTemplate from "@/emails/EmailTemplate"; // Ensure this is a default export of a React component
 
 export async function POST(request: NextRequest) {
   const {

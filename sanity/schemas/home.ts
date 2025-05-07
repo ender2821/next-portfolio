@@ -52,7 +52,7 @@ export const home = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: "aboutImage",
+      name: "aboutSectionImage",
       title: "About Image",
       type: "reference",
       to: [{ type: "imageAssets" }],
