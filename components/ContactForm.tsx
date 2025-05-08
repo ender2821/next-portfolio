@@ -2,14 +2,11 @@
 
 import { useForm, SubmitHandler } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
-import Input from "@mui/material/Input";
 import Checkbox from "@mui/material/Checkbox";
-import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 
 import FormControlLabel from "@mui/material/FormControlLabel";
 import { sendEmail } from "@/utils";
-import { useState } from "react";
 import MenuItem from "@mui/material/MenuItem";
 import SiteButton from "./SiteButton";
 
@@ -57,32 +54,42 @@ export default function ContactForm() {
   const projectInMind = watch("projectInMind");
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-8">
-      <Input
-        placeholder="name"
-        {...register("name", { required: "name is required" })}
-      />
-      <ErrorMessage
-        errors={errors}
-        name="name"
-        render={({ message }) => <p className="text-orange">{message}</p>}
-      />
-      <Input placeholder="company" {...register("company")} />
-      <Input
-        placeholder="email"
-        {...register("email", {
-          required: "email is required",
-          pattern: {
-            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-            message: "invalid email address",
-          },
-        })}
-      />
-      <ErrorMessage
-        errors={errors}
-        name="email"
-        render={({ message }) => <p className="text-orange">{message}</p>}
-      />
-      <Input placeholder="phone" {...register("phone")} />
+      <div className="inputContain">
+        <TextField
+          placeholder="name"
+          className="w-full"
+          {...register("name", { required: "name is required" })}
+        />
+        <ErrorMessage
+          errors={errors}
+          name="name"
+          render={({ message }) => (
+            <p className="text-orange mb-0">{message}</p>
+          )}
+        />
+      </div>
+      <TextField placeholder="company" {...register("company")} />
+      <div className="inputContain">
+        <TextField
+          placeholder="email"
+          className="w-full"
+          {...register("email", {
+            required: "email is required",
+            pattern: {
+              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+              message: "invalid email address",
+            },
+          })}
+        />
+        <ErrorMessage
+          errors={errors}
+          name="email"
+          render={({ message }) => (
+            <p className="text-orange mb-0">{message}</p>
+          )}
+        />
+      </div>
+      <TextField placeholder="phone" {...register("phone")} />
       <FormControlLabel
         control={<Checkbox {...register("projectInMind")} />}
         label="Have a project in mind?"
@@ -116,47 +123,62 @@ export default function ContactForm() {
               </MenuItem>
             ))}
           </TextField>
-          <TextField
-            {...register(
-              "projectDescription",
-              projectInMind && { required: "project description is required" }
-            )}
-            multiline
-            placeholder="Project Description"
-          />
-          <ErrorMessage
-            errors={errors}
-            name="projectDescription"
-            render={({ message }) => <p className="text-orange">{message}</p>}
-          />
+          <div className="inputContain">
+            <TextField
+              {...register(
+                "projectDescription",
+                projectInMind && { required: "project description is required" }
+              )}
+              multiline
+              placeholder="Project Description"
+              className="w-full"
+            />
+            <ErrorMessage
+              errors={errors}
+              name="projectDescription"
+              render={({ message }) => (
+                <p className="text-orange mb-0">{message}</p>
+              )}
+            />
+          </div>
         </>
       ) : (
         <>
-          <Input
-            placeholder="subject"
-            {...register(
-              "subject",
-              !projectInMind && { required: "subject is required" }
-            )}
-          />
-          <ErrorMessage
-            errors={errors}
-            name="subject"
-            render={({ message }) => <p className="text-orange">{message}</p>}
-          />
-          <TextField
-            {...register(
-              "message",
-              !projectInMind && { required: "message is required" }
-            )}
-            multiline
-            placeholder="Message"
-          />
-          <ErrorMessage
-            errors={errors}
-            name="message"
-            render={({ message }) => <p className="text-orange">{message}</p>}
-          />
+          <div className="inputContain">
+            <TextField
+              placeholder="subject"
+              className="w-full"
+              {...register(
+                "subject",
+                !projectInMind && { required: "subject is required" }
+              )}
+            />
+            <ErrorMessage
+              errors={errors}
+              name="subject"
+              render={({ message }) => (
+                <p className="text-orange mb-0">{message}</p>
+              )}
+            />
+          </div>
+          <div className="inputContain">
+            <TextField
+              {...register(
+                "message",
+                !projectInMind && { required: "message is required" }
+              )}
+              multiline
+              placeholder="Message"
+              className="w-full"
+            />
+            <ErrorMessage
+              errors={errors}
+              name="message"
+              render={({ message }) => (
+                <p className="text-orange mb-0">{message}</p>
+              )}
+            />
+          </div>
         </>
       )}
       <SiteButton selected={true} textHover={"dark"} type="submit">

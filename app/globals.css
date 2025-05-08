@@ -10,6 +10,7 @@
   --color-black-decoration: #3B4647;
   --color-secondary-title: #838383;
   --color-blue: #6EC9F2;
+  --color-orange: rgb(255 120 73);
   --color-white: #ffffff;
   --color-white-decoration: #CECECE;
   --color-white-border: #D9D9D9;
@@ -477,3 +478,35 @@ p {
   pointer-events: none;
 }
 
+.mui-quhxjy-MuiInputBase-root-MuiOutlinedInput-root, .mui-xrmkj5-MuiInputBase-root-MuiOutlinedInput-root {
+  border-radius: 0 !important;
+}
+
+.mui-1xp5r68-MuiFormControl-root-MuiTextField-root {
+  margin-left: -1px !important;
+  border: none !important;
+}
+
+
+
+.mui-1ll44ll-MuiOutlinedInput-notchedOutline {
+  border-top: 1px solid var(--color-white-border) !important;
+  border-right: 1px solid var(--color-white-border) !important;
+  border-left: 1px solid var(--color-white-border) !important;
+  border-bottom: 3px solid var(--color-blue) !important;
+}
+
+.mui-16wblaj-MuiInputBase-input-MuiOutlinedInput-input:focus + .mui-1ll44ll-MuiOutlinedInput-notchedOutline,
+.mui-w4nesw-MuiInputBase-input-MuiOutlinedInput-input:focus ~ .mui-1ll44ll-MuiOutlinedInput-notchedOutline {
+  border-top: 2px solid var(--color-blue) !important;
+  border-right: 2px solid var(--color-blue) !important;
+  border-left: 2px solid var(--color-blue) !important;
+  border-bottom: 3px solid var(--color-blue) !important;
+}
+
+.inputContain:has(.text-orange) .mui-1ll44ll-MuiOutlinedInput-notchedOutline {
+  border-top: 2px solid var(--color-orange) !important;
+  border-right: 2px solid var(--color-orange) !important;
+  border-left: 2px solid var(--color-orange) !important;
+  border-bottom: 3px solid var(--color-orange) !important;  
+}
