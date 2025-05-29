@@ -508,3 +508,10 @@ p {
   border-left: 2px solid var(--color-orange) !important;
   border-bottom: 3px solid var(--color-orange) !important;  
 }
+
+.MuiCheckbox-root {
+  border: 1px solid var(--color-white-border) !important;
+  padding: 0.4rem !important;
+  border-radius: 0 !important;
+  margin: 0 0.6rem !important;
+}

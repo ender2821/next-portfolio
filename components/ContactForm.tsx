@@ -9,6 +9,7 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import { sendEmail } from "@/utils";
 import MenuItem from "@mui/material/MenuItem";
 import SiteButton from "./SiteButton";
+import { Check, Square } from "lucide-react";
 
 export type FormData = {
   name: string;
@@ -91,7 +92,13 @@ export default function ContactForm() {
       </div>
       <TextField placeholder="phone" {...register("phone")} />
       <FormControlLabel
-        control={<Checkbox {...register("projectInMind")} />}
+        control={
+          <Checkbox
+            icon={<Square style={{ color: "transparent" }} />}
+            checkedIcon={<Check style={{ color: "#6EC9F2" }} />}
+            {...register("projectInMind")}
+          />
+        }
         label="Have a project in mind?"
         style={{
           color: "#242B2C",

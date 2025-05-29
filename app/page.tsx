@@ -76,7 +76,7 @@ export default async function Home() {
         </h2>
         {home?.serviceCTAButtonTxt ? (
           <SiteButton
-            href="/contact"
+            href="/services"
             textHover="light"
             className="max-h-[3.5rem] md:px-[1rem] col-span-6 sm:col-span-2 xl:col-span-1 xl:col-start-2 sm:m-0 siteButton shadow-shadow-button-right w-full sm:w-auto mt-8 mb-8 order-2 lg:-order-none"
           >
