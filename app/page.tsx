@@ -13,6 +13,8 @@ import {
 import TiltImage from "@/components/TiltImage";
 import Image from "next/image";
 import SiteButton from "@/components/SiteButton";
+import ServicesIcon from "@/public/assets/servicesIcon.svg";
+import AboutIcon from "@/public/assets/aboutIcon.svg";
 
 export default async function Home() {
   const { data: home }: { data: HOME_QUERYResult } = await sanityFetch({
@@ -71,18 +73,21 @@ export default async function Home() {
       </section>
       <section className="px-4 py-4 pt-8 sm:pt-16 sm:pb-16 lg:px-8 lg:pt-[10rem] lg:pb-[10rem] relative grid grid-cols-6 gap-x-4 w-full">
         <div className="sectionMtnRightBlack absolute right-0 top-0 -translate-y-1/2" />
-        <h2 className="lg:mb-8 text-white col-span-6 xl:grid-col-span-5 xl:col-start-2 before:bg-black-decoration after:bg-black-decoration">
-          Services
-        </h2>
-        {home?.serviceCTAButtonTxt ? (
-          <SiteButton
-            href="/services"
-            textHover="light"
-            className="max-h-[3.5rem] md:px-[1rem] col-span-6 sm:col-span-2 xl:col-span-1 xl:col-start-2 sm:m-0 siteButton shadow-shadow-button-right w-full sm:w-auto mt-8 mb-8 order-2 lg:-order-none"
-          >
-            {home?.serviceCTAButtonTxt}
-          </SiteButton>
-        ) : null}
+        <div className="col-span-6 relative">
+          <h2 className="lg:mb-8 text-white mb-12 md:inherit before:bg-black-decoration after:bg-black-decoration">
+            Services
+          </h2>
+          {home?.serviceCTAButtonTxt ? (
+            <SiteButton
+              href="/services"
+              textHover="light"
+              className="max-h-[3.5rem] md:px-[1rem] col-span-6 sm:col-span-2 xl:col-span-1 sm:m-0 siteButton shadow-shadow-button-right w-full sm:w-auto mt-8 mb-8 order-2 lg:-order-none"
+            >
+              {home?.serviceCTAButtonTxt}
+            </SiteButton>
+          ) : null}
+          <ServicesIcon className="absolute right-0 -top-4 lg:-top-8 w-[7.5rem] h-[7.5rem] lg:w-[14rem] lg:h-[14rem]" />
+        </div>
         <HomeServices
           categories={home?.serviceHomeCategories as ServiceCategory[]}
         />
@@ -117,7 +122,7 @@ export default async function Home() {
                 style={{ objectFit: "contain", width: "100%" }}
               />
             </TiltImage>
-            <pre className="text-xs text-white-decoration lg:col-span-2 z-0">
+            <pre className="text-xs text-white-decoration lg:col-span-2 z-0 hidden md:block">
               {`if (isManualInputIgnoreOtherInputs) {
   this.tiltAngleX = tiltAngleXManual !== null ? tiltAngleXManual! : 0;
   this.tiltAngleY = tiltAngleYManual !== null ? tiltAngleYManual! : 0;
@@ -170,6 +175,7 @@ export default async function Home() {
                 Reach Out
               </SiteButton>
             </div>
+            <AboutIcon className="p-4 bottom-0 relative self-end mx-auto" />
           </div>
         </div>
       </section>

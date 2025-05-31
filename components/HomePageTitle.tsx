@@ -4,6 +4,7 @@ import { useState, useCallback } from "react";
 
 import { useMediaQuery, useTheme } from "@mui/system";
 import { raleway } from "@/app/fonts";
+import HomeIcon from "@/public/assets/homeIcon.svg";
 
 export default function HomePageTitle() {
   const theme = useTheme();
@@ -41,7 +42,7 @@ export default function HomePageTitle() {
   }, []);
 
   return (
-    <div className="flex flex-col lg:items-center col-span-6 lg:col-span-4 lg:w-[calc(100%+1rem)]">
+    <div className="flex flex-col lg:items-center col-span-6 lg:col-span-4 lg:w-[calc(100%+1rem)] relative">
       <h1 className="invisible left-[-9999px] absolute">
         Josh Jensen Creative
       </h1>
@@ -70,6 +71,7 @@ export default function HomePageTitle() {
       <pre className="text-xs text-black-decoration lg:absolute lg:top-[23rem] lg:left-8">
         {JSON.stringify(styleObject, null, 2).replace(/"([^"]+)":/g, "$1:")}
       </pre>
+      <HomeIcon className="absolute right-4 lg:right-auto lg:left-[calc(50vw-2.5rem)] lg:translate-x-[-50%] w-[7.5rem] h-[7.5rem] md:h-[13rem] md:w-[13rem] md:top-0 lg:w-[7.5rem] lg:h-[7.5rem] xl:h-[13rem] xl:w-[13rem] xl:top-[3.5rem]" />
     </div>
   );
 }

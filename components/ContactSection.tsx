@@ -11,7 +11,7 @@ export default function ContactSection(props: ContactSectionProps) {
 
   return (
     <section
-      className={`services-section bg-white relative grid grid-cols-6 gap-x-4 sm:pb-0 px-4 md:px-8`}
+      className={`services-section bg-white relative grid grid-cols-6 gap-x-4 px-4 pt-16 lg:pt-0 md:px-8`}
     >
       <div className="hidden sm:flex sectionMtnLeftWhite absolute left-0 top-0 -translate-y-1/2 z-30" />
       <div className="lg:h-[10rem] lg:grid lg:grid-cols-6 lg:gap-x-4 col-span-6">

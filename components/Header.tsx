@@ -4,7 +4,7 @@ import type React from "react";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 
-import { useCallback, useEffect, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Drawer from "@mui/material/Drawer";

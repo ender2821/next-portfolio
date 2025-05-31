@@ -95,7 +95,7 @@ export default function ContactForm() {
         control={
           <Checkbox
             icon={<Square style={{ color: "transparent" }} />}
-            checkedIcon={<Check style={{ color: "#6EC9F2" }} />}
+            checkedIcon={<Check style={{ color: "#242B2C" }} />}
             {...register("projectInMind")}
           />
         }
@@ -188,7 +188,12 @@ export default function ContactForm() {
           </div>
         </>
       )}
-      <SiteButton selected={true} textHover={"dark"} type="submit">
+      <SiteButton
+        selected={true}
+        textHover={"dark"}
+        type="submit"
+        className="mb-16 lg:mb-0"
+      >
         Submit
       </SiteButton>
     </form>
