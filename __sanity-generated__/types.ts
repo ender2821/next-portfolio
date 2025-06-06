@@ -537,10 +537,7 @@ export type HOME_QUERYResult = {
   }> | null;
   aboutGithub: string | null;
   aboutLinkedIn: string | null;
-  aboutSectionImage: {
-    imageUrl: string | null;
-    imageName: string | null;
-  } | null;
+  aboutSectionImage: null;
   meetGlacierSubtitle: string | null;
   meetGlacierContent: Array<{
     children?: Array<{
@@ -592,9 +589,9 @@ export type SERVICES_QUERYResult = {
   }> | null;
 } | null;
 
-// Source: ./queries/workQueries.ts
+// Source: ./queries/workLandingQuery.ts
 // Variable: WORK_QUERY
-// Query: *[_type == "work"][0]{    heroSubtitle,    heroImage->{      "imageUrl": image.asset->url,      "imageName": name,    },    ctaButtonTxt,    workPages[]->{      name,      slug,      workPageMainGallery[]->{        "imageUrl": image.asset->url,        "imageName": name,      },      workPageServiceCategory->{        serviceCatergoryId      },      workPageLayout[0]{        workLayoutContent,      }    }  }
+// Query: *[_type == "work"][0]{    heroSubtitle,    heroImage->{      "imageUrl": image.asset->url,      "imageName": name,    },    ctaButtonTxt,    workPages[]->{      name,      slug,      workPageMainGallery[]->{        "imageUrl": image.asset->url,        "imageName": name,      },      workPageServiceCategory->{        "id": serviceCatergoryId.current      },      workPageLayout[0]{        workLayoutContent,      },    }  }
 export type WORK_QUERYResult = {
   heroSubtitle: string | null;
   heroImage: {
@@ -610,7 +607,7 @@ export type WORK_QUERYResult = {
       imageName: string | null;
     }> | null;
     workPageServiceCategory: {
-      serviceCatergoryId: Slug | null;
+      id: string | null;
     } | null;
     workPageLayout: {
       workLayoutContent: Array<{
@@ -634,6 +631,8 @@ export type WORK_QUERYResult = {
     } | null;
   }> | null;
 } | null;
+
+// Source: ./queries/workQueries.ts
 // Variable: WORK_PAGE_QUERY
 // Query: *[_type == "workPage" && slug.current == $slug][0]{    name,    secondaryTitle,    workPageMainGallery[0]->{      "imageUrl": image.asset->url,      "imageName": name,    },    workPageLayout[]{      workLayoutTitle,      workLayoutSubtitle,      workLayoutContent,      workLayoutGallery[]->{        "imageUrl": image.asset->url,        "imageName": name,      }    }  }
 export type WORK_PAGE_QUERYResult = {
@@ -679,7 +678,7 @@ declare module "@sanity/client" {
     "\n*[_type == \"footer\"][0]{\n  phoneNumber,\n  emailLink,\n}\n": FOOTER_QUERYResult;
     "\n  *[_type == \"home\"][0]{\n    heroTitle,\n    heroImage->{\n      \"imageUrl\": image.asset->url,\n      \"imageName\": name,\n    },\n    heroCTAButtonTxt,\n    workGallery[]->{\n      name,\n      slug,\n      workPageLayout[0]{\n        workLayoutGallery[0]->{\n          \"imageUrl\": image.asset->url,\n          \"imageName\": name,\n        }\n      },\n    },\n    workCTAButtonTxt,\n    serviceCTAButtonTxt,\n    serviceHomeCategories[]->{\n      serviceCatergoryTitle,\n      serviceCategoryDescription\n    },\n    aboutSubtitle,\n    aboutContent,\n    aboutGithub,\n    aboutLinkedIn,\n    aboutSectionImage->{\n      \"imageUrl\": image.asset->url,\n      \"imageName\": name,\n    },\n    meetGlacierSubtitle,\n    meetGlacierContent,\n    meetGlacierButtonCTA,\n    glacierGallery[]->{\n      \"imageUrl\": image.asset->url,\n      \"imageName\": name,\n    },\n  }\n": HOME_QUERYResult;
     "\n  *[_type == \"services\"][0]{\n    servicesHeroSubtitle,\n    servicesHeroImage->{\n      \"imageUrl\": image.asset->url,\n      \"imageName\": name,\n    },\n    servicesCtaButtonTxt,\n    servicesServiceList[]->{\n      serviceCatergoryTitle,\n      serviceCatergoryId,\n      serviceCategoryImage->{\n        \"imageUrl\": image.asset->url,\n        \"imageName\": name,\n      },\n      serviceCategories[]{\n        serviceCatergoryListTitle,\n        serviceCatergoryListTags,\n        serviceCatergoryListDescriptions\n      }\n    }\n  }\n": SERVICES_QUERYResult;
-    "\n  *[_type == \"work\"][0]{\n    heroSubtitle,\n    heroImage->{\n      \"imageUrl\": image.asset->url,\n      \"imageName\": name,\n    },\n    ctaButtonTxt,\n    workPages[]->{\n      name,\n      slug,\n      workPageMainGallery[]->{\n        \"imageUrl\": image.asset->url,\n        \"imageName\": name,\n      },\n      workPageServiceCategory->{\n        serviceCatergoryId\n      },\n      workPageLayout[0]{\n        workLayoutContent,\n      }\n    }\n  }\n": WORK_QUERYResult;
+    "\n  *[_type == \"work\"][0]{\n    heroSubtitle,\n    heroImage->{\n      \"imageUrl\": image.asset->url,\n      \"imageName\": name,\n    },\n    ctaButtonTxt,\n    workPages[]->{\n      name,\n      slug,\n      workPageMainGallery[]->{\n        \"imageUrl\": image.asset->url,\n        \"imageName\": name,\n      },\n      workPageServiceCategory->{\n        \"id\": serviceCatergoryId.current\n      },\n      workPageLayout[0]{\n        workLayoutContent,\n      },\n    }\n  }\n": WORK_QUERYResult;
     "\n  *[_type == \"workPage\" && slug.current == $slug][0]{\n    name,\n    secondaryTitle,\n    workPageMainGallery[0]->{\n      \"imageUrl\": image.asset->url,\n      \"imageName\": name,\n    },\n    workPageLayout[]{\n      workLayoutTitle,\n      workLayoutSubtitle,\n      workLayoutContent,\n      workLayoutGallery[]->{\n        \"imageUrl\": image.asset->url,\n        \"imageName\": name,\n      }\n    }\n  }\n": WORK_PAGE_QUERYResult;
   }
 }

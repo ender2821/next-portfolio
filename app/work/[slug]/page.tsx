@@ -16,6 +16,7 @@ export default async function WorkPage({
     params: { slug },
   });
   const workPage = data;
+
   return (
     <main>
       <PageBanner
