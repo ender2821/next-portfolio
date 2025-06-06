@@ -47,7 +47,7 @@ export default function Home() {
           </h2>
           <p className="mb-4 mt-0">
             A seasoned Fullstack Developer and UX Designer with a wealth of
-            expertise spanning 13 years, I specialize in crafting exceptional
+            expertise spanning 14 years, I specialize in crafting exceptional
             digital experiences. With a strong emphasis on React.js and a keen
             focus on the cutting-edge Next.js framework, I bring a dynamic skill
             set to create innovative and user-centric solutions. Beyond my
@@ -79,14 +79,13 @@ export default function Home() {
           >
             https://github.com/ender2821
           </Link>
-
-          <hr className="h-px my-4 bg-blue border-t-1 border-blue"></hr>
           <h2
             className={`${raleway.className} mb-0 text-lg font-bold my-2 print:text-sm before:hidden after:hidden`}
           >
             Skills
           </h2>
           <ul className="list-disc list-inside marker:text-blue ">
+            <li>Project Management</li>
             <li>React.js</li>
             <li>Next.js</li>
             <li>Typescript</li>
@@ -122,7 +121,19 @@ export default function Home() {
             <span className="inline-block italic mx-2">Sep 2024 - Present</span>
           </div>
           <ul className="list-disc list-inside marker:text-blue">
-            <li>Lead a team of developers based in India and onshore</li>
+            <li>Managed a team of 16 developers based in India and onshore</li>
+            <li>Architected the tech stack for FlyFrontier.com</li>
+            <li>
+              Setup <b>CI/CD</b> pipelines for <b>Azure</b> containers and
+              static web apps
+            </li>
+            <li>
+              Integrated <b>Generative AI</b> to improve code delivery workflows
+            </li>
+            <li>
+              Integrated several third party <b>SDK</b>s to cut down operating
+              costs, collect analytics, and improve feature delivery
+            </li>
           </ul>
           <hr className="h-px my-4 bg-blue border-t-1 border-blue print:border-0"></hr>
           <div className="my-2">
@@ -164,7 +175,7 @@ export default function Home() {
               Apr 2023 - Sep 2023
             </span>
           </div>
-          <ul className="list-disc list-inside marker:text-blue">
+          <ul className="list-disc list-inside marker:text-blue print:mb-[10rem]">
             <li>
               Developed front-end components using <b>Next.js</b>
             </li>
@@ -248,7 +259,7 @@ export default function Home() {
           </div>
           <ul className="list-disc list-inside marker:text-blue">
             <li>
-              Conceptualized, designed, and developed the Riskbone custopmer
+              Conceptualized, designed, and developed the Riskbone customer
               facing website
             </li>
             <li>Created a trading web app for the Chicago Board of Trade</li>
@@ -270,18 +281,6 @@ export default function Home() {
               March 2014 - April 2015
             </span>
           </div>
-          <ul className="list-disc list-inside marker:text-blue">
-            <li>Designed websites from concept to presentable prototype</li>
-            <li>
-              Created print and social media designs for multiple marketing
-              campaigns
-            </li>
-            <li>Designed logos for web and print projects</li>
-            <li>Developed illustrations implemented into website designs</li>
-            <li>
-              Executed web coding for adding key elements for customer approval
-            </li>
-          </ul>
           <hr className="h-px my-4 bg-blue border-t-1 border-blue print:border-0"></hr>
           <div className="my-2">
             <h2
@@ -293,19 +292,6 @@ export default function Home() {
               May 2012 - March 2014
             </span>
           </div>
-          <ul className="list-disc list-inside marker:text-blue">
-            <li>Conceptualized, designed, and developed company websites</li>
-            <li>
-              Researched, conceptualized, and designed HMI and other user
-              interfaces
-            </li>
-            <li>Created print-ready advertising materials</li>
-            <li>Conducted all product photography for web and print</li>
-            <li>
-              Executed technical illustration for office artwork and machine
-              graphics
-            </li>
-          </ul>
           <hr className="h-px my-4 bg-blue border-t-1 border-blue print:border-0"></hr>
           <div className="my-2">
             <h2
@@ -314,16 +300,15 @@ export default function Home() {
               Freelance
             </h2>
           </div>
-          <ul className="list-disc list-inside marker:text-blue">
-            <li>Redesigned a trading application for Magnetar Capital</li>
-            <li>Provided brand and Front-end development for Kinktastic LLC</li>
-            <li>
-              Redesigned and developed the brand and website for Gearblast LLC
-            </li>
-            <li>
-              Designed the logo and brand for Ryder Gear and 14 Werewolves
-            </li>
-            <li>Had a hand in web development for Riffhard</li>
+          <ul className="list-disc list-inside marker:text-blue flex flex-wrap gap-x-4">
+            <li>New York Life</li>
+            <li>April Aire</li>
+            <li>Magnetar Capital</li>
+            <li>Ryder Gear</li>
+            <li>Gearblast</li>
+            <li>14 Werewolves</li>
+            <li>Riffhard</li>
+            <li>He/Hem LLC</li>
           </ul>
           <hr className="h-px my-4 bg-blue border-t-1 border-blue print:border-0"></hr>
           <div className="my-2">

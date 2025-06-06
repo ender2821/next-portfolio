@@ -6,6 +6,7 @@ import { sanityFetch } from "@/sanity/lib/live";
 import { WORK_QUERY } from "@/queries/workQueries";
 import WorkLandingPageSection from "@/components/WorkLandingPageSection";
 import PageBanner from "@/components/PageBanner";
+import WorkIcon from "@/public/assets/workIcon.svg";
 
 export default async function WorkLandingPage() {
   const { data: work } = await sanityFetch({ query: WORK_QUERY, params: {} });
@@ -17,6 +18,7 @@ export default async function WorkLandingPage() {
         subtitle={work?.heroSubtitle ?? ""}
         imageUrl={work?.heroImage?.imageUrl ?? ""}
         imageName={work?.heroImage?.imageName ?? ""}
+        pageIcon={<WorkIcon />}
       />
       {work?.workPages?.map((workPage, i) => {
         return (

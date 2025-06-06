@@ -4,6 +4,7 @@ import Image from "next/image";
 import { raleway } from "../app/fonts";
 import { ChevronLeft } from "lucide-react";
 import { useRouter } from "next/navigation";
+import React from "react";
 
 interface PageBannerProps {
   title: string;
@@ -11,10 +12,11 @@ interface PageBannerProps {
   imageUrl: string;
   imageName: string;
   backButton?: boolean;
+  pageIcon?: React.ReactElement;
 }
 
 export default function PageBanner(props: PageBannerProps) {
-  const { title, subtitle, imageUrl, imageName, backButton } = props;
+  const { title, subtitle, imageUrl, imageName, backButton, pageIcon } = props;
   const router = useRouter();
   return (
     <section className="h-[300px] lg:h-[400px] overflow-hidden w-full relative background">
@@ -33,7 +35,6 @@ export default function PageBanner(props: PageBannerProps) {
           />
         </div>
       ) : null}
-
       {imageUrl ? (
         <Image
           src={imageUrl}
@@ -62,6 +63,14 @@ export default function PageBanner(props: PageBannerProps) {
         >
           <ChevronLeft />
         </button>
+      )}
+      {pageIcon && (
+        <div className="z-30 relative sm:absolute sm:right-8 left-4 sm:left-auto sm:top-1/2 sm:-translate-y-1/2 w-[7.5rem] h-[7.5rem] lg:w-[14rem] lg:h-[14rem]">
+          {React.cloneElement(
+            pageIcon as React.ReactElement<{ className?: string }>,
+            { className: "w-full h-full" }
+          )}
+        </div>
       )}
     </section>
   );

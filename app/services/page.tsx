@@ -3,6 +3,8 @@ import { SERVICES_QUERY } from "@/queries/servicesQueries";
 import PageBanner from "@/components/PageBanner";
 import SecondaryCallToAction from "@/components/SecondaryCallToAction";
 import ServicesSection from "@/components/ServicesSection";
+import ServicesIcon from "@/public/assets/servicesIcon.svg";
+
 import {
   SERVICES_QUERYResult,
   ServiceCategoryList,
@@ -21,6 +23,7 @@ export default async function Services() {
         subtitle={data?.servicesHeroSubtitle ?? ""}
         imageUrl={data?.servicesHeroImage?.imageUrl ?? ""}
         imageName={data?.servicesHeroImage?.imageName ?? ""}
+        pageIcon={<ServicesIcon />}
       />
       {data?.servicesServiceList?.map((service, i) => (
         <ServicesSection

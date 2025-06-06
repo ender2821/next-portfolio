@@ -1,9 +1,9 @@
 import { sanityFetch } from "@/sanity/lib/live";
 import PageBanner from "@/components/PageBanner";
-import SecondaryCallToAction from "@/components/SecondaryCallToAction";
 import { CONTACT_QUERYResult } from "@/__sanity-generated__/types";
 import { CONTACT_QUERY } from "@/queries/contactQuerries";
 import ContactSection from "@/components/ContactSection";
+import ContactIcon from "@/public/assets/contactIcon.svg";
 
 export default async function Services() {
   const { data }: { data: CONTACT_QUERYResult } = await sanityFetch({
@@ -18,6 +18,7 @@ export default async function Services() {
         subtitle={data?.contactHeroSubtitle ?? ""}
         imageUrl={data?.contactHeroImage?.imageUrl ?? ""}
         imageName={data?.contactHeroImage?.imageName ?? ""}
+        pageIcon={<ContactIcon />}
       />
       <ContactSection
         _id={""}
