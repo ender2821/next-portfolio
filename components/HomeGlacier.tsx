@@ -102,7 +102,7 @@ export default function HomeGlacier(props: HomeGlacierProps) {
           {glacierGallery.map((item, i) => (
             <ImageListItem key={`${item.imageName}${i}`}>
               <Image
-                src={`${item.imageUrl}?w=248&fit=crop&auto=format`}
+                src={`${item.imageUrl}`}
                 alt={item.imageName ?? ""}
                 width={960}
                 height={1200}
