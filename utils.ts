@@ -1,8 +1,10 @@
 
-import { FormData } from '@/components/ContactForm';
+import { ContactFormData } from '@/components/ContactForm';
 
-export function sendEmail(data: FormData) {
+export function sendEmail(data: ContactFormData) {
   const apiEndpoint = '/api/email';
+
+
 
   fetch(apiEndpoint, {
     method: 'POST',

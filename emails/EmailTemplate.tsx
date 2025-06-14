@@ -11,7 +11,7 @@ import {
   Row,
   Text,
 } from "@react-email/components";
-import { FormData } from "@/components/ContactForm";
+import { ContactFormData } from "@/components/ContactForm";
 
 const baseUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
@@ -64,14 +64,6 @@ const secondary = {
   textAlign: "center" as const,
 };
 
-const codeContainer = {
-  background: "rgba(0,0,0,.05)",
-  borderRadius: "4px",
-  margin: "16px auto 14px",
-  verticalAlign: "middle",
-  width: "280px",
-};
-
 const paragraph = {
   color: "#444",
   fontSize: "15px",
@@ -92,7 +84,7 @@ export default function EmailTemplate({
   projectType,
   estimatedBudget,
   projectDescription,
-}: FormData) {
+}: ContactFormData) {
   return (
     <Html>
       <Head />
@@ -188,4 +180,4 @@ EmailTemplate.PreviewProps = {
   projectType: "Web Design",
   estimatedBudget: "Less than $1000",
   projectDescription: "Project Description",
-} as FormData;
+} as ContactFormData;

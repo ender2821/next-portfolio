@@ -16,6 +16,7 @@ export async function POST(request: NextRequest) {
     projectType,
     estimatedBudget,
     projectDescription,
+    files,
   } = await request.json();
 
   const transport = nodemailer.createTransport({
@@ -47,6 +48,7 @@ export async function POST(request: NextRequest) {
       projectType={projectType}
       estimatedBudget={estimatedBudget}
       projectDescription={projectDescription}
+      files={files}
     />
   );
 
@@ -57,7 +59,19 @@ export async function POST(request: NextRequest) {
     // subject: `Message from ${name} (${email})`,
     // text: message,
     html: emailHtml,
+    attachments: files
+      ? files.map((file: any) => {
+          return {
+            filename: file.name, // Ensure the file object contains a 'name' property
+            content: file.content, // Ensure the file object contains a 'content' property (base64 or Buffer)
+            encoding: "base64", // Adjust encoding if necessary
+          };
+        })
+      : [],
   };
+
+  console.log(mailOptions);
+  console.log(files, "FILES");
 
   const sendMailPromise = () =>
     new Promise<string>((resolve, reject) => {
