@@ -216,43 +216,7 @@ export default function ContactForm() {
           </div>
         </>
       )}
-      {/* TODO: Add upload file button and functionality */}
-      {/* <div className="inputContain">
-        <label
-          htmlFor="file-upload"
-          className="block text-sm font-medium text-gray-700"
-        >
-          Upload File
-        </label>
-        <input
-          type="file"
-          id="file-upload"
-          className="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-gray-50 file:text-gray-700 hover:file:bg-gray-100"
-          {...register("file", {
-            required: "File is required",
-            validate: (value) =>
-              value[0]?.size < 5 * 1024 * 1024 ||
-              "File size must be less than 5MB",
-          })}
-          onChange={(e) => {
-            handleFileChange(e); // Update state with selected file name
-          }}
-        />
-        {selectedFileName && (
-          <p className="text-black-bg mt-2">
-            Selected File: {selectedFileName}
-          </p>
-        )}
-        <ErrorMessage
-          errors={errors}
-          name="file"
-          render={({ message }) => (
-            <p className="text-orange mb-0 ">{message}</p>
-          )}
-        />
-      </div> */}
       <FileUpload control={control} />
-
       <SiteButton
         selected={true}
         textHover={"dark"}

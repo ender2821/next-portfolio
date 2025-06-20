@@ -1,10 +1,11 @@
 import React, { useRef } from "react";
-import { IconButton, Button } from "@mui/material";
+import { IconButton } from "@mui/material";
 import { useFieldArray, Controller } from "react-hook-form";
-import { Delete } from "lucide-react";
+import { X } from "lucide-react";
+import SiteButton from "./SiteButton";
 
 interface FileUploadProps {
-  control: any;
+  control: any; // Replace 'any' with the appropriate type for 'control' if known
 }
 
 const FileUpload: React.FC<FileUploadProps> = ({ control }) => {
@@ -68,18 +69,17 @@ const FileUpload: React.FC<FileUploadProps> = ({ control }) => {
       />
 
       <div>
-        <label>Files</label>
-
+        {/* @ts-ignore */}
         {fields.map(({ fileId, file }, index) => (
-          <div key={fileId}>
+          <div key={fileId} className={"flex items-center"}>
             <Controller
               control={control}
               name={`files.${index}`}
               render={() => (
                 <>
-                  <span>{file.name}</span>
+                  <span className="text-black-bg">{file.name}</span>
                   <IconButton aria-label="Remove" onClick={() => remove(index)}>
-                    <Delete />
+                    <X />
                   </IconButton>
                 </>
               )}
@@ -87,9 +87,14 @@ const FileUpload: React.FC<FileUploadProps> = ({ control }) => {
           </div>
         ))}
 
-        <Button variant="text" onClick={onAddFiles}>
+        <SiteButton
+          selected={true}
+          textHover={"dark"}
+          className="mb-16 lg:mb-0 max-w-[300px] w-full before:border-t-white-border before:border-b-white-border after:border-t-white-border after:border-b-white-border hover:after:border-b-white-border after:bg-white-border"
+          onClick={onAddFiles}
+        >
           Add Files
-        </Button>
+        </SiteButton>
       </div>
     </>
   );
