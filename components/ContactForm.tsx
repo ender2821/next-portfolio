@@ -10,7 +10,6 @@ import { sendEmail } from "@/utils";
 import MenuItem from "@mui/material/MenuItem";
 import SiteButton from "./SiteButton";
 import { Check, Square } from "lucide-react";
-import { useState } from "react";
 import FileUpload from "./FileUpload";
 
 export type ContactFormData = {
@@ -47,38 +46,33 @@ const estimatedBudget = [
 ];
 
 export default function ContactForm() {
-  const [selectedFileName, setSelectedFileName] = useState<string | null>(null);
-
   const {
     control,
     register,
     handleSubmit,
     watch,
+    reset,
     formState: { errors },
-  } = useForm<ContactFormData>();
-  const onSubmit: SubmitHandler<ContactFormData> = (data) => {
-    console.log(data);
-    sendEmail(data);
-  };
-  // const onSubmit: SubmitHandler<ContactFormData> = (data) => {
-  //   const formData = new FormData();
-  //   Object.entries(data).forEach(([key, value]) => {
-  //     if (key === "file") {
-  //       if (value instanceof FileList) {
-  //         formData.append(key, value[0]); // Append the file
-  //       }
-  //     } else {
-  //       formData.append(key, value as string);
-  //     }
-  //   });
-  //   console.log(formData);
-  //   sendEmail(formData); // Adjust `sendEmail` to handle FormData
-  // };
+  } = useForm<ContactFormData>({
+    defaultValues: {
+      name: "",
+      company: "",
+      email: "",
+      phone: "",
+      projectInMind: false,
+      subject: "",
+      message: "",
+      projectType: "projectType",
+      estimatedBudget: "estimatedBudget",
+      projectDescription: "",
+      files: null as unknown as FileList,
+    },
+  });
 
-  // const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   const file = event.target.files?.[0];
-  //   setSelectedFileName(file ? file.name : null);
-  // };
+  const onSubmit: SubmitHandler<ContactFormData> = (data) => {
+    sendEmail(data);
+    reset();
+  };
 
   const projectInMind = watch("projectInMind");
   return (
@@ -216,7 +210,7 @@ export default function ContactForm() {
           </div>
         </>
       )}
-      <FileUpload control={control} />
+      <FileUpload control={control} watch={watch} />
       <SiteButton
         selected={true}
         textHover={"dark"}

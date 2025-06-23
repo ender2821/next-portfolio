@@ -1,14 +1,15 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { IconButton } from "@mui/material";
 import { useFieldArray, Controller } from "react-hook-form";
 import { X } from "lucide-react";
 import SiteButton from "./SiteButton";
 
 interface FileUploadProps {
-  control: any; // Replace 'any' with the appropriate type for 'control' if known
+  control: any; //TODO: Replace 'any' with the appropriate type for 'control'
+  watch: (fieldName: string) => any; // TODO: Replace any for proper return type
 }
 
-const FileUpload: React.FC<FileUploadProps> = ({ control }) => {
+const FileUpload: React.FC<FileUploadProps> = ({ control, watch }) => {
   const { fields, append, remove } = useFieldArray({
     control,
     name: "files",
@@ -32,7 +33,7 @@ const FileUpload: React.FC<FileUploadProps> = ({ control }) => {
       return new Promise((resolve, reject) => {
         const reader = new FileReader();
         reader.onload = () => {
-          const base64Content = reader.result?.toString().split(",")[1]; // Extract Base64 content
+          const base64Content = reader.result?.toString().split(",")[1];
           resolve(base64Content || "");
         };
         reader.onerror = (error) => reject(error);
@@ -45,7 +46,7 @@ const FileUpload: React.FC<FileUploadProps> = ({ control }) => {
         file,
         name: file.name,
         type: file.type,
-        content: await encodeFileToBase64(file), // Base64 encode the file
+        content: await encodeFileToBase64(file),
       }))
     ).then((files) => {
       append(files);
@@ -53,10 +54,15 @@ const FileUpload: React.FC<FileUploadProps> = ({ control }) => {
       if (hiddenFileInput.current) {
         hiddenFileInput.current.value = "";
       }
-
-      console.log(files); // Logs the files with Base64 content
     });
   };
+
+  useEffect(() => {
+    const files = watch("files");
+    if (!files || files.length === 0) {
+      fields.forEach((_, index) => remove(index));
+    }
+  }, [watch("files")]);
 
   return (
     <>
