@@ -112,8 +112,10 @@ export default async function Home() {
               shadow={"right"}
             >
               <Image
+                // @ts-ignore
                 src={home?.aboutSectionImage?.imageUrl ?? "/default-image.jpg"}
                 alt={
+                  // @ts-ignore
                   home?.aboutSectionImage?.imageName ??
                   "default image description"
                 }
