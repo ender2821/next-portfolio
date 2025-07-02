@@ -1,14 +1,9 @@
-import Image from "next/image";
-import Link from "next/link";
-
-import { raleway } from "../fonts";
 import { sanityFetch } from "@/sanity/lib/live";
 import { WORK_QUERY } from "@/queries/workLandingQuery";
 import WorkLandingPageSection from "@/components/WorkLandingPageSection";
 import PageBanner from "@/components/PageBanner";
 import WorkIcon from "@/public/assets/workIcon.svg";
 import { WORK_QUERYResult } from "@/__sanity-generated__/types";
-import { useSearchParams } from "next/navigation";
 
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
 
