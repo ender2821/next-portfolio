@@ -94,7 +94,7 @@ export default async function Home() {
       </section>
       <section
         className="pt-4 sm:pt-0 sm:pb-8 lg:pt-0 lg:pb-0 w-full bg-[#fff] relative"
-        id="#about"
+        id="about"
       >
         <div className="sectionMtnRightWhite absolute right-0 top-0 -translate-y-1/2" />
         <div className="hidden md:grid absolute z-0 grid-cols-6 w-[100%] h-[100%] gap-4 pl-4 pr-4 lg:pl-8 lg:pr-8">

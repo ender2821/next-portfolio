@@ -3,6 +3,7 @@
 import type React from "react";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
+import { useSmoothScroll } from "@/hooks/useSmoothScroll";
 
 import { useState } from "react";
 import Image from "next/image";
@@ -44,9 +45,15 @@ export default function Header() {
   );
   const pathname = usePathname();
   const router = useRouter();
+  const { navigateAndScroll } = useSmoothScroll();
 
   const toggleDrawer = (open: boolean) => () => {
     setIsOpen(open);
+  };
+
+  const handleAboutClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    navigateAndScroll('about');
   };
 
   return (
@@ -70,7 +77,8 @@ export default function Header() {
                     </>
                   )}
                   <Link
-                    href={item.text === "About" ? "/#about" : item.href}
+                    href={item.text === "About" ? "#about" : item.href}
+                    onClick={item.text === "About" ? handleAboutClick : undefined}
                     className={`${pathname === item.href && "border border-dashed border-blue"} text-white hover:text-gray-300 transition-colors text-sm pt-8 pb-8 block px-4 lg:px-6`}
                   >
                     {item.text}
@@ -124,13 +132,25 @@ export default function Header() {
                   "&:hover": { backgroundColor: "rgba(255, 255, 255, 0.1)" },
                 }}
               >
-                <Link
-                  href={`/${text.toLowerCase() === "home" ? "" : text.toLowerCase()}`}
-                  className="text-white hover:text-gray-300 transition-colors text-lg w-full"
-                  onClick={toggleDrawer(false)}
-                >
-                  {text}
-                </Link>
+                {text === "About" ? (
+                  <button
+                    onClick={(e) => {
+                      handleAboutClick(e);
+                      toggleDrawer(false)();
+                    }}
+                    className="text-white hover:text-gray-300 transition-colors text-lg w-full text-left"
+                  >
+                    {text}
+                  </button>
+                ) : (
+                  <Link
+                    href={`/${text.toLowerCase() === "home" ? "" : text.toLowerCase()}`}
+                    className="text-white hover:text-gray-300 transition-colors text-lg w-full"
+                    onClick={toggleDrawer(false)}
+                  >
+                    {text}
+                  </Link>
+                )}
               </ListItem>
             ))}
           </List>
