@@ -5,7 +5,7 @@ import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { ServiceCategory } from "@/__sanity-generated__/types";
 import { PortableText } from "next-sanity";
-import { raleway } from "../app/fonts";
+import { raleway } from "../app/(app)/fonts";
 
 interface AccordionItemProps {
   title: string;

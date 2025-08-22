@@ -3,7 +3,7 @@
 import { useState, useCallback } from "react";
 
 import { useMediaQuery, useTheme } from "@mui/system";
-import { raleway } from "@/app/fonts";
+import { raleway } from "@/app/(app)/fonts";
 import HomeIcon from "@/public/assets/homeIcon.svg";
 
 export default function HomePageTitle() {

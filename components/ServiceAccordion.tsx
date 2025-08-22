@@ -3,7 +3,7 @@
 import type React from "react";
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
-import { raleway } from "../app/fonts";
+import { raleway } from "../app/(app)/fonts";
 
 interface AccordionItemProps {
   title: string;

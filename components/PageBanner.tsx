@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { raleway } from "../app/fonts";
+import { raleway } from "../app/(app)/fonts";
 import { ChevronLeft } from "lucide-react";
 import { useRouter } from "next/navigation";
 import React from "react";

@@ -4,7 +4,7 @@ import { ServiceCategory } from "@/__sanity-generated__/types";
 import { useMediaQuery, useTheme } from "@mui/material";
 import { PortableText, PortableTextReactComponents } from "next-sanity";
 
-import { raleway } from "../app/fonts";
+import { raleway } from "../app/(app)/fonts";
 import MobileAccordion from "./MobileAccordion";
 
 interface HomeServicesProps {

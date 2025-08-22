@@ -5,7 +5,7 @@ import { structureTool } from "sanity/structure";
 
 
 // Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
-import {apiVersion, dataset, projectId} from './sanity/env'
+import {apiVersion, projectId} from './sanity/env'
 import {schema, singletonTypes} from './sanity/schema'
 import { sanityStructure } from './deskStructure';
 
@@ -13,37 +13,12 @@ const singletonActions = new Set(['publish', 'discardChanges', 'restore'])
 
 export default defineConfig([
   {
-    basePath: '/production',
+    basePath: '/studio',
     projectId,
-    dataset: 'production',
+    dataset: process.env.NEXT_PUBLIC_SANITY_DATASET!,
     name: 'joshjensencreative-production',
     title: 'Josh Jensen Creative Production',
     subtitle: 'Production',
-    plugins: [
-      structureTool({
-        structure: sanityStructure,
-      }),
-      visionTool({ defaultApiVersion: apiVersion }),
-      // singletonTools(),
-    ],
-    schema: {
-      types: schema.types,
-      templates: (templates) =>
-        templates.filter(({schemaType}) => !singletonTypes.has(schemaType)),
-    },
-    document: {
-      actions: (input, context) => singletonTypes.has(context.schemaType)
-        ? input.filter(({ action }) => action && singletonActions.has(action))
-        : input
-    },
-  },
-  {
-    basePath: '/development',
-    projectId,
-    dataset: 'development',
-    name: 'joshjensencreative-development',
-    title: 'Josh Jensen Creative Development',
-    subtitle: 'Development',
     plugins: [
       structureTool({
         structure: sanityStructure,
