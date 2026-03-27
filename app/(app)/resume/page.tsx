@@ -6,7 +6,7 @@ import { raleway } from "../fonts";
 export default function Home() {
   return (
     <main className="bg-white text-black-bg print:bg-white print:text-black">
-      <section className="container mx-auto grid grid-cols-4 gap-4 gap-x-10 print:gap-x-5 print:max-w-none p-8 px-4 lg:px-8 print:px-8 print:text-sm">
+      <section className="container mx-auto grid grid-cols-4 gap-4 gap-x-10 print:gap-x-5 print:gap-y-0 print:max-w-none p-8 px-4 lg:px-8 print:px-8 print:text-sm">
         <div className="col-span-4">
           <div className="flex gap-4">
             <div className="block print:hidden">
@@ -105,6 +105,8 @@ export default function Home() {
             <li>AWS / Vercel</li>
             <li>Azure</li>
             <li>CI/CD with yaml</li>
+            <li>LLMs</li>
+            <li>MCP Servers</li>
             <li>Git</li>
             <li>MySql</li>
             <li>UX Design</li>
@@ -122,17 +124,30 @@ export default function Home() {
           </div>
           <ul className="list-disc list-inside marker:text-blue">
             <li>Managed a team of 16 developers based in India and onshore</li>
-            <li>Architected the tech stack for FlyFrontier.com</li>
             <li>
-              Setup <b>CI/CD</b> pipelines for <b>Azure</b> containers and
-              static web apps
+              Architected and built the new <b>FlyFrontier.com</b>
+            </li>
+            <li>
+              Built and integrated <b>Sanity CMS</b> for Enterprise solutions
+            </li>
+            <li>
+              Setup <b>CI/CD pipelines</b> for <b>Azure containers</b> and{" "}
+              <b>static web apps</b>
             </li>
             <li>
               Integrated <b>Generative AI</b> to improve code delivery workflows
             </li>
             <li>
-              Integrated several third party <b>SDK</b>s to cut down operating
+              Used <b>LLMs</b> such as <b>Claude</b> with <b>Codepen</b> to
+              efficiently integrate solutions into our code platform
+            </li>
+            <li>
+              Integrated several third party <b>SDKs</b> to cut down operating
               costs, collect analytics, and improve feature delivery
+            </li>
+            <li>
+              Added analytics tools such as <b>Application Insights</b> and{" "}
+              <b>Noibu</b> to monitor errors and API response times
             </li>
           </ul>
           <hr className="h-px my-4 bg-blue border-t-1 border-blue print:border-0"></hr>
@@ -175,7 +190,7 @@ export default function Home() {
               Apr 2023 - Sep 2023
             </span>
           </div>
-          <ul className="list-disc list-inside marker:text-blue print:mb-[10rem]">
+          <ul className="list-disc list-inside marker:text-blue">
             <li>
               Developed front-end components using <b>Next.js</b>
             </li>
@@ -190,7 +205,7 @@ export default function Home() {
             </li>
           </ul>
           <hr className="h-px my-4 bg-blue border-t-1 border-blue print:border-0"></hr>
-          <div className="my-2">
+          <div className="my-2 print:mt-20">
             <h2
               className={`${raleway.className} mb-0 inline-block text-lg font-bold print:text-sm before:hidden after:hidden`}
             >
