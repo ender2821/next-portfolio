@@ -16,6 +16,8 @@ import SiteButton from "@/components/SiteButton";
 import ServicesIcon from "@/public/assets/servicesIcon.svg";
 import AboutIcon from "@/public/assets/aboutIcon.svg";
 
+export const revalidate = 60;
+
 export default async function Home() {
   const { data: home }: { data: HOME_QUERYResult } = await sanityFetch({
     query: HOME_QUERY,

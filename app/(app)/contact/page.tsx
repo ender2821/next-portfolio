@@ -5,6 +5,8 @@ import { CONTACT_QUERY } from "@/queries/contactQuerries";
 import ContactSection from "@/components/ContactSection";
 import ContactIcon from "@/public/assets/contactIcon.svg";
 
+export const revalidate = 60;
+
 export default async function Services() {
   const { data }: { data: CONTACT_QUERYResult } = await sanityFetch({
     query: CONTACT_QUERY,

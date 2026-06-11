@@ -5,6 +5,8 @@ import { WORK_PAGE_QUERY } from "@/queries/workQueries";
 import { sanityFetch } from "@/sanity/lib/live";
 import SecondaryCallToAction from "@/components/SecondaryCallToAction";
 
+export const revalidate = 60;
+
 export default async function WorkPage({
   params,
 }: {

@@ -10,6 +10,8 @@ import {
   ServiceCategoryList,
 } from "@/__sanity-generated__/types";
 
+export const revalidate = 60;
+
 export default async function Services() {
   const { data }: { data: SERVICES_QUERYResult } = await sanityFetch({
     query: SERVICES_QUERY,

@@ -7,6 +7,8 @@ import { WORK_QUERYResult } from "@/__sanity-generated__/types";
 
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
 
+export const revalidate = 60;
+
 export default async function WorkLandingPage({
   searchParams,
 }: {
@@ -24,7 +26,7 @@ export default async function WorkLandingPage({
           return workPage?.workPageServiceCategory.id.includes(
             typeof recievedSearchParams.id === "string"
               ? recievedSearchParams.id
-              : ""
+              : "",
           );
         }
       })
