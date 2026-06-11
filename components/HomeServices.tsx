@@ -6,6 +6,7 @@ import { PortableText, PortableTextReactComponents } from "next-sanity";
 
 import { raleway } from "../app/(app)/fonts";
 import MobileAccordion from "./MobileAccordion";
+import Link from "next/link";
 
 interface HomeServicesProps {
   categories: ServiceCategory[];
@@ -23,6 +24,11 @@ export default function HomeServices({ categories }: HomeServicesProps) {
     },
   };
 
+  const replaceSpacesWithHyphens = (str: string | undefined) => {
+    if (!str) return "";
+    return str.replace(/\s+/g, "-").toLowerCase();
+  };
+
   return (
     <>
       <div className="hidden lg:block col-span-6">
@@ -36,7 +42,12 @@ export default function HomeServices({ categories }: HomeServicesProps) {
               <h3
                 className={`${raleway.className} mb-0 leading-[4rem] group-hover:leading-[3rem] block flex-[100%] font-bold text-black-decoration text-right uppercase text-[5rem] group-hover:text-[3.85rem] group-hover:left-0 duration-500 transition-all`}
               >
-                {category.serviceCatergoryTitle}
+                <Link
+                  href={`/work?id=${replaceSpacesWithHyphens(category.serviceCatergoryTitle)}`}
+                  className="hover:text-blue"
+                >
+                  {category.serviceCatergoryTitle}
+                </Link>
               </h3>
               {category?.serviceCategoryDescription && (
                 <div className="flex-[50%]">
